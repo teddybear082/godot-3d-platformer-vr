@@ -36,3 +36,15 @@ func _on_Left_Function_Grapple_movement_grapple_started():
 
 func _on_Right_Function_Grapple_movement_grapple_started():
 	$Grapple.play()# Replace with function body.
+
+
+func _on_Function_Climb_movement_player_climb_start():
+	$Climb.play()# Replace with function body.
+
+
+func _on_Function_Climb_movement_player_climb_end():
+	$Climb.stop() # Replace with function body.
+
+
+func _on_LeftHandRadialMenu_play_menu_sound():
+	$MenuSelect.play() # Replace with function body.

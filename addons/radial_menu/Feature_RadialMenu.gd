@@ -3,7 +3,7 @@ extends Spatial
 
 
 signal entry_selected(entry)
-
+signal play_menu_sound()
 
 enum Buttons {
 	VR_BUTTON_BY = 1,
@@ -77,6 +77,7 @@ func select(entry: String) -> void:
 	var index = menu_entries.find(entry)
 	var mesh = menu_quads[index]
 	mesh.material_override.set_shader_param('selected', true)
+	emit_signal("play_menu_sound")
 	last_selected = entry
 
 func entry_from_position(position: Vector3) -> String:

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Pandemia.mp3-531cca3468e4c0e07bdd32b32b5fda8f.mp3str"
+
+[deps]
+
+source_file="res://raw_assets/audio/MaxKoMusic/Pandemia.mp3"
+dest_files=[ "res://.import/Pandemia.mp3-531cca3468e4c0e07bdd32b32b5fda8f.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

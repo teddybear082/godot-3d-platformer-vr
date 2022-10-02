@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/sb_racethesun.mp3-8552e5537fbae7b81d644289efb4295b.mp3str"
+
+[deps]
+
+source_file="res://raw_assets/audio/scottbuckley.com.au/sb_racethesun.mp3"
+dest_files=[ "res://.import/sb_racethesun.mp3-8552e5537fbae7b81d644289efb4295b.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

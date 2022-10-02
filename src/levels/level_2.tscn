@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=2]
+[gd_scene load_steps=61 format=2]
 
 [ext_resource path="res://src/environments/custom_env_3.tres" type="Environment" id=1]
 [ext_resource path="res://src/level_elements/checkpoint/checkpoint.tscn" type="PackedScene" id=2]
@@ -30,6 +30,7 @@
 [ext_resource path="res://src/level_elements/collectables/coins/coin_gold.tscn" type="PackedScene" id=28]
 [ext_resource path="res://raw_assets/audio/sparklinlabs/ninjaadventure/gold-1.ogg" type="AudioStream" id=29]
 [ext_resource path="res://raw_assets/audio/freesound.org/582705__ironcross32__short-chirp-10-down.mp3" type="AudioStream" id=30]
+[ext_resource path="res://raw_assets/audio/kenney/jingles_SAX07.ogg" type="AudioStream" id=31]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 46.4603, 27.8359, 56.4813 )
@@ -318,6 +319,7 @@ mix_target = 2
 bus = "SoundEffects"
 
 [node name="AudioStreamPlayerDied" type="AudioStreamPlayer" parent="LevelWideAudioStreams"]
+stream = ExtResource( 31 )
 bus = "SoundEffects"
 
 [node name="AudioStreamLevelExit" type="AudioStreamPlayer" parent="LevelWideAudioStreams"]
