@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/146726__leszek-szary__jumping.mp3-60da10a61b99b2d0c494e1a4247951cb.mp3str"
+
+[deps]
+
+source_file="res://raw_assets/audio/freesound.org/146726__leszek-szary__jumping.mp3"
+dest_files=[ "res://.import/146726__leszek-szary__jumping.mp3-60da10a61b99b2d0c494e1a4247951cb.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

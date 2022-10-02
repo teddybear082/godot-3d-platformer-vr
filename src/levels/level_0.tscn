@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=2]
+[gd_scene load_steps=42 format=2]
 
 [ext_resource path="res://src/environments/custom_env_3.tres" type="Environment" id=1]
 [ext_resource path="res://src/level_elements/checkpoint/checkpoint.tscn" type="PackedScene" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://src/levels/level.gd" type="Script" id=10]
 [ext_resource path="res://src/ui/level_end_screen/level_end_screen_vr_2D.tscn" type="PackedScene" id=11]
 [ext_resource path="res://addons/godot-xr-tools/objects/Viewport_2D_in_3D_body.gd" type="Script" id=12]
+[ext_resource path="res://raw_assets/audio/sparklinlabs/ninjaadventure/succes-3.ogg" type="AudioStream" id=13]
 [ext_resource path="res://src/level_elements/hazards/spikes/static/spikes_2x4.tscn" type="PackedScene" id=14]
 [ext_resource path="res://src/level_elements/hazards/spikes/moving/spike_arm_system.tscn" type="PackedScene" id=15]
 [ext_resource path="res://src/level_elements/moving_platform_systems/orbit/orbit_4x4.tscn" type="PackedScene" id=16]
@@ -22,6 +23,8 @@
 [ext_resource path="res://src/level_elements/hazards/spikes/static/spikes_4x4.tscn" type="PackedScene" id=21]
 [ext_resource path="res://src/level_elements/exit/exit.tscn" type="PackedScene" id=22]
 [ext_resource path="res://src/level_elements/collectables/extra/extra_collectable.tscn" type="PackedScene" id=23]
+[ext_resource path="res://raw_assets/audio/sparklinlabs/ninjaadventure/gold-1.ogg" type="AudioStream" id=24]
+[ext_resource path="res://raw_assets/audio/freesound.org/582705__ironcross32__short-chirp-10-down.mp3" type="AudioStream" id=25]
 [ext_resource path="res://src/level_elements/collectables/coins/coin_silver.tscn" type="PackedScene" id=33]
 [ext_resource path="res://src/level_elements/collectables/coins/coin_blue.tscn" type="PackedScene" id=34]
 [ext_resource path="res://src/level_elements/collectables/coins/coin_gold.tscn" type="PackedScene" id=35]
@@ -220,6 +223,7 @@ visible = false
 [node name="LevelWideAudioStreams" type="Node" parent="."]
 
 [node name="AudioStreamCoinPickup" type="AudioStreamPlayer" parent="LevelWideAudioStreams"]
+stream = ExtResource( 24 )
 volume_db = -3.0
 pitch_scale = 0.7
 bus = "SoundEffects"
@@ -229,6 +233,12 @@ bus = "SoundEffects"
 
 [node name="AudioStreamLevelExit" type="AudioStreamPlayer" parent="LevelWideAudioStreams"]
 pause_mode = 2
+stream = ExtResource( 13 )
+bus = "SoundEffects"
+
+[node name="AudioStreamCheckpoint" type="AudioStreamPlayer" parent="LevelWideAudioStreams"]
+stream = ExtResource( 25 )
+mix_target = 2
 bus = "SoundEffects"
 
 [node name="ParticleClouds" type="Node" parent="."]

@@ -37,7 +37,6 @@ anchor_left = 0.0195313
 anchor_top = 0.0666667
 anchor_right = 0.980469
 anchor_bottom = 0.933333
-margin_top = -3.8147e-06
 custom_constants/separation = 100
 __meta__ = {
 "_edit_use_anchors_": true

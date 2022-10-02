@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=2]
+[gd_scene load_steps=60 format=2]
 
 [ext_resource path="res://src/environments/custom_env_3.tres" type="Environment" id=1]
 [ext_resource path="res://src/level_elements/checkpoint/checkpoint.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://src/ui/level_ui/level_ui.tscn" type="PackedScene" id=6]
 [ext_resource path="res://addons/godot-xr-tools/objects/Object_climbable.gd" type="Script" id=7]
 [ext_resource path="res://src/player/VRplayer.tscn" type="PackedScene" id=8]
+[ext_resource path="res://raw_assets/audio/sparklinlabs/ninjaadventure/succes-3.ogg" type="AudioStream" id=9]
 [ext_resource path="res://src/levels/level.gd" type="Script" id=10]
 [ext_resource path="res://src/ui/level_end_screen/level_end_screen_vr_2D.tscn" type="PackedScene" id=11]
 [ext_resource path="res://addons/godot-xr-tools/objects/Viewport_2D_in_3D.gd" type="Script" id=12]
@@ -27,6 +28,8 @@
 [ext_resource path="res://src/generic/materials/floor.material" type="Material" id=26]
 [ext_resource path="res://src/level_elements/collectables/coins/coin_silver.tscn" type="PackedScene" id=27]
 [ext_resource path="res://src/level_elements/collectables/coins/coin_gold.tscn" type="PackedScene" id=28]
+[ext_resource path="res://raw_assets/audio/sparklinlabs/ninjaadventure/gold-1.ogg" type="AudioStream" id=29]
+[ext_resource path="res://raw_assets/audio/freesound.org/582705__ironcross32__short-chirp-10-down.mp3" type="AudioStream" id=30]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 46.4603, 27.8359, 56.4813 )
@@ -310,6 +313,7 @@ visible = false
 [node name="LevelWideAudioStreams" type="Node" parent="."]
 
 [node name="AudioStreamCoinPickup" type="AudioStreamPlayer" parent="LevelWideAudioStreams"]
+stream = ExtResource( 29 )
 mix_target = 2
 bus = "SoundEffects"
 
@@ -318,6 +322,12 @@ bus = "SoundEffects"
 
 [node name="AudioStreamLevelExit" type="AudioStreamPlayer" parent="LevelWideAudioStreams"]
 pause_mode = 2
+stream = ExtResource( 9 )
+bus = "SoundEffects"
+
+[node name="AudioStreamCheckpoint" type="AudioStreamPlayer" parent="LevelWideAudioStreams"]
+stream = ExtResource( 30 )
+mix_target = 2
 bus = "SoundEffects"
 
 [node name="ParticleClouds" type="Node" parent="."]

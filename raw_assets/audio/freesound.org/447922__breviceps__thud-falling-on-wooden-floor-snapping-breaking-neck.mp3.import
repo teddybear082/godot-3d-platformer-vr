@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/447922__breviceps__thud-falling-on-wooden-floor-snapping-breaking-neck.mp3-821fa0b6ad9eee1f0db10be52919f07f.mp3str"
+
+[deps]
+
+source_file="res://raw_assets/audio/freesound.org/447922__breviceps__thud-falling-on-wooden-floor-snapping-breaking-neck.mp3"
+dest_files=[ "res://.import/447922__breviceps__thud-falling-on-wooden-floor-snapping-breaking-neck.mp3-821fa0b6ad9eee1f0db10be52919f07f.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

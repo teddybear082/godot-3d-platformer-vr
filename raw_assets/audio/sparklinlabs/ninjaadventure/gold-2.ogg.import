@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/gold-2.ogg-46d51783fa64746efee649f80440f2ca.oggstr"
+
+[deps]
+
+source_file="res://raw_assets/audio/sparklinlabs/ninjaadventure/gold-2.ogg"
+dest_files=[ "res://.import/gold-2.ogg-46d51783fa64746efee649f80440f2ca.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -48,7 +48,7 @@ onready var _projectile_container: Node = get_node("Projectiles")
 onready var _audio_coin_colleceted: AudioStreamPlayer = get_node("LevelWideAudioStreams/AudioStreamCoinPickup")
 onready var _audio_player_died: AudioStreamPlayer = get_node("LevelWideAudioStreams/AudioStreamPlayerDied")
 onready var _audio_level_exit: AudioStreamPlayer = get_node("LevelWideAudioStreams/AudioStreamLevelExit")
-
+onready var _audio_checkpoint: AudioStreamPlayer = get_node("LevelWideAudioStreams/AudioStreamCheckpoint")
 
 ############################
 # Engine Callback Methods  #
@@ -122,7 +122,7 @@ func _on_checkpoint_entered(checkpoint: Checkpoint) -> void:
 		_checkpoint_current.deactivate()
 	_checkpoint_current = checkpoint
 	_checkpoint_current.activate()
-
+	_audio_checkpoint.play()
 
 func _on_projectile_spawn_requested(projectile_packed_scene: PackedScene, initial_transform: Transform, direction: Vector3, max_distance: float, speed: float, damage: int) -> void:
 	var projectile_instance: Projectile = projectile_packed_scene.instance()

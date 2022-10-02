@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/473583__nox-sound__whoosh-rope.mp3-c259b9464efe4f03950aa2a9cbd30545.mp3str"
+
+[deps]
+
+source_file="res://raw_assets/audio/freesound.org/473583__nox-sound__whoosh-rope.mp3"
+dest_files=[ "res://.import/473583__nox-sound__whoosh-rope.mp3-c259b9464efe4f03950aa2a9cbd30545.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

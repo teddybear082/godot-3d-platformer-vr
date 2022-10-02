@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/582705__ironcross32__short-chirp-10-down.mp3-6d78e7988fd32a0643ca32c6222167f9.mp3str"
+
+[deps]
+
+source_file="res://raw_assets/audio/freesound.org/582705__ironcross32__short-chirp-10-down.mp3"
+dest_files=[ "res://.import/582705__ironcross32__short-chirp-10-down.mp3-6d78e7988fd32a0643ca32c6222167f9.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

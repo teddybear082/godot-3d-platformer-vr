@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/sb_fateandfortune.mp3-4dc4ffb21fe4575bb735f0aa5da05292.mp3str"
+
+[deps]
+
+source_file="res://raw_assets/audio/scottbuckley.com.au/sb_fateandfortune.mp3"
+dest_files=[ "res://.import/sb_fateandfortune.mp3-4dc4ffb21fe4575bb735f0aa5da05292.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

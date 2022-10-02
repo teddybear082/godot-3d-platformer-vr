@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/succes-3.ogg-88bb68fa3e808c77d75548fec4678dfc.oggstr"
+
+[deps]
+
+source_file="res://raw_assets/audio/sparklinlabs/ninjaadventure/succes-3.ogg"
+dest_files=[ "res://.import/succes-3.ogg-88bb68fa3e808c77d75548fec4678dfc.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

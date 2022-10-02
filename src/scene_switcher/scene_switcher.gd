@@ -93,8 +93,11 @@ func _set_current_scene(new_scene: Node) -> void:
 	if _anim_player.is_playing():
 		yield(_anim_player, "animation_finished")
 	_fade_out()
-
-
+	if new_scene is LevelManager:
+		$AudioStreamGlobalMusic.stop()
+		$AudioStreamGlobalMusic.set_stream(load("res://raw_assets/audio/scottbuckley.com.au/sb_terminus.mp3"))
+		$AudioStreamGlobalMusic.play()
+	
 func _change_scene_background(new_scene_path: String) -> void:
 	if new_scene_path == "":
 		new_scene_path = _initial_scene.get_path()

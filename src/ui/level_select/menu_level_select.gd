@@ -5,7 +5,7 @@ extends Control
 
 ### Signals ###
 signal change_scene_request(target_scene_res_path)
-
+signal play_menu_click
 ### Exported variables ###
 export(String) var _level_directory_path: String
 
@@ -32,6 +32,7 @@ func _ready() -> void:
 # Signal Connected Methods #
 ############################
 func _on_btn_back_pressed() -> void:
+	emit_signal("play_menu_click")
 	emit_signal(
 			"change_scene_request", 
 			"res://src/ui/main_menu/main_menu_vr.tscn"
@@ -39,6 +40,7 @@ func _on_btn_back_pressed() -> void:
 
 
 func _on_level_button_pressed(button: LevelButton) -> void:
+	emit_signal("play_menu_click")
 	var level_res_path := (
 			"res://src/levels/%s.tscn" % 
 			button.text.replace(" ", "_").to_lower()
@@ -47,6 +49,7 @@ func _on_level_button_pressed(button: LevelButton) -> void:
 
 
 func _on_level_button_mouse_entered(button: LevelButton) -> void:
+	emit_signal("play_menu_click")
 	$Panel/VBoxContainer/Stats/VBoxContainer/Title.set_text(
 			"-- Level %s High Score Stats --" % button.get_text()
 	)

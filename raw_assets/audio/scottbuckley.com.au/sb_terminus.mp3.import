@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/sb_terminus.mp3-8edbd3bbbec80fce2020f3d15ae1cf28.mp3str"
+
+[deps]
+
+source_file="res://raw_assets/audio/scottbuckley.com.au/sb_terminus.mp3"
+dest_files=[ "res://.import/sb_terminus.mp3-8edbd3bbbec80fce2020f3d15ae1cf28.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
