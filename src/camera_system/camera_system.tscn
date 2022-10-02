@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://src/camera_system/camera_system.gd" type="Script" id=1]
+[ext_resource path="res://src/camera_system/camera_preset_data.gd" type="Script" id=2]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 2 )
+target_path = NodePath("")
+anchor_offset = Vector3( 0, 0, 0 )
+anchor_rotation = Vector3( 0, 0, 0 )
+camera_offset = Vector3( 0, 0, 0 )
+pitch_limits = Vector2( 0, 0 )
+look_target_initial = Vector3( 0, 0, 0 )
+follow_smoothing = 0.0
+
+[node name="CameraSystem" type="Spatial"]
+script = ExtResource( 1 )
+_preset_data = SubResource( 1 )
+
+[node name="ClippedCamera" type="ClippedCamera" parent="."]
+collision_mask = 2

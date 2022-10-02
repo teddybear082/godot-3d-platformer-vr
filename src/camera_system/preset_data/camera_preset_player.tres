@@ -1,0 +1,13 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://src/camera_system/camera_preset_data.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+target_path = NodePath("../Player")
+anchor_offset = Vector3( 0, 1.8, 0 )
+anchor_rotation = Vector3( 0, 180, 0 )
+camera_offset = Vector3( 0, 1, 4 )
+pitch_limits = Vector2( -0.95, 0.7 )
+look_target_initial = Vector3( 0, 0, 0 )
+follow_smoothing = 0.3

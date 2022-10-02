@@ -1,0 +1,183 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://src/ui/level_ui/level_ui.gd" type="Script" id=2]
+[ext_resource path="res://raw_assets/images/coins_icon.png" type="Texture" id=3]
+[ext_resource path="res://raw_assets/images/extra_icon.png" type="Texture" id=4]
+[ext_resource path="res://raw_assets/fonts/SafetyThirdRegular-vmm77.ttf" type="DynamicFontData" id=5]
+
+[sub_resource type="DynamicFont" id=4]
+size = 26
+outline_size = 3
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 40
+outline_size = 3
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=7]
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+use_mipmaps = true
+use_filter = true
+extra_spacing_char = 3
+font_data = ExtResource( 5 )
+
+[node name="LevelUI" type="CanvasLayer"]
+script = ExtResource( 2 )
+
+[node name="Control" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+anchor_left = 0.847656
+anchor_top = 0.02
+anchor_right = 1.0
+anchor_bottom = 0.25
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/VBoxContainer"]
+margin_right = 174.0
+margin_bottom = 64.0
+
+[node name="Control" type="Control" parent="Control/VBoxContainer/HBoxContainer"]
+margin_right = 64.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 64, 64 )
+
+[node name="CoinsImage" type="TextureRect" parent="Control/VBoxContainer/HBoxContainer/Control"]
+anchor_right = 0.96
+anchor_bottom = 0.96
+margin_right = 46.8113
+margin_bottom = 3.29372
+rect_scale = Vector2( 0.03, 0.03 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 3 )
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="CoinCounter" type="Label" parent="Control/VBoxContainer/HBoxContainer"]
+margin_left = 68.0
+margin_top = 14.0
+margin_right = 174.0
+margin_bottom = 49.0
+size_flags_vertical = 6
+custom_fonts/font = SubResource( 4 )
+text = "##/##"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/VBoxContainer"]
+margin_top = 68.0
+margin_right = 174.0
+margin_bottom = 132.0
+
+[node name="Control" type="Control" parent="Control/VBoxContainer/HBoxContainer2"]
+margin_right = 64.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 64, 64 )
+
+[node name="ExtraImage" type="TextureRect" parent="Control/VBoxContainer/HBoxContainer2/Control"]
+anchor_right = 0.96
+anchor_bottom = 0.96
+margin_right = 46.8113
+margin_bottom = 3.29372
+rect_scale = Vector2( 0.03, 0.03 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 4 )
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="ExtraCounter" type="Label" parent="Control/VBoxContainer/HBoxContainer2"]
+margin_left = 68.0
+margin_top = 14.0
+margin_right = 174.0
+margin_bottom = 49.0
+size_flags_vertical = 6
+custom_fonts/font = SubResource( 4 )
+text = "##/##"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Control"]
+anchor_top = 0.0233333
+anchor_right = 0.102539
+anchor_bottom = 0.16
+size_flags_horizontal = 4
+size_flags_vertical = 4
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="TimeLabel" type="Label" parent="Control/VBoxContainer2"]
+margin_right = 104.0
+margin_bottom = 35.0
+custom_fonts/font = SubResource( 4 )
+text = "00:00"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="GoldenTimeLabel" type="Label" parent="Control/VBoxContainer2"]
+margin_top = 39.0
+margin_right = 104.0
+margin_bottom = 74.0
+custom_colors/font_color = Color( 1, 0.890196, 0, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "00:00"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="ScoreLabel" type="Label" parent="Control"]
+anchor_left = 0.433105
+anchor_right = 0.566895
+anchor_bottom = 0.136667
+custom_fonts/font = SubResource( 6 )
+text = "0000"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="LabelFPS" type="Label" parent="Control"]
+anchor_left = 0.93457
+anchor_top = 0.918333
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 0.898039, 0, 1, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "##"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}

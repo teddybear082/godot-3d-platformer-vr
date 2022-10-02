@@ -1,0 +1,300 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://src/ui/level_select/menu_level_select.gd" type="Script" id=2]
+[ext_resource path="res://raw_assets/fonts/SafetyThirdRegular-vmm77.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=3]
+size = 35
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 25
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 3 )
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.25098, 0.25098, 0.25098, 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 30
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 3 )
+
+[node name="LevelSelect" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+_level_directory_path = "res://src/levels/"
+
+[node name="Panel" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Header" type="HBoxContainer" parent="Panel/VBoxContainer"]
+margin_right = 1024.0
+margin_bottom = 47.0
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.11
+
+[node name="Title" type="Label" parent="Panel/VBoxContainer/Header"]
+margin_right = 939.0
+margin_bottom = 47.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 3 )
+text = "LEVEL SELECT"
+align = 1
+valign = 1
+
+[node name="BtnBack" type="Button" parent="Panel/VBoxContainer/Header"]
+margin_left = 943.0
+margin_right = 1024.0
+margin_bottom = 47.0
+custom_fonts/font = SubResource( 4 )
+text = "Back"
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="LevelButtons" type="ScrollContainer" parent="Panel/VBoxContainer"]
+margin_top = 51.0
+margin_right = 1024.0
+margin_bottom = 440.0
+size_flags_vertical = 3
+scroll_vertical_enabled = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer/LevelButtons"]
+margin_bottom = 389.0
+size_flags_horizontal = 2
+size_flags_vertical = 3
+custom_constants/separation = 15
+
+[node name="Stats" type="Panel" parent="Panel/VBoxContainer"]
+margin_top = 444.0
+margin_right = 1024.0
+margin_bottom = 600.0
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.4
+custom_styles/panel = SubResource( 1 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/VBoxContainer/Stats"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
+alignment = 1
+
+[node name="Title" type="Label" parent="Panel/VBoxContainer/Stats/VBoxContainer"]
+margin_right = 1004.0
+margin_bottom = 41.0
+size_flags_vertical = 1
+custom_fonts/font = SubResource( 2 )
+text = "-- Level ## High Score Stats --"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="ColorRect" type="ColorRect" parent="Panel/VBoxContainer/Stats/VBoxContainer"]
+margin_top = 45.0
+margin_right = 1004.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 0, 5 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer/Stats/VBoxContainer"]
+margin_left = 150.0
+margin_top = 54.0
+margin_right = 853.0
+margin_bottom = 140.0
+size_flags_horizontal = 6
+size_flags_vertical = 3
+custom_constants/separation = 15
+alignment = 1
+
+[node name="ScoreStat" type="VBoxContainer" parent="Panel/VBoxContainer/Stats/VBoxContainer/HBoxContainer"]
+margin_right = 102.0
+margin_bottom = 86.0
+size_flags_horizontal = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/Stats/VBoxContainer/HBoxContainer/ScoreStat"]
+margin_right = 102.0
+margin_bottom = 41.0
+size_flags_horizontal = 3
+size_flags_vertical = 7
+custom_fonts/font = SubResource( 2 )
+text = "Score"
+align = 1
+valign = 1
+
+[node name="Value" type="Label" parent="Panel/VBoxContainer/Stats/VBoxContainer/HBoxContainer/ScoreStat"]
+margin_top = 45.0
+margin_right = 102.0
+margin_bottom = 86.0
+size_flags_horizontal = 3
+size_flags_vertical = 7
+custom_fonts/font = SubResource( 2 )
+text = "####"
+align = 1
+valign = 1
+
+[node name="ColorRect3" type="ColorRect" parent="Panel/VBoxContainer/Stats/VBoxContainer/HBoxContainer"]
+margin_left = 117.0
+margin_right = 122.0
+margin_bottom = 86.0
+rect_min_size = Vector2( 5, 0 )
+
+[node name="TimeStat" type="VBoxContainer" parent="Panel/VBoxContainer/Stats/VBoxContainer/HBoxContainer"]
+margin_left = 137.0
+margin_right = 239.0
+margin_bottom = 86.0
+size_flags_horizontal = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/Stats/VBoxContainer/HBoxContainer/TimeStat"]
+margin_right = 102.0
+margin_bottom = 41.0
+size_flags_horizontal = 3
+size_flags_vertical = 7
+custom_fonts/font = SubResource( 2 )
+text = "Time"
+align = 1
+valign = 1
+
+[node name="Value" type="Label" parent="Panel/VBoxContainer/Stats/VBoxContainer/HBoxContainer/TimeStat"]
+margin_top = 45.0
+margin_right = 102.0
+margin_bottom = 86.0
+size_flags_horizontal = 3
+size_flags_vertical = 7
+custom_fonts/font = SubResource( 2 )
+text = "##:##"
+align = 1
+valign = 1
+
+[node name="ColorRect4" type="ColorRect" parent="Panel/VBoxContainer/Stats/VBoxContainer/HBoxContainer"]
+margin_left = 254.0
+margin_right = 259.0
+margin_bottom = 86.0
+rect_min_size = Vector2( 5, 0 )
+
+[node name="CoinStat" type="VBoxContainer" parent="Panel/VBoxContainer/Stats/VBoxContainer/HBoxContainer"]
+margin_left = 274.0
+margin_right = 396.0
+margin_bottom = 86.0
+size_flags_horizontal = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/Stats/VBoxContainer/HBoxContainer/CoinStat"]
+margin_right = 122.0
+margin_bottom = 41.0
+size_flags_horizontal = 3
+size_flags_vertical = 7
+custom_fonts/font = SubResource( 2 )
+text = "Coins"
+align = 1
+valign = 1
+
+[node name="Value" type="Label" parent="Panel/VBoxContainer/Stats/VBoxContainer/HBoxContainer/CoinStat"]
+margin_top = 45.0
+margin_right = 122.0
+margin_bottom = 86.0
+size_flags_horizontal = 3
+size_flags_vertical = 7
+custom_fonts/font = SubResource( 2 )
+text = "##/##"
+align = 1
+valign = 1
+
+[node name="ColorRect2" type="ColorRect" parent="Panel/VBoxContainer/Stats/VBoxContainer/HBoxContainer"]
+margin_left = 411.0
+margin_right = 416.0
+margin_bottom = 86.0
+rect_min_size = Vector2( 5, 0 )
+
+[node name="ExtraStat" type="VBoxContainer" parent="Panel/VBoxContainer/Stats/VBoxContainer/HBoxContainer"]
+margin_left = 431.0
+margin_right = 553.0
+margin_bottom = 86.0
+size_flags_horizontal = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/Stats/VBoxContainer/HBoxContainer/ExtraStat"]
+margin_right = 122.0
+margin_bottom = 41.0
+size_flags_horizontal = 3
+size_flags_vertical = 7
+custom_fonts/font = SubResource( 2 )
+text = "Extra"
+align = 1
+valign = 1
+
+[node name="Value" type="Label" parent="Panel/VBoxContainer/Stats/VBoxContainer/HBoxContainer/ExtraStat"]
+margin_top = 45.0
+margin_right = 122.0
+margin_bottom = 86.0
+size_flags_horizontal = 3
+size_flags_vertical = 7
+custom_fonts/font = SubResource( 2 )
+text = "##/##"
+align = 1
+valign = 1
+
+[node name="ColorRect5" type="ColorRect" parent="Panel/VBoxContainer/Stats/VBoxContainer/HBoxContainer"]
+margin_left = 568.0
+margin_right = 573.0
+margin_bottom = 86.0
+rect_min_size = Vector2( 5, 0 )
+
+[node name="DeathStat" type="VBoxContainer" parent="Panel/VBoxContainer/Stats/VBoxContainer/HBoxContainer"]
+margin_left = 588.0
+margin_right = 703.0
+margin_bottom = 86.0
+size_flags_horizontal = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/Stats/VBoxContainer/HBoxContainer/DeathStat"]
+margin_right = 115.0
+margin_bottom = 41.0
+size_flags_horizontal = 3
+size_flags_vertical = 7
+custom_fonts/font = SubResource( 2 )
+text = "Deaths"
+align = 1
+valign = 1
+
+[node name="Value" type="Label" parent="Panel/VBoxContainer/Stats/VBoxContainer/HBoxContainer/DeathStat"]
+margin_top = 45.0
+margin_right = 115.0
+margin_bottom = 86.0
+size_flags_horizontal = 3
+size_flags_vertical = 7
+custom_fonts/font = SubResource( 2 )
+text = "##"
+align = 1
+valign = 1
+
+[connection signal="pressed" from="Panel/VBoxContainer/Header/BtnBack" to="." method="_on_btn_back_pressed"]

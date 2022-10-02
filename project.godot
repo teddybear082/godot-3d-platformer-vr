@@ -1,0 +1,469 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "Reference",
+"class": "ARVRHelpers",
+"language": "GDScript",
+"path": "res://addons/godot-xr-tools/misc/ARVR_Helpers.gd"
+}, {
+"base": "Spatial",
+"class": "CameraSystem",
+"language": "GDScript",
+"path": "res://src/camera_system/camera_system.gd"
+}, {
+"base": "Resource",
+"class": "CameraSystemPresetData",
+"language": "GDScript",
+"path": "res://src/camera_system/camera_preset_data.gd"
+}, {
+"base": "StaticBody",
+"class": "Cannon",
+"language": "GDScript",
+"path": "res://src/level_elements/hazards/cannon/cannon.gd"
+}, {
+"base": "Area",
+"class": "Checkpoint",
+"language": "GDScript",
+"path": "res://src/level_elements/checkpoint/checkpoint.gd"
+}, {
+"base": "Area",
+"class": "Collectable",
+"language": "GDScript",
+"path": "res://src/level_elements/collectables/collectable.gd"
+}, {
+"base": "MovementProvider",
+"class": "Function_ClimbMovement",
+"language": "GDScript",
+"path": "res://addons/godot-xr-tools/functions/Function_Climb_movement.gd"
+}, {
+"base": "MovementProvider",
+"class": "Function_CrouchMovement",
+"language": "GDScript",
+"path": "res://addons/godot-xr-tools/functions/Function_Crouch_movement.gd"
+}, {
+"base": "MovementProvider",
+"class": "Function_DirectMovement",
+"language": "GDScript",
+"path": "res://addons/godot-xr-tools/functions/Function_Direct_movement.gd"
+}, {
+"base": "MovementProvider",
+"class": "Function_FallDamage",
+"language": "GDScript",
+"path": "res://addons/godot-xr-tools/examples/Function_Fall_damage.gd"
+}, {
+"base": "MovementProvider",
+"class": "Function_FlightMovement",
+"language": "GDScript",
+"path": "res://addons/godot-xr-tools/functions/Function_Flight_movement.gd"
+}, {
+"base": "MovementProvider",
+"class": "Function_Glide",
+"language": "GDScript",
+"path": "res://addons/godot-xr-tools/functions/Function_Glide_movement.gd"
+}, {
+"base": "MovementProvider",
+"class": "Function_Grapple",
+"language": "GDScript",
+"path": "res://addons/godot-xr-tools/functions/Function_Grapple_movement.gd"
+}, {
+"base": "MovementProvider",
+"class": "Function_Jump",
+"language": "GDScript",
+"path": "res://addons/godot-xr-tools/functions/Function_Jump_movement.gd"
+}, {
+"base": "MovementProvider",
+"class": "Function_JumpDetect",
+"language": "GDScript",
+"path": "res://addons/godot-xr-tools/functions/Function_JumpDetect_movement.gd"
+}, {
+"base": "Spatial",
+"class": "Function_Pickup",
+"language": "GDScript",
+"path": "res://addons/godot-xr-tools/functions/Function_Pickup.gd"
+}, {
+"base": "MovementProvider",
+"class": "Function_TurnMovement",
+"language": "GDScript",
+"path": "res://addons/godot-xr-tools/functions/Function_Turn_movement.gd"
+}, {
+"base": "MovementProvider",
+"class": "Function_WindMovement",
+"language": "GDScript",
+"path": "res://addons/godot-xr-tools/functions/Function_Wind_movement.gd"
+}, {
+"base": "Reference",
+"class": "GenUtils",
+"language": "GDScript",
+"path": "res://src/global_utilities/general_utilities.gd"
+}, {
+"base": "Node",
+"class": "GroundPhysics",
+"language": "GDScript",
+"path": "res://addons/godot-xr-tools/overrides/GroundPhysics.gd"
+}, {
+"base": "Resource",
+"class": "GroundPhysicsSettings",
+"language": "GDScript",
+"path": "res://addons/godot-xr-tools/overrides/GroundPhysicsSettings.gd"
+}, {
+"base": "Button",
+"class": "LevelButton",
+"language": "GDScript",
+"path": "res://src/ui/level_select/level_button/level_button.gd"
+}, {
+"base": "StaticBody",
+"class": "LevelExit",
+"language": "GDScript",
+"path": "res://src/level_elements/exit/exit.gd"
+}, {
+"base": "Spatial",
+"class": "LevelManager",
+"language": "GDScript",
+"path": "res://src/levels/level.gd"
+}, {
+"base": "CanvasLayer",
+"class": "LevelUI",
+"language": "GDScript",
+"path": "res://src/ui/level_ui/level_ui.gd"
+}, {
+"base": "Node",
+"class": "LipSync",
+"language": "GDScript",
+"path": "res://addons/godot-lipsync/lip_sync.gd"
+}, {
+"base": "Node",
+"class": "MovementProvider",
+"language": "GDScript",
+"path": "res://addons/godot-xr-tools/functions/MovementProvider.gd"
+}, {
+"base": "KinematicBody",
+"class": "MovingPlatform",
+"language": "GDScript",
+"path": "res://src/level_elements/moving_platform_systems/moving_platform.gd"
+}, {
+"base": "Spatial",
+"class": "MovingPlatformSystemFollowPathPoint",
+"language": "GDScript",
+"path": "res://src/level_elements/moving_platform_systems/follow_path/point.gd"
+}, {
+"base": "Spatial",
+"class": "Object_climbable",
+"language": "GDScript",
+"path": "res://addons/godot-xr-tools/objects/Object_climbable.gd"
+}, {
+"base": "KinematicBody",
+"class": "Player",
+"language": "GDScript",
+"path": "res://src/player/player.gd"
+}, {
+"base": "Node",
+"class": "PlayerBody",
+"language": "GDScript",
+"path": "res://addons/godot-xr-tools/assets/PlayerBody.gd"
+}, {
+"base": "Area",
+"class": "PlayerPushArea",
+"language": "GDScript",
+"path": "res://src/level_elements/player_pushers/player_push_area.gd"
+}, {
+"base": "State",
+"class": "PlayerState",
+"language": "GDScript",
+"path": "res://src/player/state_machine/player_state.gd"
+}, {
+"base": "Area",
+"class": "Projectile",
+"language": "GDScript",
+"path": "res://src/level_elements/hazards/cannon/projectile.gd"
+}, {
+"base": "Reference",
+"class": "SaveLoad",
+"language": "GDScript",
+"path": "res://src/global_utilities/saveload.gd"
+}, {
+"base": "Node",
+"class": "SceneSwitcher",
+"language": "GDScript",
+"path": "res://src/scene_switcher/scene_switcher.gd"
+}, {
+"base": "Spatial",
+"class": "Spikes",
+"language": "GDScript",
+"path": "res://src/level_elements/hazards/spikes/spikes.gd"
+}, {
+"base": "Node",
+"class": "State",
+"language": "GDScript",
+"path": "res://src/generic/state_machine/state.gd"
+}, {
+"base": "Node",
+"class": "StateMachine",
+"language": "GDScript",
+"path": "res://src/generic/state_machine/state_machine.gd"
+}, {
+"base": "Reference",
+"class": "VelocityAverager",
+"language": "GDScript",
+"path": "res://addons/godot-xr-tools/misc/Velocity_Averager.gd"
+}, {
+"base": "Reference",
+"class": "VelocityAveragerLinear",
+"language": "GDScript",
+"path": "res://addons/godot-xr-tools/misc/Velocity_Averager_Linear.gd"
+}, {
+"base": "CanvasLayer",
+"class": "VirtualKeyboard2D",
+"language": "GDScript",
+"path": "res://addons/godot-xr-tools/objects/keyboard/VirtualKeyboard_2D.gd"
+}, {
+"base": "Area",
+"class": "WindArea",
+"language": "GDScript",
+"path": "res://addons/godot-xr-tools/objects/Wind_area.gd"
+}, {
+"base": "Node",
+"class": "XRTHighlightMaterial",
+"language": "GDScript",
+"path": "res://addons/godot-xr-tools/objects/highlight/highlight_material.gd"
+}, {
+"base": "MeshInstance",
+"class": "XRTHighlightRing",
+"language": "GDScript",
+"path": "res://addons/godot-xr-tools/objects/highlight/highlight_ring.gd"
+}, {
+"base": "Spatial",
+"class": "XRTHighlightVisible",
+"language": "GDScript",
+"path": "res://addons/godot-xr-tools/objects/highlight/highlight_visible.gd"
+}, {
+"base": "Area",
+"class": "XRTInteractableAreaButton",
+"language": "GDScript",
+"path": "res://addons/godot-xr-tools/interactables/xrt_interactable_area_button.gd"
+}, {
+"base": "XRToolsPickable",
+"class": "XRTInteractableHandle",
+"language": "GDScript",
+"path": "res://addons/godot-xr-tools/interactables/xrt_interactable_handle.gd"
+}, {
+"base": "Spatial",
+"class": "XRTInteractableHandleDriven",
+"language": "GDScript",
+"path": "res://addons/godot-xr-tools/interactables/xrt_interactable_handle_driven.gd"
+}, {
+"base": "XRTInteractableHandleDriven",
+"class": "XRTInteractableHinge",
+"language": "GDScript",
+"path": "res://addons/godot-xr-tools/interactables/xrt_interactable_hinge.gd"
+}, {
+"base": "XRTInteractableHandleDriven",
+"class": "XRTInteractableJoystick",
+"language": "GDScript",
+"path": "res://addons/godot-xr-tools/interactables/xrt_interactable_joystick.gd"
+}, {
+"base": "XRTInteractableHandleDriven",
+"class": "XRTInteractableSlider",
+"language": "GDScript",
+"path": "res://addons/godot-xr-tools/interactables/xrt_interactable_slider.gd"
+}, {
+"base": "Area",
+"class": "XRTSnapZone",
+"language": "GDScript",
+"path": "res://addons/godot-xr-tools/objects/Snap_Zone.gd"
+}, {
+"base": "Spatial",
+"class": "XRToolsHand",
+"language": "GDScript",
+"path": "res://addons/godot-xr-tools/assets/Hand.gd"
+}, {
+"base": "BoneAttachment",
+"class": "XRToolsHandPhysicsBone",
+"language": "GDScript",
+"path": "res://addons/godot-xr-tools/assets/HandPhysicsBone.gd"
+}, {
+"base": "Area",
+"class": "XRToolsInteractableArea",
+"language": "GDScript",
+"path": "res://addons/godot-xr-tools/objects/Interactable_area.gd"
+}, {
+"base": "PhysicsBody",
+"class": "XRToolsInteractableBody",
+"language": "GDScript",
+"path": "res://addons/godot-xr-tools/objects/Interactable_body.gd"
+}, {
+"base": "Node",
+"class": "XRToolsMoveTo",
+"language": "GDScript",
+"path": "res://addons/godot-xr-tools/misc/Move_To.gd"
+}, {
+"base": "XRToolsHand",
+"class": "XRToolsPhysicsHand",
+"language": "GDScript",
+"path": "res://addons/godot-xr-tools/assets/PhysicsHand.gd"
+}, {
+"base": "RigidBody",
+"class": "XRToolsPickable",
+"language": "GDScript",
+"path": "res://addons/godot-xr-tools/objects/Object_pickable.gd"
+} ]
+_global_script_class_icons={
+"ARVRHelpers": "",
+"CameraSystem": "",
+"CameraSystemPresetData": "",
+"Cannon": "",
+"Checkpoint": "",
+"Collectable": "",
+"Function_ClimbMovement": "",
+"Function_CrouchMovement": "",
+"Function_DirectMovement": "",
+"Function_FallDamage": "",
+"Function_FlightMovement": "",
+"Function_Glide": "",
+"Function_Grapple": "",
+"Function_Jump": "",
+"Function_JumpDetect": "",
+"Function_Pickup": "",
+"Function_TurnMovement": "",
+"Function_WindMovement": "",
+"GenUtils": "",
+"GroundPhysics": "",
+"GroundPhysicsSettings": "",
+"LevelButton": "",
+"LevelExit": "",
+"LevelManager": "",
+"LevelUI": "",
+"LipSync": "",
+"MovementProvider": "",
+"MovingPlatform": "",
+"MovingPlatformSystemFollowPathPoint": "",
+"Object_climbable": "",
+"Player": "",
+"PlayerBody": "",
+"PlayerPushArea": "",
+"PlayerState": "",
+"Projectile": "",
+"SaveLoad": "",
+"SceneSwitcher": "",
+"Spikes": "",
+"State": "",
+"StateMachine": "",
+"VelocityAverager": "",
+"VelocityAveragerLinear": "",
+"VirtualKeyboard2D": "",
+"WindArea": "",
+"XRTHighlightMaterial": "",
+"XRTHighlightRing": "",
+"XRTHighlightVisible": "",
+"XRTInteractableAreaButton": "",
+"XRTInteractableHandle": "",
+"XRTInteractableHandleDriven": "",
+"XRTInteractableHinge": "",
+"XRTInteractableJoystick": "",
+"XRTInteractableSlider": "",
+"XRTSnapZone": "",
+"XRToolsHand": "",
+"XRToolsHandPhysicsBone": "",
+"XRToolsInteractableArea": "",
+"XRToolsInteractableBody": "",
+"XRToolsMoveTo": "",
+"XRToolsPhysicsHand": "",
+"XRToolsPickable": ""
+}
+
+[application]
+
+config/name="pd_3d_platformer-VR"
+run/main_scene="res://src/scene_switcher/scene_switcher.tscn"
+config/icon="res://custom_icon.png"
+config/windows_native_icon="res://custom_icon.ico"
+
+[autoload]
+
+UserData="*res://src/autoloads/user_data.gd"
+
+[display]
+
+window/vsync/use_vsync=false
+
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/godot-openxr/plugin.cfg", "res://addons/godot-xr-tools/plugin.cfg" )
+
+[gdnative]
+
+singletons=[ "res://addons/godot-openxr/config/godot_openxr.gdnlib" ]
+
+[input]
+
+ui_cancel={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777217,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":10,"pressure":0.0,"pressed":false,"script":null)
+ ]
+}
+player_forward={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":87,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":1,"axis_value":-1.0,"script":null)
+ ]
+}
+player_backward={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":83,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":1,"axis_value":1.0,"script":null)
+ ]
+}
+player_right={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":68,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":0,"axis_value":1.0,"script":null)
+ ]
+}
+player_left={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":65,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":0,"axis_value":-1.0,"script":null)
+ ]
+}
+player_jump={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":4,"pressure":0.0,"pressed":false,"script":null)
+ ]
+}
+player_roll={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777237,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":5,"pressure":0.0,"pressed":false,"script":null)
+ ]
+}
+
+[layer_names]
+
+3d_physics/layer_1="Player"
+3d_physics/layer_2="Environment"
+3d_physics/layer_3="Coins"
+3d_physics/layer_4="Hazard"
+3d_physics/layer_5="Checkpoints"
+3d_physics/layer_6="Cannons"
+3d_physics/layer_7="Exits"
+3d_physics/layer_8="PlayerPushAreas"
+
+[physics]
+
+common/enable_pause_aware_picking=true
+
+[rendering]
+
+gles3/shaders/shader_compilation_mode=2
+gles3/shaders/shader_compilation_mode.mobile=2
+quality/filters/msaa=2
+environment/default_environment="res://src/environments/custom_env_3.tres"

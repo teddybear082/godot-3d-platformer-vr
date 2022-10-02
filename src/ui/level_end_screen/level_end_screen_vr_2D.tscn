@@ -1,0 +1,343 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://raw_assets/fonts/FallingSkyBold-zemL.otf" type="DynamicFontData" id=1]
+[ext_resource path="res://raw_assets/fonts/SafetyThirdRegular-vmm77.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://src/ui/level_end_screen/level_end_screen_vr_2D.gd" type="Script" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 26
+outline_size = 3
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 35
+outline_size = 3
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 25
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 2 )
+
+[node name="level_end_screen_vr" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.647059 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_left = 0.0488281
+anchor_top = 0.0766667
+anchor_right = 0.951172
+anchor_bottom = 0.853333
+custom_constants/separation = 25
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Title" type="Label" parent="VBoxContainer"]
+margin_right = 714.0
+margin_bottom = 14.0
+text = "Level Complete"
+align = 1
+valign = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+margin_left = 165.0
+margin_top = 39.0
+margin_right = 548.0
+margin_bottom = 113.0
+size_flags_horizontal = 4
+custom_constants/separation = 40
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer2"]
+margin_right = 151.0
+margin_bottom = 74.0
+
+[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer2/VBoxContainer"]
+margin_right = 151.0
+margin_bottom = 35.0
+custom_fonts/font = SubResource( 1 )
+text = "Your Time"
+align = 1
+valign = 1
+
+[node name="LabelPlayerTime" type="Label" parent="VBoxContainer/HBoxContainer2/VBoxContainer"]
+margin_top = 39.0
+margin_right = 151.0
+margin_bottom = 74.0
+custom_fonts/font = SubResource( 1 )
+text = "00:00"
+align = 1
+valign = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/HBoxContainer2"]
+margin_left = 191.0
+margin_right = 383.0
+margin_bottom = 74.0
+
+[node name="Label3" type="Label" parent="VBoxContainer/HBoxContainer2/VBoxContainer2"]
+margin_right = 192.0
+margin_bottom = 35.0
+custom_fonts/font = SubResource( 1 )
+text = "Golden  Time"
+align = 1
+valign = 1
+
+[node name="LabelGoldenTime" type="Label" parent="VBoxContainer/HBoxContainer2/VBoxContainer2"]
+margin_top = 39.0
+margin_right = 192.0
+margin_bottom = 74.0
+custom_colors/font_color = Color( 1, 0.890196, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "00:00"
+align = 1
+valign = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 138.0
+margin_right = 714.0
+margin_bottom = 329.0
+size_flags_horizontal = 4
+custom_constants/separation = 40
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/HBoxContainer"]
+margin_right = 320.0
+margin_bottom = 191.0
+size_flags_horizontal = 4
+custom_constants/hseparation = 40
+columns = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/GridContainer"]
+margin_right = 166.0
+margin_bottom = 35.0
+custom_fonts/font = SubResource( 1 )
+text = "Coins"
+align = 2
+valign = 1
+
+[node name="LabelCoinCounter" type="Label" parent="VBoxContainer/HBoxContainer/GridContainer"]
+margin_left = 206.0
+margin_right = 320.0
+margin_bottom = 35.0
+custom_fonts/font = SubResource( 1 )
+text = "00 / 00"
+valign = 1
+
+[node name="Label3" type="Label" parent="VBoxContainer/HBoxContainer/GridContainer"]
+margin_top = 39.0
+margin_right = 166.0
+margin_bottom = 74.0
+custom_fonts/font = SubResource( 1 )
+text = "Extras"
+align = 2
+valign = 1
+
+[node name="LabelExtraCounter" type="Label" parent="VBoxContainer/HBoxContainer/GridContainer"]
+margin_left = 206.0
+margin_top = 39.0
+margin_right = 320.0
+margin_bottom = 74.0
+custom_fonts/font = SubResource( 1 )
+text = "00 / 00"
+valign = 1
+
+[node name="Label5" type="Label" parent="VBoxContainer/HBoxContainer/GridContainer"]
+margin_top = 78.0
+margin_right = 166.0
+margin_bottom = 113.0
+custom_fonts/font = SubResource( 1 )
+text = "Deaths"
+align = 2
+valign = 1
+
+[node name="LabelDeathCounter" type="Label" parent="VBoxContainer/HBoxContainer/GridContainer"]
+margin_left = 206.0
+margin_top = 78.0
+margin_right = 320.0
+margin_bottom = 113.0
+custom_fonts/font = SubResource( 1 )
+text = "00"
+valign = 1
+
+[node name="Label7" type="Label" parent="VBoxContainer/HBoxContainer/GridContainer"]
+margin_top = 117.0
+margin_right = 166.0
+margin_bottom = 152.0
+custom_fonts/font = SubResource( 1 )
+text = "Base Score"
+align = 2
+valign = 1
+
+[node name="LabelBaseScoreTotal" type="Label" parent="VBoxContainer/HBoxContainer/GridContainer"]
+margin_left = 206.0
+margin_top = 117.0
+margin_right = 320.0
+margin_bottom = 152.0
+custom_fonts/font = SubResource( 1 )
+text = "0000"
+valign = 1
+
+[node name="GridContainer2" type="GridContainer" parent="VBoxContainer/HBoxContainer"]
+margin_left = 360.0
+margin_right = 714.0
+margin_bottom = 191.0
+size_flags_horizontal = 4
+custom_constants/hseparation = 40
+columns = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/GridContainer2"]
+margin_right = 246.0
+margin_bottom = 35.0
+custom_fonts/font = SubResource( 1 )
+text = "All Coin Bonus"
+align = 2
+valign = 1
+
+[node name="LabelAllCoinBonus" type="Label" parent="VBoxContainer/HBoxContainer/GridContainer2"]
+margin_left = 286.0
+margin_right = 354.0
+margin_bottom = 35.0
+custom_fonts/font = SubResource( 1 )
+text = "0000"
+valign = 1
+
+[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer/GridContainer2"]
+margin_top = 39.0
+margin_right = 246.0
+margin_bottom = 74.0
+custom_fonts/font = SubResource( 1 )
+text = "All Extras Bonus"
+align = 2
+valign = 1
+
+[node name="LabelAllExtraBonus" type="Label" parent="VBoxContainer/HBoxContainer/GridContainer2"]
+margin_left = 286.0
+margin_top = 39.0
+margin_right = 354.0
+margin_bottom = 74.0
+custom_fonts/font = SubResource( 1 )
+text = "0000"
+valign = 1
+
+[node name="Label7" type="Label" parent="VBoxContainer/HBoxContainer/GridContainer2"]
+margin_top = 78.0
+margin_right = 246.0
+margin_bottom = 113.0
+custom_fonts/font = SubResource( 1 )
+text = "No Death Bonus"
+align = 2
+valign = 1
+
+[node name="LabelNoDeathBonus" type="Label" parent="VBoxContainer/HBoxContainer/GridContainer2"]
+margin_left = 286.0
+margin_top = 78.0
+margin_right = 354.0
+margin_bottom = 113.0
+custom_fonts/font = SubResource( 1 )
+text = "0000"
+valign = 1
+
+[node name="Label5" type="Label" parent="VBoxContainer/HBoxContainer/GridContainer2"]
+margin_top = 117.0
+margin_right = 246.0
+margin_bottom = 152.0
+custom_fonts/font = SubResource( 1 )
+text = "Gold Time Bonus"
+align = 2
+valign = 1
+
+[node name="LabelGoldenTimeBonus" type="Label" parent="VBoxContainer/HBoxContainer/GridContainer2"]
+margin_left = 286.0
+margin_top = 117.0
+margin_right = 354.0
+margin_bottom = 152.0
+custom_fonts/font = SubResource( 1 )
+text = "0000"
+valign = 1
+
+[node name="Label9" type="Label" parent="VBoxContainer/HBoxContainer/GridContainer2"]
+margin_top = 156.0
+margin_right = 246.0
+margin_bottom = 191.0
+custom_fonts/font = SubResource( 1 )
+text = "Total Bonus"
+align = 2
+valign = 1
+
+[node name="LabelBonusScoreTotal" type="Label" parent="VBoxContainer/HBoxContainer/GridContainer2"]
+margin_left = 286.0
+margin_top = 156.0
+margin_right = 354.0
+margin_bottom = 191.0
+custom_fonts/font = SubResource( 1 )
+text = "0000"
+valign = 1
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer"]
+margin_left = 334.0
+margin_top = 354.0
+margin_right = 379.0
+margin_bottom = 356.0
+size_flags_horizontal = 4
+custom_constants/separation = 30
+
+[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer3"]
+margin_right = 11.0
+margin_bottom = 2.0
+custom_fonts/font = SubResource( 2 )
+text = "Final Score"
+align = 2
+valign = 1
+
+[node name="LabelTotalScore" type="Label" parent="VBoxContainer/HBoxContainer3"]
+margin_left = 41.0
+margin_right = 45.0
+margin_bottom = 2.0
+custom_fonts/font = SubResource( 2 )
+text = "0000"
+valign = 1
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="VBoxContainer"]
+margin_left = 265.0
+margin_top = 381.0
+margin_right = 448.0
+margin_bottom = 422.0
+size_flags_horizontal = 4
+custom_constants/separation = 20
+
+[node name="BtnRetry" type="Button" parent="VBoxContainer/HBoxContainer4"]
+margin_right = 94.0
+margin_bottom = 41.0
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = SubResource( 3 )
+text = "Retry"
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="BtnExit" type="Button" parent="VBoxContainer/HBoxContainer4"]
+margin_left = 114.0
+margin_right = 183.0
+margin_bottom = 41.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+custom_fonts/font = SubResource( 1 )
+text = "Exit"
+__meta__ = {
+"_edit_use_anchors_": true
+}

@@ -1,0 +1,38 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://src/level_elements/moving_platform_systems/follow_path/follow_path.gd" type="Script" id=1]
+[ext_resource path="res://src/level_elements/moving_platform_systems/moving_platform.gd" type="Script" id=2]
+[ext_resource path="res://src/level_elements/moving_platform_systems/moving_platform.material" type="Material" id=3]
+[ext_resource path="res://src/generic/materials/tool_highlight.material" type="Material" id=4]
+[ext_resource path="res://src/level_elements/moving_platform_systems/platform_meshes/moving_platform_mesh_2x2.tres" type="CubeMesh" id=5]
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 1, 0.075, 1 )
+
+[sub_resource type="SpatialMaterial" id=3]
+vertex_color_use_as_albedo = true
+
+[node name="MvingPlatfSysFollowPath2x2_" type="Spatial"]
+script = ExtResource( 1 )
+_point_material_default = ExtResource( 4 )
+
+[node name="Tween" type="Tween" parent="."]
+playback_process_mode = 0
+
+[node name="MovingPlatform" type="KinematicBody" parent="."]
+visible = false
+collision_layer = 2
+collision_mask = 2
+script = ExtResource( 2 )
+
+[node name="MeshInstance" type="MeshInstance" parent="MovingPlatform"]
+mesh = ExtResource( 5 )
+material/0 = ExtResource( 3 )
+
+[node name="CollisionShape" type="CollisionShape" parent="MovingPlatform"]
+shape = SubResource( 2 )
+
+[node name="ClosedLoopLine" type="ImmediateGeometry" parent="."]
+material_override = SubResource( 3 )
+
+[connection signal="tween_completed" from="Tween" to="." method="_on_tween_completed"]

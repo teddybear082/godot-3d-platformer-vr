@@ -1,0 +1,119 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://src/environments/custom_env_3.tres" type="Environment" id=1]
+[ext_resource path="res://src/level_elements/checkpoint/checkpoint.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/ui/level_end_screen/level_end_screen.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/sprinkles/particle_cloud.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/ui/pause_popup/pause_popup.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/ui/level_ui/level_ui.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/camera_system/camera_system.tscn" type="PackedScene" id=7]
+[ext_resource path="res://src/player/player.tscn" type="PackedScene" id=8]
+[ext_resource path="res://src/camera_system/preset_data/camera_preset_player.tres" type="Resource" id=9]
+[ext_resource path="res://src/levels/level.gd" type="Script" id=10]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 63.3464, 16.9393, 59.2974 )
+
+[node name="Level" type="Spatial"]
+script = ExtResource( 10 )
+_player_node_path = NodePath("Player")
+_camera_system_node_path = NodePath("CameraSystem")
+_initial_checkpoint_node_path = NodePath("Checkpoints/Checkpoint")
+_golden_time_s = 90
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource( 1 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="WorldEnvironment"]
+transform = Transform( 0.571449, -0.725209, -0.38408, 0.731945, 0.238783, 0.638153, -0.371083, -0.645797, 0.667266, 0, 16.8039, 0 )
+shadow_enabled = true
+shadow_color = Color( 0.827451, 0.827451, 0.827451, 1 )
+
+[node name="PausePopup" parent="." instance=ExtResource( 5 )]
+visible = false
+
+[node name="LevelEndScreen" parent="." instance=ExtResource( 3 )]
+visible = false
+
+[node name="LevelUI" parent="." instance=ExtResource( 6 )]
+
+[node name="LevelWideAudioStreams" type="Node" parent="."]
+
+[node name="AudioStreamCoinPickup" type="AudioStreamPlayer" parent="LevelWideAudioStreams"]
+mix_target = 2
+bus = "SoundEffects"
+
+[node name="AudioStreamPlayerDied" type="AudioStreamPlayer" parent="LevelWideAudioStreams"]
+bus = "SoundEffects"
+
+[node name="AudioStreamLevelExit" type="AudioStreamPlayer" parent="LevelWideAudioStreams"]
+pause_mode = 2
+bus = "SoundEffects"
+
+[node name="ParticleClouds" type="Node" parent="."]
+
+[node name="ParticleCloud" parent="ParticleClouds" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 53.7098, 42 )
+
+[node name="ParticleCloud4" parent="ParticleClouds" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -71.2962, 21.6804, 77.5149 )
+
+[node name="ParticleCloud2" parent="ParticleClouds" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 26.8057, 53.3361, 62.4918 )
+
+[node name="ParticleCloud5" parent="ParticleClouds" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 42.8057, -32.6639, 86.4918 )
+
+[node name="ParticleCloud6" parent="ParticleClouds" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18.1943, -52.6639, 55.4918 )
+
+[node name="ParticleCloud3" parent="ParticleClouds" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 91.4203, 21.6067, 53.0605 )
+
+[node name="CameraSystem" parent="." instance=ExtResource( 7 )]
+transform = Transform( -0.99999, 0, -8.74219e-08, 0, 0.999995, 0, 8.74219e-08, 0, -0.99999, 0, 6.8, 0 )
+_preset_data = ExtResource( 9 )
+
+[node name="ClippedCamera" parent="CameraSystem" index="0"]
+transform = Transform( 0.999942, 0, 0, 0, 0.970043, 0.242518, 0, -0.242513, 0.970062, 0, 1, 4 )
+far = 200.0
+
+[node name="Player" parent="." instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0 )
+
+[node name="LevelArea" type="Area" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape" type="CollisionShape" parent="LevelArea"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.8212, 12.0323, -12.0743 )
+shape = SubResource( 1 )
+
+[node name="Checkpoints" type="Node" parent="."]
+
+[node name="Checkpoint" parent="Checkpoints" instance=ExtResource( 2 )]
+
+[node name="StaticIslands" type="Node" parent="."]
+
+[node name="MovingPlatformSystems" type="Node" parent="."]
+
+[node name="RotatingPipes" type="Node" parent="."]
+
+[node name="Coins" type="Node" parent="."]
+
+[node name="ExtraCollectable" type="Node" parent="."]
+
+[node name="Spikes" type="Node" parent="."]
+
+[node name="Cannons" type="Node" parent="."]
+
+[node name="Projectiles" type="Node" parent="."]
+
+[node name="BouncePads" type="Node" parent="."]
+
+[node name="Launchers" type="Node" parent="."]
+
+[node name="Exits" type="Node" parent="."]
+
+[connection signal="body_exited" from="LevelArea" to="." method="_on_body_exited_level_area"]
+
+[editable path="CameraSystem"]

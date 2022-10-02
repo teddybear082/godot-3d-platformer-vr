@@ -1,0 +1,46 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://src/level_elements/moving_platform_systems/platform_meshes/moving_platform_mesh_4x4.tres" type="CubeMesh" id=1]
+[ext_resource path="res://src/level_elements/moving_platform_systems/moving_platform.gd" type="Script" id=2]
+[ext_resource path="res://src/level_elements/moving_platform_systems/moving_platform.material" type="Material" id=3]
+[ext_resource path="res://src/generic/materials/tool_highlight.material" type="Material" id=4]
+[ext_resource path="res://src/level_elements/moving_platform_systems/orbit/orbit.gd" type="Script" id=5]
+
+[sub_resource type="SphereMesh" id=3]
+radius = 0.5
+height = 1.0
+radial_segments = 16
+rings = 4
+
+[sub_resource type="ConvexPolygonShape" id=5]
+points = PoolVector3Array( -2, -0.075, -2, -2, 0.075, -2, 2, -0.075, -2, -2, -0.075, 2, -2, 0.075, 2, 2, 0.075, -2, 2, -0.075, 2, 2, 0.075, 2 )
+
+[sub_resource type="SpatialMaterial" id=4]
+vertex_color_use_as_albedo = true
+
+[node name="MvingPlatfSysOrbit4x4_" type="Spatial"]
+script = ExtResource( 5 )
+
+[node name="Root" type="Spatial" parent="."]
+
+[node name="RootMarker" type="MeshInstance" parent="Root"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 4 )
+
+[node name="MovingPlatform" type="KinematicBody" parent="Root"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0 )
+collision_mask = 2
+script = ExtResource( 2 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Root/MovingPlatform"]
+mesh = ExtResource( 1 )
+material/0 = ExtResource( 3 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Root/MovingPlatform"]
+shape = SubResource( 5 )
+
+[node name="DirectionLine" type="ImmediateGeometry" parent="Root/MovingPlatform"]
+material_override = SubResource( 4 )
+
+[node name="RadiusLine" type="ImmediateGeometry" parent="Root"]
+material_override = SubResource( 4 )

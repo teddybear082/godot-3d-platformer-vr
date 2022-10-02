@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://src/sprinkles/particle_cloud.gd" type="Script" id=1]
+
+[sub_resource type="Curve" id=1]
+_data = [ Vector2( 0, 0.0375 ), 0.0, 0.0, 0, 0, Vector2( 0.45045, 0.981818 ), 0.0, 0.0, 0, 0, Vector2( 0.588589, 0.936364 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.0556818 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=2]
+curve = SubResource( 1 )
+
+[sub_resource type="ParticlesMaterial" id=3]
+emission_shape = 1
+emission_sphere_radius = 1.5
+direction = Vector3( 0, 0, 1 )
+spread = 0.0
+gravity = Vector3( 0, 0, 0 )
+scale_curve = SubResource( 2 )
+
+[sub_resource type="SphereMesh" id=4]
+radius = 5.0
+height = 10.0
+radial_segments = 24
+rings = 8
+
+[node name="ParticleCloud" type="Particles"]
+cast_shadow = 0
+generate_lightmap = false
+amount = 15
+lifetime = 25.0
+visibility_aabb = AABB( -7.12248, -6.94408, -2.04349, 14.2449, 14.0727, 23.8477 )
+local_coords = false
+process_material = SubResource( 3 )
+draw_pass_1 = SubResource( 4 )
+script = ExtResource( 1 )

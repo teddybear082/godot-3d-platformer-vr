@@ -1,0 +1,194 @@
+class_name Player
+extends KinematicBody
+# Controller for the player
+
+
+### Signals ###
+signal died()
+
+### Enums ###
+
+### Constants ###
+
+### Exported variables ###
+export(int) var _acceleration_gravity := -40.0
+export(int) var _friction_ground := 40
+export(int) var _friction_air := 10
+export(int) var _max_speed_walk := 4
+export(int) var _acceleration_walk := 15
+export(int) var _max_speed_run := 8
+export(int) var _acceleration_run := 20
+export(int) var _jump_impulse_velocity := 20
+export(int) var _acceleration_body_roation := 5
+export(int) var _coyote_frames := 5
+
+### Public variables ###
+var velocity := Vector3.ZERO
+var snap_vector := Vector3.ZERO
+var camera_system: CameraSystem
+var externally_applied_velocity := Vector3.ZERO
+
+### Private variables ###
+var _health := 100
+var _health_max := 100
+var _is_dead := false
+var _frames_since_on_floor := 0
+var _can_coyote_jump := true
+var _can_double_jump := true
+var _animation_state_machine: AnimationNodeStateMachinePlayback setget ,get_animation_state_machine
+var _externally_applied_velocity := Vector3.ZERO
+
+### Onready variables ###
+onready var _body: Spatial = get_node("Body")
+onready var _anim_tree: AnimationTree = get_node("AnimationTree")
+onready var _state_machine: StateMachine = get_node("StateMachine")
+
+
+############################
+# Engine Callback Methods  #
+############################
+func _ready() -> void:
+	_animation_state_machine = _anim_tree["parameters/playback"]
+
+
+func _physics_process(delta: float) -> void:
+	if _health > 0:
+		_state_machine.update(delta)
+		########################
+		_coyote_time()
+		
+		_update_snap_vector()
+		var movement_direction_xz := _get_input_movement_direction_xz()
+		_apply_xz_movement(delta, movement_direction_xz)
+		
+		if movement_direction_xz != Vector3.ZERO:
+			_rotate_body(delta, movement_direction_xz)
+		
+		_apply_externally_applied_velocity()
+		_apply_gravity(delta)
+		var is_jumping = _apply_jump_input()
+		
+		velocity = move_and_slide_with_snap(velocity, snap_vector,  Vector3.UP, true)
+		
+		_animate(movement_direction_xz, is_jumping)
+
+
+############################
+#      Public Methods      #
+############################
+#func set_camera_system(camera_system: CameraSystem) -> void:
+#	camera_system = camera_system
+
+
+func take_damage(value: int) -> void:
+	_health = int(max(_health - value, 0))
+	if (_health == 0) && (not _is_dead):
+		_is_dead = true
+		_animation_state_machine.travel("fallover")
+		yield(get_tree().create_timer(2), "timeout")
+		emit_signal("died")
+
+
+func respawn(spawn_transfrom: Transform) -> void:
+	set_global_transform(spawn_transfrom)
+	_animation_state_machine.travel("idle")
+	_is_dead = false
+	_health = _health_max
+
+
+func get_animation_state_machine() -> AnimationNodeStateMachinePlayback:
+	return _animation_state_machine
+
+
+func set_externally_applied_velocity(val: Vector3) -> void:
+	_externally_applied_velocity = val
+
+
+############################
+# Signal Connected Methods #
+############################
+
+
+
+############################
+#      Private Methods     #
+############################
+# Move to an In_Air player state?
+func _coyote_time() -> void:
+	if not is_on_floor():
+		_frames_since_on_floor += 1
+		if _coyote_frames < _frames_since_on_floor:
+			_can_coyote_jump = false
+	else:
+		_frames_since_on_floor = 0
+		_can_coyote_jump = true
+
+
+func _update_snap_vector() -> void:
+	if is_on_floor():
+		snap_vector = -get_floor_normal()
+	else:
+		snap_vector = Vector3.DOWN
+
+
+func _get_input_movement_direction_xz() -> Vector3:
+	var input_vector := Vector3.ZERO
+	input_vector.z = Input.get_action_strength("player_backward") - Input.get_action_strength("player_forward")
+	input_vector.x = Input.get_action_strength("player_right") - Input.get_action_strength("player_left")
+	var direction = input_vector.normalized().rotated(
+			Vector3.UP, 
+			camera_system.get_camera_global_transform().basis.get_euler().y
+	)
+	return direction
+
+
+func _apply_xz_movement(delta: float, direction_xz: Vector3) -> void:
+	if direction_xz != Vector3.ZERO:
+		velocity.x = velocity.move_toward(direction_xz * _max_speed_run, _acceleration_run * delta).x
+		velocity.z = velocity.move_toward(direction_xz * _max_speed_run, _acceleration_run * delta).z
+	elif is_on_floor():
+		velocity = velocity.move_toward(Vector3.ZERO, _friction_ground * delta)
+	else:
+		velocity = velocity.move_toward(Vector3.ZERO, _friction_air * delta)
+
+
+func _rotate_body(delta: float, direction: Vector3) -> void:
+	rotation.y = lerp_angle(
+			rotation.y, atan2(direction.x, direction.z), 
+			_acceleration_body_roation * delta
+	)
+
+
+func _apply_externally_applied_velocity() -> void:
+	if _externally_applied_velocity != Vector3.ZERO:
+		if _externally_applied_velocity.y > 0:
+			snap_vector = Vector3.ZERO
+		velocity += _externally_applied_velocity
+		_can_double_jump = true
+
+
+func _apply_gravity(delta: float) -> void:
+	velocity.y += _acceleration_gravity * delta
+	#velocity.y = clamp(velocity.y, _acceleration_gravity, _jump_impulse_velocity)
+
+
+func _apply_jump_input() -> bool:
+	var can_jump := (is_on_floor() or _can_coyote_jump or _can_double_jump)
+	if Input.is_action_just_pressed("player_jump") and can_jump:
+		snap_vector = Vector3.ZERO
+		velocity.y = _jump_impulse_velocity
+		_can_double_jump = is_on_floor()
+		return true
+	return false
+
+
+func _animate(movement_direction_xz: Vector3, is_jumping: bool) -> void:
+	if is_jumping:
+		_animation_state_machine.travel("jump")
+	elif not (is_on_floor() and _can_coyote_jump):
+		_animation_state_machine.travel("falling")
+	elif movement_direction_xz != Vector3.ZERO:
+		_animation_state_machine.travel("running")
+	else:
+		_animation_state_machine.travel("idle")
+	

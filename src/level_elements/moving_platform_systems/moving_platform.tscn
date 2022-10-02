@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://src/level_elements/moving_platform_systems/moving_platform.gd" type="Script" id=1]
+
+[node name="MovingPlatform" type="KinematicBody"]
+script = ExtResource( 1 )
