@@ -5,11 +5,11 @@ var movePosition;
 var targetPosition;
 var distance =  3.0;
 var time_to_move = 0.5;
-onready var vrCamera = null
 
+export (NodePath) var vr_camera_nodepath
+onready var vrCamera : ARVRCamera = get_node(vr_camera_nodepath)
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	vrCamera = get_parent().get_node("FPController/ARVRCamera")
 	var viewDir = -vrCamera.global_transform.basis.z;
 	var camPos = vrCamera.global_transform.origin;
 	currentPosition = camPos + viewDir * distance;

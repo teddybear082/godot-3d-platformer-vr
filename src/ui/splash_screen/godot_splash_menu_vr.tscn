@@ -1,0 +1,59 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://addons/godot_vr_splash_screen/Go_Dough_Game_Engine_912.mp3" type="AudioStream" id=1]
+[ext_resource path="res://addons/godot-openxr/scenes/first_person_controller_vr.tscn" type="PackedScene" id=2]
+[ext_resource path="res://addons/godot-xr-tools/misc/VR_Common_Shader_Cache.tscn" type="PackedScene" id=3]
+[ext_resource path="res://addons/godot-xr-tools/functions/Function_pointer.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/ui/splash_screen/godot_splash_menu_vr.gd" type="Script" id=5]
+[ext_resource path="res://addons/godot_vr_splash_screen/godot_splash_512.png" type="Texture" id=6]
+[ext_resource path="res://addons/godot_vr_splash_screen/OQ_SplashScreen.gd" type="Script" id=7]
+[ext_resource path="res://addons/godot_vr_splash_screen/GodotSplash.gd" type="Script" id=8]
+
+[sub_resource type="PlaneMesh" id=1]
+
+[sub_resource type="SpatialMaterial" id=2]
+flags_transparent = true
+flags_unshaded = true
+params_cull_mode = 2
+albedo_texture = ExtResource( 6 )
+
+[sub_resource type="Environment" id=3]
+background_mode = 1
+
+[node name="godot_splash_menu_vr" type="Spatial"]
+script = ExtResource( 5 )
+
+[node name="GodotSplash" type="Spatial" parent="."]
+script = ExtResource( 8 )
+
+[node name="OQ_SplashScreen" type="Spatial" parent="GodotSplash"]
+script = ExtResource( 7 )
+vr_camera_nodepath = NodePath("../../FPController/ARVRCamera")
+
+[node name="Godot" type="MeshInstance" parent="GodotSplash/OQ_SplashScreen"]
+transform = Transform( -1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 0, 0, 0 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 2 )
+
+[node name="Voiceover" type="AudioStreamPlayer" parent="GodotSplash"]
+stream = ExtResource( 1 )
+volume_db = -5.0
+
+[node name="FPController" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.2182 )
+
+[node name="ARVRCamera" parent="FPController" index="1"]
+far = 1000.0
+
+[node name="vr_common_shader_cache" parent="FPController/ARVRCamera" index="0" instance=ExtResource( 3 )]
+
+[node name="Function_pointer" parent="FPController/LeftHandController" index="0" instance=ExtResource( 4 )]
+enabled = false
+
+[node name="Function_pointer" parent="FPController/RightHandController" index="0" instance=ExtResource( 4 )]
+enabled = false
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 3 )
+
+[editable path="FPController"]
