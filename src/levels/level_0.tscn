@@ -188,6 +188,7 @@ resource_local_to_scene = true
 size = Vector2( 4, 2 )
 
 [sub_resource type="ViewportTexture" id=14]
+flags = 4
 
 [sub_resource type="SpatialMaterial" id=12]
 resource_local_to_scene = true

@@ -47,4 +47,5 @@ func _on_Function_Climb_movement_player_climb_end():
 
 
 func _on_LeftHandRadialMenu_play_menu_sound():
-	$MenuSelect.play() # Replace with function body.
+	if !$MenuSelect.playing:
+		$MenuSelect.play() # Replace with function body.

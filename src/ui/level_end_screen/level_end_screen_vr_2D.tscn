@@ -48,16 +48,16 @@ __meta__ = {
 }
 
 [node name="Title" type="Label" parent="VBoxContainer"]
-margin_right = 714.0
+margin_right = 720.0
 margin_bottom = 14.0
 text = "Level Complete"
 align = 1
 valign = 1
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
-margin_left = 165.0
+margin_left = 168.0
 margin_top = 39.0
-margin_right = 548.0
+margin_right = 551.0
 margin_bottom = 113.0
 size_flags_horizontal = 4
 custom_constants/separation = 40
@@ -108,20 +108,20 @@ valign = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 margin_top = 138.0
-margin_right = 714.0
+margin_right = 720.0
 margin_bottom = 329.0
 size_flags_horizontal = 4
 custom_constants/separation = 40
 
 [node name="GridContainer" type="GridContainer" parent="VBoxContainer/HBoxContainer"]
-margin_right = 320.0
+margin_right = 326.0
 margin_bottom = 191.0
 size_flags_horizontal = 4
 custom_constants/hseparation = 40
 columns = 2
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/GridContainer"]
-margin_right = 166.0
+margin_right = 172.0
 margin_bottom = 35.0
 custom_fonts/font = SubResource( 1 )
 text = "Coins"
@@ -129,8 +129,8 @@ align = 2
 valign = 1
 
 [node name="LabelCoinCounter" type="Label" parent="VBoxContainer/HBoxContainer/GridContainer"]
-margin_left = 206.0
-margin_right = 320.0
+margin_left = 212.0
+margin_right = 326.0
 margin_bottom = 35.0
 custom_fonts/font = SubResource( 1 )
 text = "00 / 00"
@@ -138,7 +138,7 @@ valign = 1
 
 [node name="Label3" type="Label" parent="VBoxContainer/HBoxContainer/GridContainer"]
 margin_top = 39.0
-margin_right = 166.0
+margin_right = 172.0
 margin_bottom = 74.0
 custom_fonts/font = SubResource( 1 )
 text = "Extras"
@@ -146,9 +146,9 @@ align = 2
 valign = 1
 
 [node name="LabelExtraCounter" type="Label" parent="VBoxContainer/HBoxContainer/GridContainer"]
-margin_left = 206.0
+margin_left = 212.0
 margin_top = 39.0
-margin_right = 320.0
+margin_right = 326.0
 margin_bottom = 74.0
 custom_fonts/font = SubResource( 1 )
 text = "00 / 00"
@@ -156,7 +156,7 @@ valign = 1
 
 [node name="Label5" type="Label" parent="VBoxContainer/HBoxContainer/GridContainer"]
 margin_top = 78.0
-margin_right = 166.0
+margin_right = 172.0
 margin_bottom = 113.0
 custom_fonts/font = SubResource( 1 )
 text = "Deaths"
@@ -164,9 +164,9 @@ align = 2
 valign = 1
 
 [node name="LabelDeathCounter" type="Label" parent="VBoxContainer/HBoxContainer/GridContainer"]
-margin_left = 206.0
+margin_left = 212.0
 margin_top = 78.0
-margin_right = 320.0
+margin_right = 326.0
 margin_bottom = 113.0
 custom_fonts/font = SubResource( 1 )
 text = "00"
@@ -174,7 +174,7 @@ valign = 1
 
 [node name="Label7" type="Label" parent="VBoxContainer/HBoxContainer/GridContainer"]
 margin_top = 117.0
-margin_right = 166.0
+margin_right = 172.0
 margin_bottom = 152.0
 custom_fonts/font = SubResource( 1 )
 text = "Base Score"
@@ -182,17 +182,32 @@ align = 2
 valign = 1
 
 [node name="LabelBaseScoreTotal" type="Label" parent="VBoxContainer/HBoxContainer/GridContainer"]
-margin_left = 206.0
+margin_left = 212.0
 margin_top = 117.0
-margin_right = 320.0
+margin_right = 326.0
 margin_bottom = 152.0
 custom_fonts/font = SubResource( 1 )
 text = "0000"
 valign = 1
 
+[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer/GridContainer"]
+margin_top = 156.0
+margin_right = 172.0
+margin_bottom = 191.0
+custom_fonts/font = SubResource( 1 )
+text = "Total Score"
+
+[node name="LabelTotalScore" type="Label" parent="VBoxContainer/HBoxContainer/GridContainer"]
+margin_left = 212.0
+margin_top = 156.0
+margin_right = 326.0
+margin_bottom = 191.0
+custom_fonts/font = SubResource( 1 )
+text = "0000"
+
 [node name="GridContainer2" type="GridContainer" parent="VBoxContainer/HBoxContainer"]
-margin_left = 360.0
-margin_right = 714.0
+margin_left = 366.0
+margin_right = 720.0
 margin_bottom = 191.0
 size_flags_horizontal = 4
 custom_constants/hseparation = 40
@@ -287,9 +302,9 @@ text = "0000"
 valign = 1
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer"]
-margin_left = 334.0
+margin_left = 337.0
 margin_top = 354.0
-margin_right = 379.0
+margin_right = 382.0
 margin_bottom = 356.0
 size_flags_horizontal = 4
 custom_constants/separation = 30
@@ -302,7 +317,7 @@ text = "Final Score"
 align = 2
 valign = 1
 
-[node name="LabelTotalScore" type="Label" parent="VBoxContainer/HBoxContainer3"]
+[node name="LabelUnused" type="Label" parent="VBoxContainer/HBoxContainer3"]
 margin_left = 41.0
 margin_right = 45.0
 margin_bottom = 2.0
@@ -311,9 +326,9 @@ text = "0000"
 valign = 1
 
 [node name="HBoxContainer4" type="HBoxContainer" parent="VBoxContainer"]
-margin_left = 265.0
+margin_left = 268.0
 margin_top = 381.0
-margin_right = 448.0
+margin_right = 451.0
 margin_bottom = 422.0
 size_flags_horizontal = 4
 custom_constants/separation = 20

@@ -46,7 +46,7 @@ __meta__ = {
 margin_right = 984.0
 margin_bottom = 81.0
 custom_fonts/font = SubResource( 2 )
-text = "UNTITLED 3D PLATFORMER"
+text = "THRIVE: A VR PLATFORMER"
 align = 1
 valign = 1
 

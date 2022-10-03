@@ -13,4 +13,5 @@ func change_scene_request_signal_received(target_scene_res_path):
 	emit_signal("change_scene_request", target_scene_res_path)
 
 func _on_play_menu_click():
-	$MenuSounds.play()
+	if !$MenuSounds.playing:
+		$MenuSounds.play()

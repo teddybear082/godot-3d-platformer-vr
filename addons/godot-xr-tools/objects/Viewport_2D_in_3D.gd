@@ -35,7 +35,9 @@ func set_viewport_size(new_size: Vector2):
 		$Viewport.size = new_size
 		$StaticBody.viewport_size = new_size
 		var material : SpatialMaterial = $Screen.get_surface_material(0)
-		material.albedo_texture = $Viewport.get_texture()
+		var tex = $Viewport.get_texture()
+		tex.flags = Texture.FLAG_FILTER
+		material.albedo_texture = tex
 
 func set_transparent(new_transparent: bool):
 	transparent = new_transparent
