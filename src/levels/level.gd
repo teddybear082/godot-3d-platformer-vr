@@ -49,7 +49,7 @@ onready var _audio_coin_colleceted: AudioStreamPlayer = get_node("LevelWideAudio
 onready var _audio_player_died: AudioStreamPlayer = get_node("LevelWideAudioStreams/AudioStreamPlayerDied")
 onready var _audio_level_exit: AudioStreamPlayer = get_node("LevelWideAudioStreams/AudioStreamLevelExit")
 onready var _audio_checkpoint: AudioStreamPlayer = get_node("LevelWideAudioStreams/AudioStreamCheckpoint")
-
+onready var _audio_extra_collected: AudioStreamPlayer = get_node("LevelWideAudioStreams/AudioStreamExtraPickup")
 ############################
 # Engine Callback Methods  #
 ############################
@@ -153,13 +153,13 @@ func _on_extra_collectable_collected(_object_name: String, value: int) -> void:
 	_extras_collected += value
 	_set_score(_score + (value * 500))
 	if _time_since_last_coin_collected < 1:
-		_audio_coin_colleceted.set_pitch_scale(min(
-				_audio_coin_colleceted.pitch_scale + 0.06, 1.4
+		_audio_extra_collected.set_pitch_scale(min(
+				_audio_extra_collected.pitch_scale + 0.06, 1.4
 		))
 	else:
-		_audio_coin_colleceted.set_pitch_scale(1)
+		_audio_extra_collected.set_pitch_scale(1)
 		
-	_audio_coin_colleceted.play()
+	_audio_extra_collected.play()
 	_level_ui.set_label_extra_counter(_extras_collected, _extras_total)
 	_level_ui_vr.set_label_extra_counter(_extras_collected, _extras_total)
 	_time_since_last_coin_collected = 0

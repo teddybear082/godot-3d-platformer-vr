@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://src/environments/custom_env_3.tres" type="Environment" id=1]
 [ext_resource path="res://src/level_elements/checkpoint/checkpoint.tscn" type="PackedScene" id=2]
@@ -24,6 +24,7 @@
 [ext_resource path="res://src/level_elements/exit/exit.tscn" type="PackedScene" id=22]
 [ext_resource path="res://raw_assets/audio/freesound.org/582705__ironcross32__short-chirp-10-down.mp3" type="AudioStream" id=23]
 [ext_resource path="res://raw_assets/audio/kenney/jingles_SAX07.ogg" type="AudioStream" id=24]
+[ext_resource path="res://raw_assets/audio/sparklinlabs/ninjaadventure/power-up.ogg" type="AudioStream" id=25]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 34.1883, 18.7866, 130.22 )
@@ -259,6 +260,12 @@ bus = "SoundEffects"
 [node name="AudioStreamCheckpoint" type="AudioStreamPlayer" parent="LevelWideAudioStreams"]
 stream = ExtResource( 23 )
 mix_target = 2
+bus = "SoundEffects"
+
+[node name="AudioStreamExtraPickup" type="AudioStreamPlayer" parent="LevelWideAudioStreams"]
+stream = ExtResource( 25 )
+volume_db = -3.0
+pitch_scale = 0.7
 bus = "SoundEffects"
 
 [node name="ParticleClouds" type="Node" parent="."]

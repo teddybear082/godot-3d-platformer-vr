@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://src/level_elements/hazards/cannon/cannon.gd" type="Script" id=1]
+[ext_resource path="res://raw_assets/audio/owlishmedia/explodify5.wav" type="AudioStream" id=2]
 
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "cannon_Cylinder"
@@ -20,8 +21,8 @@ surfaces/0 = {
 albedo_color = Color( 0.596078, 0.572549, 0.572549, 1 )
 
 [sub_resource type="CylinderShape" id=3]
-radius = 0.394595
 height = 0.65531
+radius = 0.394595
 
 [node name="Cannon" type="StaticBody"]
 collision_layer = 32
@@ -46,6 +47,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.341227 )
 wait_time = 10.0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 2 )
 unit_db = 1.0
 unit_size = 10.0
 max_db = 1.0

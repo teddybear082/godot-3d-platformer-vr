@@ -36,8 +36,8 @@ func setup(initial_transform: Transform, direction: Vector3, max_distance: float
 # Signal Connected Methods #
 ############################
 func _on_body_entered(body: PhysicsBody):
-	if body is Player:
-		(body as Player).take_damage(_damage)
+	if body.get_parent().get_parent().get_parent().is_in_group("Player"):
+		body.get_parent().get_parent().get_parent().take_damage(_damage)
 	_destroy()
 
 ############################

@@ -32,7 +32,7 @@
 [ext_resource path="res://raw_assets/audio/freesound.org/456374__felixyadomi__hop8.mp3" type="AudioStream" id=30]
 [ext_resource path="res://src/player/PlayerSounds.gd" type="Script" id=31]
 [ext_resource path="res://src/player/HapticManager.gd" type="Script" id=32]
-[ext_resource path="res://raw_assets/audio/owlishmedia/breath-female2.wav" type="AudioStream" id=33]
+[ext_resource path="res://raw_assets/audio/owlishmedia/breath-male.wav" type="AudioStream" id=33]
 [ext_resource path="res://raw_assets/audio/sparklinlabs/ninjaadventure/menu-5.ogg" type="AudioStream" id=34]
 
 [sub_resource type="CubeMesh" id=20]
@@ -431,10 +431,13 @@ jump_button_id = 14
 
 [node name="Function_Grapple_movement" parent="FPController/LeftHandController" instance=ExtResource( 13 )]
 grapple_length = 25.0
-grapple_collision_mask = 3
+grapple_collision_mask = 35
 impulse_speed = 20.0
 winch_speed = 5.0
 grapple_button_id = 7
+
+[node name="Grapple_RayCast" parent="FPController/LeftHandController/Function_Grapple_movement" index="0"]
+collision_mask = 35
 
 [node name="Grapple_Target" parent="FPController/LeftHandController/Function_Grapple_movement" index="1"]
 mesh = SubResource( 20 )
@@ -466,10 +469,13 @@ camera = NodePath("../../ARVRCamera")
 
 [node name="Function_Grapple_movement" parent="FPController/RightHandController" instance=ExtResource( 13 )]
 grapple_length = 25.0
-grapple_collision_mask = 3
+grapple_collision_mask = 35
 impulse_speed = 20.0
 winch_speed = 5.0
 grapple_button_id = 7
+
+[node name="Grapple_RayCast" parent="FPController/RightHandController/Function_Grapple_movement" index="0"]
+collision_mask = 35
 
 [node name="Grapple_Target" parent="FPController/RightHandController/Function_Grapple_movement" index="1"]
 mesh = SubResource( 21 )

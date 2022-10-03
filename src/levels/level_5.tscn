@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=2]
+[gd_scene load_steps=55 format=2]
 
 [ext_resource path="res://src/environments/custom_env_3.tres" type="Environment" id=1]
 [ext_resource path="res://src/level_elements/checkpoint/checkpoint.tscn" type="PackedScene" id=2]
@@ -6,10 +6,13 @@
 [ext_resource path="res://src/sprinkles/particle_cloud.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/ui/pause_popup/pause_popup.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/ui/level_ui/level_ui.tscn" type="PackedScene" id=6]
-[ext_resource path="res://src/camera_system/camera_system.tscn" type="PackedScene" id=7]
-[ext_resource path="res://src/player/player.tscn" type="PackedScene" id=8]
-[ext_resource path="res://src/camera_system/preset_data/camera_preset_player.tres" type="Resource" id=9]
+[ext_resource path="res://raw_assets/audio/sparklinlabs/ninjaadventure/succes-3.ogg" type="AudioStream" id=7]
+[ext_resource path="res://raw_assets/audio/kenney/jingles_SAX07.ogg" type="AudioStream" id=8]
+[ext_resource path="res://raw_assets/audio/sparklinlabs/ninjaadventure/gold-1.ogg" type="AudioStream" id=9]
 [ext_resource path="res://src/levels/level.gd" type="Script" id=10]
+[ext_resource path="res://addons/godot-xr-tools/objects/Viewport_2D_in_3D.gd" type="Script" id=11]
+[ext_resource path="res://addons/godot-xr-tools/objects/Viewport_2D_in_3D_body.gd" type="Script" id=12]
+[ext_resource path="res://src/player/VRplayer.tscn" type="PackedScene" id=13]
 [ext_resource path="res://src/level_elements/moving_platform_systems/follow_path/follow_path_2x2.tscn" type="PackedScene" id=14]
 [ext_resource path="res://src/level_elements/moving_platform_systems/follow_path/point.tscn" type="PackedScene" id=15]
 [ext_resource path="res://src/level_elements/exit/exit.tscn" type="PackedScene" id=16]
@@ -22,6 +25,10 @@
 [ext_resource path="res://src/level_elements/collectables/extra/extra_collectable.tscn" type="PackedScene" id=23]
 [ext_resource path="res://src/level_elements/collectables/coins/coin_silver.tscn" type="PackedScene" id=24]
 [ext_resource path="res://src/level_elements/collectables/coins/coin_gold.tscn" type="PackedScene" id=25]
+[ext_resource path="res://src/ui/level_end_screen/level_end_screen_vr_2D.tscn" type="PackedScene" id=26]
+[ext_resource path="res://raw_assets/audio/freesound.org/582705__ironcross32__short-chirp-10-down.mp3" type="AudioStream" id=27]
+[ext_resource path="res://addons/godot-xr-tools/objects/Object_climbable.gd" type="Script" id=28]
+[ext_resource path="res://raw_assets/audio/sparklinlabs/ninjaadventure/power-up.ogg" type="AudioStream" id=29]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 28.7571, 26.9737, 143.393 )
@@ -239,10 +246,25 @@ surfaces/0 = {
 margin = 0.001
 data = PoolVector3Array( -15, 0.5, -77, -15, -0.5, -83, -15, -0.5, -77, -15, 0.5, -77, -15, 0.5, -83, -15, -0.5, -83, -15, 0.5, -77, -21, -0.5, -77, -21, 0.5, -77, -15, 0.5, -77, -15, -0.5, -77, -21, -0.5, -77, -21, -0.5, -77, -15, -0.5, -83, -21, -0.5, -83, -21, -0.5, -77, -15, -0.5, -77, -15, -0.5, -83, -15, -0.5, -83, -21, 0.5, -83, -21, -0.5, -83, -15, -0.5, -83, -15, 0.5, -83, -21, 0.5, -83, -21, 0.5, -83, -21, -0.5, -77, -21, -0.5, -83, -21, 0.5, -83, -21, 0.5, -77, -21, -0.5, -77, -15, 0.5, -77, -21, 0.5, -83, -15, 0.5, -83, -15, 0.5, -77, -21, 0.5, -77, -21, 0.5, -83 )
 
+[sub_resource type="QuadMesh" id=23]
+resource_local_to_scene = true
+size = Vector2( 4, 2 )
+
+[sub_resource type="ViewportTexture" id=27]
+
+[sub_resource type="SpatialMaterial" id=25]
+resource_local_to_scene = true
+flags_transparent = true
+flags_unshaded = true
+params_cull_mode = 2
+albedo_texture = SubResource( 27 )
+
+[sub_resource type="BoxShape" id=26]
+resource_local_to_scene = true
+extents = Vector3( 2, 1, 0.01 )
+
 [node name="Level" type="Spatial"]
 script = ExtResource( 10 )
-_player_node_path = NodePath("Player")
-_camera_system_node_path = NodePath("CameraSystem")
 _initial_checkpoint_node_path = NodePath("Checkpoints/Checkpoint")
 _golden_time_s = 300
 
@@ -265,14 +287,29 @@ visible = false
 [node name="LevelWideAudioStreams" type="Node" parent="."]
 
 [node name="AudioStreamCoinPickup" type="AudioStreamPlayer" parent="LevelWideAudioStreams"]
-mix_target = 2
+stream = ExtResource( 9 )
+volume_db = -3.0
+pitch_scale = 0.7
 bus = "SoundEffects"
 
 [node name="AudioStreamPlayerDied" type="AudioStreamPlayer" parent="LevelWideAudioStreams"]
+stream = ExtResource( 8 )
 bus = "SoundEffects"
 
 [node name="AudioStreamLevelExit" type="AudioStreamPlayer" parent="LevelWideAudioStreams"]
 pause_mode = 2
+stream = ExtResource( 7 )
+bus = "SoundEffects"
+
+[node name="AudioStreamCheckpoint" type="AudioStreamPlayer" parent="LevelWideAudioStreams"]
+stream = ExtResource( 27 )
+mix_target = 2
+bus = "SoundEffects"
+
+[node name="AudioStreamExtraPickup" type="AudioStreamPlayer" parent="LevelWideAudioStreams"]
+stream = ExtResource( 29 )
+volume_db = -3.0
+pitch_scale = 0.7
 bus = "SoundEffects"
 
 [node name="ParticleClouds" type="Node" parent="."]
@@ -295,19 +332,9 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18.1943, -52.6639, 244.492 )
 [node name="ParticleCloud3" parent="ParticleClouds" instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 91.4203, 21.6067, 242.061 )
 
-[node name="CameraSystem" parent="." instance=ExtResource( 7 )]
-transform = Transform( -0.99999, 0, -8.74219e-08, 0, 0.999995, 0, 8.74219e-08, 0, -0.99999, 0, 6.8, 0 )
-_preset_data = ExtResource( 9 )
-
-[node name="ClippedCamera" parent="CameraSystem" index="0"]
-transform = Transform( 0.999942, 0, 0, 0, 0.970043, 0.242518, 0, -0.242513, 0.970062, 0, 1, 4 )
-far = 200.0
-
-[node name="Player" parent="." instance=ExtResource( 8 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0 )
-
 [node name="LevelArea" type="Area" parent="."]
 collision_layer = 2
+collision_mask = 524289
 
 [node name="CollisionShape" type="CollisionShape" parent="LevelArea"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8212, 18.7426, 128.592 )
@@ -335,7 +362,7 @@ material/0 = ExtResource( 20 )
 material/1 = ExtResource( 21 )
 
 [node name="StaticBody" type="StaticBody" parent="StaticIslands/CSGCombiner2"]
-collision_layer = 2
+script = ExtResource( 28 )
 
 [node name="CollisionShape" type="CollisionShape" parent="StaticIslands/CSGCombiner2/StaticBody"]
 shape = SubResource( 12 )
@@ -346,7 +373,7 @@ mesh = SubResource( 13 )
 material/0 = ExtResource( 20 )
 
 [node name="StaticBody" type="StaticBody" parent="StaticIslands/CSGCombiner23"]
-collision_layer = 2
+script = ExtResource( 28 )
 
 [node name="CollisionShape" type="CollisionShape" parent="StaticIslands/CSGCombiner23/StaticBody"]
 shape = SubResource( 14 )
@@ -359,7 +386,7 @@ material/1 = ExtResource( 21 )
 material/2 = ExtResource( 22 )
 
 [node name="StaticBody" type="StaticBody" parent="StaticIslands/CSGCombiner32"]
-collision_layer = 2
+script = ExtResource( 28 )
 
 [node name="CollisionShape" type="CollisionShape" parent="StaticIslands/CSGCombiner32/StaticBody"]
 shape = SubResource( 15 )
@@ -370,7 +397,7 @@ mesh = SubResource( 4 )
 material/0 = ExtResource( 20 )
 
 [node name="StaticBody" type="StaticBody" parent="StaticIslands/CSGCombiner42"]
-collision_layer = 2
+script = ExtResource( 28 )
 
 [node name="CollisionShape" type="CollisionShape" parent="StaticIslands/CSGCombiner42/StaticBody"]
 shape = SubResource( 16 )
@@ -381,7 +408,7 @@ mesh = SubResource( 5 )
 material/0 = ExtResource( 21 )
 
 [node name="StaticBody" type="StaticBody" parent="StaticIslands/CSGCombiner42001"]
-collision_layer = 2
+script = ExtResource( 28 )
 
 [node name="CollisionShape" type="CollisionShape" parent="StaticIslands/CSGCombiner42001/StaticBody"]
 shape = SubResource( 17 )
@@ -392,7 +419,7 @@ mesh = SubResource( 6 )
 material/0 = ExtResource( 21 )
 
 [node name="StaticBody" type="StaticBody" parent="StaticIslands/CSGCombiner42002"]
-collision_layer = 2
+script = ExtResource( 28 )
 
 [node name="CollisionShape" type="CollisionShape" parent="StaticIslands/CSGCombiner42002/StaticBody"]
 shape = SubResource( 18 )
@@ -403,7 +430,7 @@ mesh = SubResource( 7 )
 material/0 = ExtResource( 20 )
 
 [node name="StaticBody" type="StaticBody" parent="StaticIslands/CSGCombiner42003"]
-collision_layer = 2
+script = ExtResource( 28 )
 
 [node name="CollisionShape" type="CollisionShape" parent="StaticIslands/CSGCombiner42003/StaticBody"]
 shape = SubResource( 19 )
@@ -414,7 +441,7 @@ mesh = SubResource( 8 )
 material/0 = ExtResource( 20 )
 
 [node name="StaticBody" type="StaticBody" parent="StaticIslands/CSGCombiner42004"]
-collision_layer = 2
+script = ExtResource( 28 )
 
 [node name="CollisionShape" type="CollisionShape" parent="StaticIslands/CSGCombiner42004/StaticBody"]
 shape = SubResource( 20 )
@@ -425,7 +452,7 @@ mesh = SubResource( 9 )
 material/0 = ExtResource( 20 )
 
 [node name="StaticBody" type="StaticBody" parent="StaticIslands/CSGCombiner42005"]
-collision_layer = 2
+script = ExtResource( 28 )
 
 [node name="CollisionShape" type="CollisionShape" parent="StaticIslands/CSGCombiner42005/StaticBody"]
 shape = SubResource( 21 )
@@ -436,7 +463,7 @@ mesh = SubResource( 10 )
 material/0 = ExtResource( 20 )
 
 [node name="StaticBody" type="StaticBody" parent="StaticIslands/CSGCombiner42006"]
-collision_layer = 2
+script = ExtResource( 28 )
 
 [node name="CollisionShape" type="CollisionShape" parent="StaticIslands/CSGCombiner42006/StaticBody"]
 shape = SubResource( 22 )
@@ -1091,6 +1118,41 @@ _fire_rate = 5.0
 [node name="Exit" parent="Exits" instance=ExtResource( 16 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 257 )
 
-[connection signal="body_exited" from="LevelArea" to="." method="_on_body_exited_level_area"]
+[node name="player" parent="." instance=ExtResource( 13 )]
 
-[editable path="CameraSystem"]
+[node name="LevelEndScreenViewport" type="Spatial" parent="."]
+transform = Transform( -0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, -0.5, -2.72033, 1.73998, 259.52 )
+visible = false
+script = ExtResource( 11 )
+screen_size = Vector2( 4, 2 )
+viewport_size = Vector2( 800, 450 )
+scene = ExtResource( 26 )
+viewport_update_threshold = 90
+
+[node name="Viewport" type="Viewport" parent="LevelEndScreenViewport"]
+size = Vector2( 800, 450 )
+transparent_bg = true
+usage = 0
+render_target_v_flip = true
+render_target_update_mode = 1
+
+[node name="Screen" type="MeshInstance" parent="LevelEndScreenViewport"]
+mesh = SubResource( 23 )
+material/0 = SubResource( 25 )
+
+[node name="StaticBody" type="StaticBody" parent="LevelEndScreenViewport"]
+collision_layer = 15
+collision_mask = 0
+script = ExtResource( 12 )
+screen_size = Vector2( 4, 2 )
+viewport_size = Vector2( 800, 450 )
+
+[node name="CollisionShape" type="CollisionShape" parent="LevelEndScreenViewport/StaticBody"]
+shape = SubResource( 26 )
+
+[connection signal="body_exited" from="LevelArea" to="." method="_on_body_exited_level_area"]
+[connection signal="pointer_entered" from="LevelEndScreenViewport/StaticBody" to="LevelEndScreenViewport" method="_on_pointer_entered"]
+[connection signal="pointer_exited" from="LevelEndScreenViewport/StaticBody" to="LevelEndScreenViewport" method="_on_pointer_exited"]
+[connection signal="pointer_moved" from="LevelEndScreenViewport/StaticBody" to="LevelEndScreenViewport/StaticBody" method="_on_pointer_moved"]
+[connection signal="pointer_pressed" from="LevelEndScreenViewport/StaticBody" to="LevelEndScreenViewport/StaticBody" method="_on_pointer_pressed"]
+[connection signal="pointer_released" from="LevelEndScreenViewport/StaticBody" to="LevelEndScreenViewport/StaticBody" method="_on_pointer_released"]
