@@ -16,12 +16,11 @@ Crouch - Right Thumbpad Click
 
 Grapple Hook - Both hand A/X buttons
 
+Glide - Extend arms out in a T-pose, or like a bird
+
 Level Select Radial menu - Left Hand Y button, hover over either the home icon to go back to level select screen or one of the numbers to choose a level
 
 To click in menus use trigger on either hand
 
-KNOWN ISSUES:
 
-Menus are text only
 
-Right now only levels 0-2 are playable.  Working on the rest.   
