@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=2]
+[gd_scene load_steps=46 format=2]
 
 [ext_resource path="res://src/environments/custom_env_3.tres" type="Environment" id=1]
 [ext_resource path="res://src/level_elements/checkpoint/checkpoint.tscn" type="PackedScene" id=2]
@@ -27,6 +27,7 @@
 [ext_resource path="res://raw_assets/audio/freesound.org/582705__ironcross32__short-chirp-10-down.mp3" type="AudioStream" id=25]
 [ext_resource path="res://raw_assets/audio/kenney/jingles_SAX07.ogg" type="AudioStream" id=26]
 [ext_resource path="res://raw_assets/audio/sparklinlabs/ninjaadventure/power-up.ogg" type="AudioStream" id=27]
+[ext_resource path="res://raw_assets/fonts/SafetyThirdRegular-vmm77.ttf" type="DynamicFontData" id=28]
 [ext_resource path="res://src/level_elements/collectables/coins/coin_silver.tscn" type="PackedScene" id=33]
 [ext_resource path="res://src/level_elements/collectables/coins/coin_blue.tscn" type="PackedScene" id=34]
 [ext_resource path="res://src/level_elements/collectables/coins/coin_gold.tscn" type="PackedScene" id=35]
@@ -187,7 +188,7 @@ data = PoolVector3Array( 83.0003, 40.5, -93.0001, 83.0003, 41.5, -67.0001, 83.00
 resource_local_to_scene = true
 size = Vector2( 4, 2 )
 
-[sub_resource type="ViewportTexture" id=14]
+[sub_resource type="ViewportTexture" id=16]
 flags = 4
 
 [sub_resource type="SpatialMaterial" id=12]
@@ -195,11 +196,16 @@ resource_local_to_scene = true
 flags_transparent = true
 flags_unshaded = true
 params_cull_mode = 2
-albedo_texture = SubResource( 14 )
+albedo_texture = SubResource( 16 )
 
 [sub_resource type="BoxShape" id=13]
 resource_local_to_scene = true
 extents = Vector3( 2, 1, 0.01 )
+
+[sub_resource type="DynamicFont" id=15]
+size = 264
+use_filter = true
+font_data = ExtResource( 28 )
 
 [node name="Level" type="Spatial"]
 script = ExtResource( 10 )
@@ -594,6 +600,64 @@ viewport_size = Vector2( 800, 450 )
 
 [node name="CollisionShape" type="CollisionShape" parent="LevelEndScreenViewport/StaticBody"]
 shape = SubResource( 13 )
+
+[node name="TutorialLabel3Ds" type="Node" parent="."]
+
+[node name="CoinLabel3D" type="Label3D" parent="TutorialLabel3Ds"]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.72974, 6.39335 )
+pixel_size = 0.001
+modulate = Color( 0.0156863, 0.196078, 0.458824, 1 )
+text = "Collect the Coins!"
+font = SubResource( 15 )
+
+[node name="ClimbLabel3D" type="Label3D" parent="TutorialLabel3Ds"]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.426614, 2.69472, 14.5022 )
+pixel_size = 0.001
+modulate = Color( 0.0156863, 0.196078, 0.458824, 1 )
+text = "Climb!"
+font = SubResource( 15 )
+
+[node name="GrappleLabel3D" type="Label3D" parent="TutorialLabel3Ds"]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.28093, 2.03, 70.8672 )
+pixel_size = 0.001
+modulate = Color( 0.0156863, 0.196078, 0.458824, 1 )
+text = "Grapple!"
+font = SubResource( 15 )
+
+[node name="CheckpointLabel3D" type="Label3D" parent="TutorialLabel3Ds"]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1.73833, 3.11769, 90.1622 )
+pixel_size = 0.001
+modulate = Color( 0.0156863, 0.196078, 0.458824, 1 )
+text = "Touch the checkpoints!"
+font = SubResource( 15 )
+
+[node name="JumpLabel3D" type="Label3D" parent="TutorialLabel3Ds"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 14.2637, 1.25786, 88.4993 )
+pixel_size = 0.001
+modulate = Color( 0.0156863, 0.196078, 0.458824, 1 )
+text = "Jump!"
+font = SubResource( 15 )
+
+[node name="CrouchLabel3D" type="Label3D" parent="TutorialLabel3Ds"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 38.9917, 1.00821, 85.9326 )
+pixel_size = 0.001
+modulate = Color( 0.0156863, 0.196078, 0.458824, 1 )
+text = "Crouch!"
+font = SubResource( 15 )
+
+[node name="ExitLabel3D" type="Label3D" parent="TutorialLabel3Ds"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.148281, 48.1783, -6.63715 )
+pixel_size = 0.001
+modulate = Color( 0.0156863, 0.196078, 0.458824, 1 )
+text = "Exit Platform"
+font = SubResource( 15 )
+
+[node name="GlideLabel3D" type="Label3D" parent="TutorialLabel3Ds"]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1.32108, 5.53739, 23.9043 )
+pixel_size = 0.001
+modulate = Color( 0.0156863, 0.196078, 0.458824, 1 )
+text = "Glide! Arms out!"
+font = SubResource( 15 )
 
 [connection signal="body_exited" from="LevelArea" to="." method="_on_body_exited_level_area"]
 [connection signal="pointer_entered" from="LevelEndScreenViewport/StaticBody" to="LevelEndScreenViewport" method="_on_pointer_entered"]

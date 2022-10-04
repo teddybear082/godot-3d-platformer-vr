@@ -1,8 +1,16 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://raw_assets/fonts/FallingSkyBold-zemL.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://raw_assets/fonts/SafetyThirdRegular-vmm77.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://src/ui/level_end_screen/level_end_screen_vr_2D.gd" type="Script" id=3]
+
+[sub_resource type="DynamicFont" id=3]
+size = 20
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=1]
 size = 26
@@ -18,7 +26,7 @@ outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=4]
 size = 25
 outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
@@ -49,16 +57,18 @@ __meta__ = {
 
 [node name="Title" type="Label" parent="VBoxContainer"]
 margin_right = 720.0
-margin_bottom = 14.0
+margin_bottom = 28.0
+custom_colors/font_color = Color( 0.0156863, 0.196078, 0.458824, 1 )
+custom_fonts/font = SubResource( 3 )
 text = "Level Complete"
 align = 1
 valign = 1
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
 margin_left = 168.0
-margin_top = 39.0
+margin_top = 53.0
 margin_right = 551.0
-margin_bottom = 113.0
+margin_bottom = 127.0
 size_flags_horizontal = 4
 custom_constants/separation = 40
 
@@ -107,9 +117,9 @@ align = 1
 valign = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 138.0
+margin_top = 152.0
 margin_right = 720.0
-margin_bottom = 329.0
+margin_bottom = 343.0
 size_flags_horizontal = 4
 custom_constants/separation = 40
 
@@ -194,6 +204,7 @@ valign = 1
 margin_top = 156.0
 margin_right = 172.0
 margin_bottom = 191.0
+custom_colors/font_color = Color( 0, 1, 0.392157, 1 )
 custom_fonts/font = SubResource( 1 )
 text = "Total Score"
 
@@ -202,6 +213,7 @@ margin_left = 212.0
 margin_top = 156.0
 margin_right = 326.0
 margin_bottom = 191.0
+custom_colors/font_color = Color( 0, 1, 0.392157, 1 )
 custom_fonts/font = SubResource( 1 )
 text = "0000"
 
@@ -303,9 +315,9 @@ valign = 1
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer"]
 margin_left = 337.0
-margin_top = 354.0
+margin_top = 368.0
 margin_right = 382.0
-margin_bottom = 356.0
+margin_bottom = 370.0
 size_flags_horizontal = 4
 custom_constants/separation = 30
 
@@ -327,9 +339,9 @@ valign = 1
 
 [node name="HBoxContainer4" type="HBoxContainer" parent="VBoxContainer"]
 margin_left = 268.0
-margin_top = 381.0
+margin_top = 395.0
 margin_right = 451.0
-margin_bottom = 422.0
+margin_bottom = 436.0
 size_flags_horizontal = 4
 custom_constants/separation = 20
 
@@ -338,7 +350,7 @@ margin_right = 94.0
 margin_bottom = 41.0
 grow_horizontal = 2
 grow_vertical = 2
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
 text = "Retry"
 __meta__ = {
 "_edit_use_anchors_": true

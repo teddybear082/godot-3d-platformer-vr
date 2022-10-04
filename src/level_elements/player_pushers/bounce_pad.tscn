@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://src/level_elements/player_pushers/player_push_area.gd" type="Script" id=1]
 [ext_resource path="res://addons/godot-xr-tools/overrides/GroundPhysics.tscn" type="PackedScene" id=2]
 [ext_resource path="res://addons/godot-xr-tools/overrides/JumpPadPhysics.tres" type="Resource" id=3]
+[ext_resource path="res://raw_assets/fonts/SafetyThirdRegular-vmm77.ttf" type="DynamicFontData" id=4]
 
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "jump_pad_Cube002"
@@ -66,6 +67,10 @@ height = 0.1
 radial_segments = 32
 rings = 1
 
+[sub_resource type="DynamicFont" id=11]
+size = 200
+font_data = ExtResource( 4 )
+
 [node name="BouncePad" type="StaticBody"]
 collision_layer = 2
 
@@ -99,6 +104,13 @@ shape = SubResource( 10 )
 [node name="MeshInstance" type="MeshInstance" parent="Pedistal"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0 )
 mesh = SubResource( 2 )
+material/0 = SubResource( 9 )
 
 [node name="GroundPhysics" parent="Pedistal" instance=ExtResource( 2 )]
 physics = ExtResource( 3 )
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.865615, 0.50071, 0, -0.50071, 0.865615, 0, 0.368961, 0 )
+pixel_size = 0.001
+text = "Jump!"
+font = SubResource( 11 )

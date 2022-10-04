@@ -7,8 +7,7 @@
 [ext_resource path="res://addons/godot-xr-tools/misc/VR_Common_Shader_Cache.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/ui/main_menu/main_menu_vr.gd" type="Script" id=6]
 [ext_resource path="res://raw_assets/audio/sparklinlabs/ninjaadventure/menu-5.ogg" type="AudioStream" id=7]
-
-[sub_resource type="Environment" id=1]
+[ext_resource path="res://src/environments/custom_env_3.tres" type="Environment" id=8]
 
 [node name="menu_level_select_vr" type="Spatial"]
 script = ExtResource( 6 )
@@ -31,11 +30,16 @@ screen_size = Vector2( 4, 2 )
 viewport_size = Vector2( 1980, 1080 )
 scene = ExtResource( 4 )
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 1 )
-
 [node name="MenuSounds" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
 bus = "SoundEffects"
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource( 8 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="WorldEnvironment"]
+transform = Transform( 0.571449, -0.725209, -0.38408, 0.731945, 0.238783, 0.638153, -0.371083, -0.645797, 0.667266, 0, 16.8039, 0 )
+shadow_enabled = true
+shadow_color = Color( 0.827451, 0.827451, 0.827451, 1 )
 
 [editable path="FPController"]

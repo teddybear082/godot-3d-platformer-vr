@@ -37,6 +37,7 @@ script = ExtResource( 2 )
 _level_directory_path = "res://src/levels/"
 
 [node name="Panel" type="Panel" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
