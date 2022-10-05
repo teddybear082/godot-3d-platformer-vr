@@ -19,9 +19,10 @@ extends Popup
 onready var _slider_audio_master: HSlider = find_node("SliderAudioMaster", true)
 onready var _slider_audio_sfx: HSlider = find_node("SliderAudioSFX", true)
 onready var _slider_audio_music: HSlider = find_node("SliderAudioMusic", true)
-
-onready var _slider_mouse_sensitivity: HSlider = find_node("SliderMouseSense", true)
-onready var _slider_gamepad_sensitivity: HSlider = find_node("SliderPadSense", true)
+onready var _snap_turn_button : CheckButton = find_node("SnapTurnCheckButton", true)
+onready var _teleport_check_button : CheckButton = find_node("TeleportCheckButton", true)
+#onready var _slider_mouse_sensitivity: HSlider = find_node("SliderMouseSense", true)
+#onready var _slider_gamepad_sensitivity: HSlider = find_node("SliderPadSense", true)
 
 
 ############################
@@ -31,9 +32,10 @@ func _ready() -> void:
 	_slider_audio_master.set_value(UserData.audio_vol_master)
 	_slider_audio_sfx.set_value(UserData.audio_vol_sfx)
 	_slider_audio_music.set_value(UserData.audio_vol_music)
-	
-	_slider_mouse_sensitivity.set_value(UserData.mouse_sensitivity)
-	_slider_gamepad_sensitivity.set_value(UserData.gamepad_sensitivity)
+	_snap_turn_button.pressed = UserData.use_snap_turn
+	_teleport_check_button.pressed = UserData.use_teleport
+	#_slider_mouse_sensitivity.set_value(UserData.mouse_sensitivity)
+	#_slider_gamepad_sensitivity.set_value(UserData.gamepad_sensitivity)
 
 
 ############################
@@ -77,12 +79,12 @@ func _on_sider_audio_music_value_changed(value: float) -> void:
 		AudioServer.set_bus_volume_db(2, _vol_linear_to_db(value))
 
 
-func _on_slider_mouse_sense_value_changed(value: float) -> void:
-	UserData.set_mouse_sensitivity(value)
+#func _on_slider_mouse_sense_value_changed(value: float) -> void:
+#	UserData.set_mouse_sensitivity(value)
 
 
-func _on_slider_pad_sense_value_changed(value: float) -> void:
-	UserData.set_gamepad_sensitivity(value)
+#func _on_slider_pad_sense_value_changed(value: float) -> void:
+#	UserData.set_gamepad_sensitivity(value)
 
 
 ############################
@@ -94,3 +96,11 @@ func _vol_db_to_linear(val: float) -> float:
 
 func _vol_linear_to_db(val: float) -> float:
 	return linear2db(val) + 6
+
+
+func _on_SnapTurnCheckButton_pressed():
+	UserData.use_snap_turn = _snap_turn_button.pressed 
+
+
+func _on_TeleportCheckButton_pressed():
+	UserData.use_teleport = _teleport_check_button.pressed

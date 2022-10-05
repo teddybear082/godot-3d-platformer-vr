@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://raw_assets/fonts/SafetyThirdRegular-vmm77.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://src/ui/settings_popup/settings_popup.gd" type="Script" id=2]
+[ext_resource path="res://raw_assets/images/control_prompts/Oculus/Oculus_RT.png" type="Texture" id=3]
+[ext_resource path="res://raw_assets/images/control_prompts/Oculus/Oculus_LT.png" type="Texture" id=4]
 
 [sub_resource type="DynamicFont" id=4]
 size = 20
@@ -19,7 +21,16 @@ use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 1 )
 
+[sub_resource type="DynamicFont" id=5]
+size = 20
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 1 )
+
 [node name="SettingsPopup" type="Popup"]
+visible = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 2 )
@@ -42,13 +53,13 @@ margin_left = 4.0
 margin_top = 32.0
 margin_right = -4.0
 margin_bottom = -4.0
+custom_fonts/font = SubResource( 4 )
 
 [node name="GridContainer" type="GridContainer" parent="TabContainer/Audio"]
 anchor_left = 0.158228
 anchor_top = 0.0802138
 anchor_right = 0.841772
 anchor_bottom = 0.919786
-margin_top = -1.90735e-06
 custom_constants/vseparation = 20
 custom_constants/hseparation = 50
 columns = 2
@@ -71,15 +82,15 @@ margin_bottom = 28.0
 size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="TabContainer/Audio/GridContainer/HBoxContainer"]
-margin_top = 7.0
-margin_right = 8.0
-margin_bottom = 21.0
+margin_right = 13.0
+margin_bottom = 28.0
+custom_fonts/font = SubResource( 3 )
 text = "0"
 
 [node name="SliderAudioMaster" type="HSlider" parent="TabContainer/Audio/GridContainer/HBoxContainer"]
-margin_left = 12.0
+margin_left = 17.0
 margin_top = 6.0
-margin_right = 190.0
+margin_right = 175.0
 margin_bottom = 22.0
 size_flags_horizontal = 3
 size_flags_vertical = 4
@@ -89,10 +100,10 @@ tick_count = 5
 ticks_on_borders = true
 
 [node name="Label2" type="Label" parent="TabContainer/Audio/GridContainer/HBoxContainer"]
-margin_left = 194.0
-margin_top = 7.0
+margin_left = 179.0
 margin_right = 218.0
-margin_bottom = 21.0
+margin_bottom = 28.0
+custom_fonts/font = SubResource( 3 )
 text = "100"
 
 [node name="Label2" type="Label" parent="TabContainer/Audio/GridContainer"]
@@ -112,15 +123,15 @@ margin_bottom = 76.0
 size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="TabContainer/Audio/GridContainer/HBoxContainer2"]
-margin_top = 7.0
-margin_right = 8.0
-margin_bottom = 21.0
+margin_right = 13.0
+margin_bottom = 28.0
+custom_fonts/font = SubResource( 3 )
 text = "0"
 
 [node name="SliderAudioSFX" type="HSlider" parent="TabContainer/Audio/GridContainer/HBoxContainer2"]
-margin_left = 12.0
+margin_left = 17.0
 margin_top = 6.0
-margin_right = 190.0
+margin_right = 175.0
 margin_bottom = 22.0
 size_flags_horizontal = 3
 size_flags_vertical = 4
@@ -130,10 +141,10 @@ tick_count = 5
 ticks_on_borders = true
 
 [node name="Label2" type="Label" parent="TabContainer/Audio/GridContainer/HBoxContainer2"]
-margin_left = 194.0
-margin_top = 7.0
+margin_left = 179.0
 margin_right = 218.0
-margin_bottom = 21.0
+margin_bottom = 28.0
+custom_fonts/font = SubResource( 3 )
 text = "100"
 
 [node name="Label3" type="Label" parent="TabContainer/Audio/GridContainer"]
@@ -153,15 +164,15 @@ margin_bottom = 124.0
 size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="TabContainer/Audio/GridContainer/HBoxContainer3"]
-margin_top = 7.0
-margin_right = 8.0
-margin_bottom = 21.0
+margin_right = 13.0
+margin_bottom = 28.0
+custom_fonts/font = SubResource( 3 )
 text = "0"
 
 [node name="SliderAudioMusic" type="HSlider" parent="TabContainer/Audio/GridContainer/HBoxContainer3"]
-margin_left = 12.0
+margin_left = 17.0
 margin_top = 6.0
-margin_right = 190.0
+margin_right = 175.0
 margin_bottom = 22.0
 size_flags_horizontal = 3
 size_flags_vertical = 4
@@ -171,10 +182,10 @@ tick_count = 5
 ticks_on_borders = true
 
 [node name="Label2" type="Label" parent="TabContainer/Audio/GridContainer/HBoxContainer3"]
-margin_left = 194.0
-margin_top = 7.0
+margin_left = 179.0
 margin_right = 218.0
-margin_bottom = 21.0
+margin_bottom = 28.0
+custom_fonts/font = SubResource( 3 )
 text = "100"
 
 [node name="Gameplay" type="Tabs" parent="TabContainer"]
@@ -184,13 +195,13 @@ margin_left = 4.0
 margin_top = 32.0
 margin_right = -4.0
 margin_bottom = -4.0
+custom_fonts/font = SubResource( 4 )
 
 [node name="GridContainer" type="GridContainer" parent="TabContainer/Gameplay"]
 anchor_left = 0.158228
 anchor_top = 0.0802138
 anchor_right = 0.841772
 anchor_bottom = 0.919786
-margin_top = -1.90735e-06
 custom_constants/vseparation = 20
 custom_constants/hseparation = 50
 columns = 2
@@ -199,95 +210,62 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="TabContainer/Gameplay/GridContainer"]
-margin_right = 123.0
+margin_right = 98.0
 margin_bottom = 59.0
 custom_fonts/font = SubResource( 4 )
-text = "Mouse 
-Sensitivity"
+text = "Snap 
+Turning"
 align = 2
 valign = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Gameplay/GridContainer"]
-margin_left = 173.0
-margin_right = 431.0
+margin_left = 148.0
+margin_right = 432.0
 margin_bottom = 59.0
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="TabContainer/Gameplay/GridContainer/HBoxContainer"]
-margin_top = 22.0
-margin_right = 8.0
-margin_bottom = 36.0
-text = "0"
-
-[node name="SliderMouseSense" type="HSlider" parent="TabContainer/Gameplay/GridContainer/HBoxContainer"]
-margin_left = 12.0
-margin_top = 21.0
-margin_right = 230.0
-margin_bottom = 37.0
-size_flags_horizontal = 3
-size_flags_vertical = 4
-max_value = 1.0
-step = 0.05
-value = 0.5
-tick_count = 5
-ticks_on_borders = true
-
-[node name="Label2" type="Label" parent="TabContainer/Gameplay/GridContainer/HBoxContainer"]
-margin_left = 234.0
-margin_top = 22.0
-margin_right = 258.0
-margin_bottom = 36.0
-text = "100"
+[node name="SnapTurnCheckButton" type="CheckButton" parent="TabContainer/Gameplay/GridContainer/HBoxContainer"]
+margin_right = 76.0
+margin_bottom = 59.0
 
 [node name="Label2" type="Label" parent="TabContainer/Gameplay/GridContainer"]
-margin_top = 79.0
-margin_right = 123.0
-margin_bottom = 138.0
+margin_top = 115.0
+margin_right = 98.0
+margin_bottom = 143.0
 custom_fonts/font = SubResource( 4 )
-text = "Gamepad 
-Sensitivity"
+text = "Teleport"
 align = 2
 valign = 1
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="TabContainer/Gameplay/GridContainer"]
-margin_left = 173.0
+margin_left = 148.0
 margin_top = 79.0
-margin_right = 431.0
-margin_bottom = 138.0
+margin_right = 432.0
+margin_bottom = 179.0
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="TabContainer/Gameplay/GridContainer/HBoxContainer2"]
-margin_top = 22.0
-margin_right = 8.0
-margin_bottom = 36.0
-text = "0"
+[node name="TeleportCheckButton" type="CheckButton" parent="TabContainer/Gameplay/GridContainer/HBoxContainer2"]
+margin_right = 76.0
+margin_bottom = 100.0
 
-[node name="SliderPadSense" type="HSlider" parent="TabContainer/Gameplay/GridContainer/HBoxContainer2"]
-margin_left = 12.0
-margin_top = 21.0
-margin_right = 230.0
-margin_bottom = 37.0
-size_flags_horizontal = 3
-size_flags_vertical = 4
-max_value = 1.0
-step = 0.05
-value = 0.5
-tick_count = 5
-ticks_on_borders = true
+[node name="TextureRect" type="TextureRect" parent="TabContainer/Gameplay/GridContainer/HBoxContainer2"]
+margin_left = 80.0
+margin_right = 180.0
+margin_bottom = 100.0
+texture = ExtResource( 4 )
 
-[node name="Label2" type="Label" parent="TabContainer/Gameplay/GridContainer/HBoxContainer2"]
-margin_left = 234.0
-margin_top = 22.0
-margin_right = 258.0
-margin_bottom = 36.0
-text = "100"
+[node name="TextureRect2" type="TextureRect" parent="TabContainer/Gameplay/GridContainer/HBoxContainer2"]
+margin_left = 184.0
+margin_right = 284.0
+margin_bottom = 100.0
+texture = ExtResource( 3 )
 
 [node name="BtnBack" type="Button" parent="."]
 anchor_left = 0.759766
 anchor_top = 0.131667
 anchor_right = 0.8125
 anchor_bottom = 0.19
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 5 )
 text = "Back"
 __meta__ = {
 "_edit_use_anchors_": true
@@ -296,6 +274,6 @@ __meta__ = {
 [connection signal="value_changed" from="TabContainer/Audio/GridContainer/HBoxContainer/SliderAudioMaster" to="." method="_on_slider_audio_master_value_changed"]
 [connection signal="value_changed" from="TabContainer/Audio/GridContainer/HBoxContainer2/SliderAudioSFX" to="." method="_on_slider_audio_sfx_value_changed"]
 [connection signal="value_changed" from="TabContainer/Audio/GridContainer/HBoxContainer3/SliderAudioMusic" to="." method="_on_sider_audio_music_value_changed"]
-[connection signal="value_changed" from="TabContainer/Gameplay/GridContainer/HBoxContainer/SliderMouseSense" to="." method="_on_slider_mouse_sense_value_changed"]
-[connection signal="value_changed" from="TabContainer/Gameplay/GridContainer/HBoxContainer2/SliderPadSense" to="." method="_on_slider_pad_sense_value_changed"]
+[connection signal="pressed" from="TabContainer/Gameplay/GridContainer/HBoxContainer/SnapTurnCheckButton" to="." method="_on_SnapTurnCheckButton_pressed"]
+[connection signal="pressed" from="TabContainer/Gameplay/GridContainer/HBoxContainer2/TeleportCheckButton" to="." method="_on_TeleportCheckButton_pressed"]
 [connection signal="pressed" from="BtnBack" to="." method="_on_btn_back_pressed"]

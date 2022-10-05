@@ -50,6 +50,7 @@ resource_local_to_scene = true
 size = Vector2( 0.4, 0.1 )
 
 [sub_resource type="ViewportTexture" id=22]
+flags = 4
 
 [sub_resource type="SpatialMaterial" id=13]
 resource_local_to_scene = true
@@ -485,6 +486,7 @@ material = ExtResource( 26 )
 
 [node name="Function_Turn_movement" parent="FPController/RightHandController" instance=ExtResource( 1 )]
 smooth_rotation = true
+step_turn_angle = 45.0
 
 [node name="Function_Pickup" parent="FPController/RightHandController" instance=ExtResource( 20 )]
 grab_collision_mask = 3

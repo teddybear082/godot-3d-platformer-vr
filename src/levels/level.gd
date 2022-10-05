@@ -79,7 +79,13 @@ func _ready() -> void:
 	_level_ui_vr.set_label_golden_time(_golden_time_s)
 	_open_exits()
 
-
+	#Set VR options from settings menu
+	if UserData.use_snap_turn == true:
+		_player.get_node("FPController/RightHandController/Function_Turn_movement").smooth_rotation = false
+	if UserData.use_teleport == true:
+		_player.get_node("FPController/LeftHandController/Function_Teleport").enabled = true
+		_player.get_node("FPController/RightHandController/Function_Teleport").enabled = true
+		
 func _process(delta: float) -> void:
 	_time_elapsed += delta
 	_level_ui.set_label_time(_time_elapsed)

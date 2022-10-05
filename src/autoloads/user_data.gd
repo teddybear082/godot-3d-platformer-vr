@@ -10,6 +10,8 @@ var audio_vol_master: float = 0.5 setget set_audio_vol_master
 var audio_vol_music: float = 0.5 setget set_audio_vol_music
 var audio_vol_sfx: float = 0.5 setget set_audio_vol_sfx
 
+var use_snap_turn: bool = false setget set_use_snap_turn
+var use_teleport: bool = false setget set_use_teleport
 
 func _ready() -> void:
 	var data: Dictionary = SaveLoad.load_user_data()
@@ -23,6 +25,8 @@ func _ready() -> void:
 	audio_vol_music = data["audio_vol_music"]
 	audio_vol_sfx = data["audio_vol_sfx"]
 
+	use_snap_turn = data["use_snap_turn"]
+	use_teleport = data["use_teleport"]
 
 func set_mouse_sensitivity(val: float) -> void:
 	mouse_sensitivity = clamp(val, 0.05, 1.0)
@@ -43,6 +47,11 @@ func set_audio_vol_music(val: float) -> void:
 func set_audio_vol_sfx(val: float) -> void:
 	audio_vol_sfx = clamp(val, 0, 1.0)
 
+func set_use_snap_turn(val: bool) -> void:
+	use_snap_turn = val
+	
+func set_use_teleport(val: bool) -> void:
+	use_teleport = val
 
 func save_to_disk() -> void:
 	var data: Dictionary = {
@@ -52,5 +61,7 @@ func save_to_disk() -> void:
 		"audio_vol_master": audio_vol_master,
 		"audio_vol_music": audio_vol_music,
 		"audio_vol_sfx": audio_vol_sfx,
+		"use_snap_turn" : use_snap_turn,
+		"use_teleport" : use_teleport
 	}
 	SaveLoad.save_user_data(data)
