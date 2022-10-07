@@ -1,0 +1,310 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://raw_assets/fonts/SafetyThirdRegular-vmm77.ttf" type="DynamicFontData" id=10]
+[ext_resource path="res://src/ui/credits_popup/credits_popup.gd" type="Script" id=11]
+
+[sub_resource type="DynamicFont" id=1]
+size = 20
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 10 )
+
+[node name="credits_popup" type="Popup"]
+visible = true
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 11 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_left = 0.181641
+anchor_top = 0.150833
+anchor_right = 0.818359
+anchor_bottom = 0.849167
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Panel" type="Panel" parent="."]
+anchor_left = 0.1875
+anchor_top = 0.158333
+anchor_right = 0.8125
+anchor_bottom = 0.841667
+margin_right = 975.0
+margin_bottom = 572.667
+rect_min_size = Vector2( 640, 410 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="BtnBack" type="Button" parent="Panel"]
+anchor_left = 0.917188
+anchor_right = 1.0
+anchor_bottom = 0.0780488
+margin_right = -0.000305176
+custom_fonts/font = SubResource( 1 )
+text = "Back"
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = 30.0
+margin_right = -20.0
+margin_bottom = -20.0
+custom_constants/separation = 30
+
+[node name="Title" type="Label" parent="Panel/VBoxContainer"]
+margin_right = 960.0
+margin_bottom = 28.0
+custom_colors/font_color = Color( 0.0156863, 0.196078, 0.458824, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "Credits"
+align = 1
+valign = 1
+
+[node name="GridContainer" type="GridContainer" parent="Panel/VBoxContainer"]
+margin_left = 193.0
+margin_top = 58.0
+margin_right = 767.0
+margin_bottom = 435.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+custom_constants/vseparation = 10
+custom_constants/hseparation = 40
+columns = 3
+
+[node name="Empty" type="Control" parent="Panel/VBoxContainer/GridContainer"]
+margin_right = 282.0
+margin_bottom = 28.0
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/GridContainer"]
+margin_left = 322.0
+margin_right = 534.0
+margin_bottom = 28.0
+custom_fonts/font = SubResource( 1 )
+align = 1
+valign = 1
+
+[node name="Label2" type="Label" parent="Panel/VBoxContainer/GridContainer"]
+margin_left = 574.0
+margin_right = 574.0
+margin_bottom = 28.0
+custom_fonts/font = SubResource( 1 )
+align = 1
+valign = 1
+
+[node name="Label3" type="Label" parent="Panel/VBoxContainer/GridContainer"]
+margin_top = 49.0
+margin_right = 282.0
+margin_bottom = 77.0
+custom_colors/font_color = Color( 0.0156863, 0.196078, 0.458824, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "Flatscreen Game"
+align = 2
+
+[node name="Control" type="Control" parent="Panel/VBoxContainer/GridContainer"]
+margin_left = 322.0
+margin_top = 38.0
+margin_right = 534.0
+margin_bottom = 88.0
+rect_min_size = Vector2( 0, 50 )
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/GridContainer/Control"]
+margin_right = 40.0
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 1 )
+text = "thelastflapjack"
+
+[node name="Control2" type="Control" parent="Panel/VBoxContainer/GridContainer"]
+margin_left = 574.0
+margin_top = 38.0
+margin_right = 574.0
+margin_bottom = 88.0
+rect_min_size = Vector2( 0, 50 )
+
+[node name="Label4" type="Label" parent="Panel/VBoxContainer/GridContainer"]
+margin_top = 109.0
+margin_right = 282.0
+margin_bottom = 137.0
+custom_colors/font_color = Color( 0.0156863, 0.196078, 0.458824, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "VR Conversion"
+align = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer/GridContainer"]
+margin_left = 322.0
+margin_top = 98.0
+margin_right = 534.0
+margin_bottom = 148.0
+
+[node name="Control3" type="Control" parent="Panel/VBoxContainer/GridContainer/HBoxContainer"]
+margin_right = 50.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+
+[node name="TextureRect" type="TextureRect" parent="Panel/VBoxContainer/GridContainer/HBoxContainer/Control3"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -50.0
+margin_top = -50.0
+margin_right = 50.0
+margin_bottom = 50.0
+rect_scale = Vector2( 0.5, 0.5 )
+rect_pivot_offset = Vector2( 50, 50 )
+
+[node name="Control4" type="Control" parent="Panel/VBoxContainer/GridContainer/HBoxContainer"]
+margin_left = 54.0
+margin_right = 104.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/GridContainer/HBoxContainer/Control4"]
+margin_right = 156.0
+margin_bottom = 28.0
+custom_fonts/font = SubResource( 1 )
+text = "teddybear082"
+
+[node name="Control5" type="Control" parent="Panel/VBoxContainer/GridContainer/HBoxContainer"]
+margin_left = 108.0
+margin_right = 158.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+
+[node name="TextureRect" type="TextureRect" parent="Panel/VBoxContainer/GridContainer/HBoxContainer/Control5"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -50.0
+margin_top = -50.0
+margin_right = 50.0
+margin_bottom = 50.0
+rect_scale = Vector2( 0.5, 0.5 )
+rect_pivot_offset = Vector2( 50, 50 )
+
+[node name="Control6" type="Control" parent="Panel/VBoxContainer/GridContainer/HBoxContainer"]
+margin_left = 162.0
+margin_right = 212.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+
+[node name="TextureRect" type="TextureRect" parent="Panel/VBoxContainer/GridContainer/HBoxContainer/Control6"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -50.0
+margin_top = -50.0
+margin_right = 50.0
+margin_bottom = 50.0
+rect_scale = Vector2( 0.5, 0.5 )
+rect_pivot_offset = Vector2( 50, 50 )
+
+[node name="Control4" type="Control" parent="Panel/VBoxContainer/GridContainer"]
+margin_left = 574.0
+margin_top = 98.0
+margin_right = 574.0
+margin_bottom = 148.0
+rect_min_size = Vector2( 0, 50 )
+
+[node name="Label5" type="Label" parent="Panel/VBoxContainer/GridContainer"]
+margin_top = 169.0
+margin_right = 282.0
+margin_bottom = 197.0
+custom_colors/font_color = Color( 0.0156863, 0.196078, 0.458824, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "Audio and Sound Effects"
+align = 2
+
+[node name="Control5" type="Control" parent="Panel/VBoxContainer/GridContainer"]
+margin_left = 322.0
+margin_top = 158.0
+margin_right = 534.0
+margin_bottom = 208.0
+rect_min_size = Vector2( 0, 50 )
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/GridContainer/Control5"]
+margin_right = 40.0
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 1 )
+text = "Kenney, MaxKoMusic, OwlishMedia,
+ ScottBuckley.com.au, SparklinLabs
+Freesound.org (sound #s 379234, 
+582705, 456374, 473583, 231438)"
+
+[node name="Control6" type="Control" parent="Panel/VBoxContainer/GridContainer"]
+margin_left = 574.0
+margin_top = 158.0
+margin_right = 574.0
+margin_bottom = 208.0
+rect_min_size = Vector2( 0, 50 )
+
+[node name="Label6" type="Label" parent="Panel/VBoxContainer/GridContainer"]
+margin_top = 218.0
+margin_right = 282.0
+margin_bottom = 339.0
+custom_colors/font_color = Color( 0.0156863, 0.196078, 0.458824, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "
+
+
+Control Prompt Icons"
+align = 2
+
+[node name="Control7" type="Control" parent="Panel/VBoxContainer/GridContainer"]
+margin_left = 322.0
+margin_top = 218.0
+margin_right = 534.0
+margin_bottom = 339.0
+rect_min_size = Vector2( 0, 50 )
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/GridContainer/Control7"]
+margin_right = 40.0
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 1 )
+text = "
+
+
+Nicolae (Xelu) Berbece"
+
+[node name="Control8" type="Control" parent="Panel/VBoxContainer/GridContainer"]
+margin_left = 574.0
+margin_top = 218.0
+margin_right = 574.0
+margin_bottom = 339.0
+rect_min_size = Vector2( 0, 50 )
+
+[node name="Label7" type="Label" parent="Panel/VBoxContainer/GridContainer"]
+margin_top = 349.0
+margin_right = 282.0
+margin_bottom = 377.0
+custom_colors/font_color = Color( 0.0156863, 0.196078, 0.458824, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "Godot XR Team"
+align = 2
+
+[node name="Control3" type="Control" parent="Panel/VBoxContainer/GridContainer"]
+margin_left = 322.0
+margin_top = 349.0
+margin_right = 534.0
+margin_bottom = 377.0
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/GridContainer/Control3"]
+margin_right = 40.0
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 1 )
+text = "Bastiaan Olij (\"Mux613\") and
+ MalcolmNixon for Open XR and
+ XRTools Assets, Lejar for Radial 
+Menu Code, DigitalN8m4r3 for Avatar"
+
+[connection signal="pressed" from="Panel/BtnBack" to="." method="_on_BtnBack_pressed"]

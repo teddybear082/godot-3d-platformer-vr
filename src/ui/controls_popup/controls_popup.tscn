@@ -21,7 +21,6 @@ use_filter = true
 font_data = ExtResource( 1 )
 
 [node name="ControlsPopup" type="Popup"]
-visible = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 2 )

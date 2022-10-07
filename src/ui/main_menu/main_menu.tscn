@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://raw_assets/fonts/SafetyThirdRegular-vmm77.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://src/ui/main_menu/main_menu.gd" type="Script" id=2]
 [ext_resource path="res://src/ui/settings_popup/settings_popup.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/ui/controls_popup/controls_popup.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/ui/credits_popup/credits_popup.tscn" type="PackedScene" id=5]
 
 [sub_resource type="DynamicFont" id=2]
 size = 60
@@ -55,14 +56,14 @@ valign = 1
 [node name="Buttons" type="CenterContainer" parent="Panel/VBoxContainer2"]
 margin_top = 181.0
 margin_right = 984.0
-margin_bottom = 423.0
+margin_bottom = 486.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/VBoxContainer2/Buttons"]
 margin_left = 352.0
 margin_right = 632.0
-margin_bottom = 242.0
+margin_bottom = 305.0
 custom_constants/separation = 10
 
 [node name="BtnLevel" type="Button" parent="Panel/VBoxContainer2/Buttons/VBoxContainer"]
@@ -93,12 +94,25 @@ margin_bottom = 242.0
 custom_fonts/font = SubResource( 1 )
 text = "Exit"
 
+[node name="BtnCredits" type="Button" parent="Panel/VBoxContainer2/Buttons/VBoxContainer"]
+margin_top = 252.0
+margin_right = 280.0
+margin_bottom = 305.0
+custom_fonts/font = SubResource( 1 )
+text = "Credits"
+
 [node name="SettingsPopup" parent="." instance=ExtResource( 3 )]
+visible = false
 
 [node name="ControlsPopup" parent="." instance=ExtResource( 4 )]
-visible = false
+
+[node name="CreditsPopup" parent="." instance=ExtResource( 5 )]
 
 [connection signal="pressed" from="Panel/VBoxContainer2/Buttons/VBoxContainer/BtnLevel" to="." method="_on_btn_level_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer2/Buttons/VBoxContainer/BtnSettings" to="." method="_on_btn_settings_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer2/Buttons/VBoxContainer/BtnControls" to="." method="_on_btn_controls_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer2/Buttons/VBoxContainer/BtnExit" to="." method="_on_btn_exit_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer2/Buttons/VBoxContainer/BtnCredits" to="." method="_on_BtnCredits_pressed"]
+[connection signal="play_menu_click" from="SettingsPopup" to="." method="_on_SettingsPopup_play_menu_click"]
+[connection signal="play_menu_click" from="ControlsPopup" to="." method="_on_ControlsPopup_play_menu_click"]
+[connection signal="play_menu_click" from="CreditsPopup" to="." method="_on_CreditsPopup_play_menu_click"]

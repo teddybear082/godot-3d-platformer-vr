@@ -4,7 +4,7 @@ extends Popup
 
 
 ### Signals ###
-
+signal play_menu_click
 ### Enums ###
 
 ### Constants ###
@@ -48,6 +48,7 @@ func _ready() -> void:
 # Signal Connected Methods #
 ############################
 func _on_btn_back_pressed() -> void:
+	emit_signal("play_menu_click")
 	set_visible(false)
 	UserData.save_to_disk()
 

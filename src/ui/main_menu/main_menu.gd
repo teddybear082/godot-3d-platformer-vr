@@ -73,6 +73,24 @@ func _on_btn_exit_pressed() -> void:
 
 
 
+func _on_BtnCredits_pressed() -> void:
+	emit_signal("play_menu_click")
+	$CreditsPopup.popup()
+	pass
+
+func _on_SettingsPopup_play_menu_click():
+	emit_signal("play_menu_click")
+
+
+func _on_ControlsPopup_play_menu_click():
+	emit_signal("play_menu_click")
+	
+
+func _on_CreditsPopup_play_menu_click():
+	emit_signal("play_menu_click")
+
+
+
 ############################
 #      Private Methods     #
 ############################

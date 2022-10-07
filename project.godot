@@ -380,7 +380,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="pd_3d_platformer-VR"
+config/name="thrive_platformer-VR"
 run/main_scene="res://src/scene_switcher/scene_switcher.tscn"
 config/icon="res://custom_icon.png"
 config/windows_native_icon="res://custom_icon.ico"

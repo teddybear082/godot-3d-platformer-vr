@@ -209,7 +209,6 @@ font_data = ExtResource( 28 )
 
 [node name="Level" type="Spatial"]
 script = ExtResource( 10 )
-_player_node_path = NodePath("player")
 _initial_checkpoint_node_path = NodePath("Checkpoints/Checkpoint")
 _golden_time_s = 70
 

@@ -10,7 +10,7 @@ signal change_scene_request(target_scene_res_path)
 
 ### Constants ###
 
-### Exported variables ###
+### Exported  ###
 export(NodePath) var _player_node_path: NodePath
 #export(NodePath) var _camera_system_node_path: NodePath
 export(NodePath) var _initial_checkpoint_node_path: NodePath
@@ -31,6 +31,7 @@ var _checkpoint_current: Checkpoint
 var _time_since_last_coin_collected := 0.0
 var _score: int = 0 setget _set_score
 var _bonus_value: int = 1000
+var _exit_entered: bool = false
 
 ### Onready variables ###
 onready var _player = $player
@@ -150,9 +151,10 @@ func _on_body_exited_level_area(body: PhysicsBody) -> void:
 
 
 func _on_player_entered_exit(_exit: LevelExit) -> void:
-	_audio_level_exit.play()
-	
-	_end_level()
+	if _exit_entered == false:
+		_audio_level_exit.play()
+		_exit_entered = true
+		_end_level()
 
 
 func _on_extra_collectable_collected(_object_name: String, value: int) -> void:
@@ -315,7 +317,7 @@ func _respawn_player() -> void:
 func _open_exits() -> void:
 	for exit in $Exits.get_children():
 		(exit as LevelExit).set_active(true)
-
+		
 
 func _set_score(value: int) -> void:
 	_score = value
