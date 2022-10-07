@@ -107,6 +107,7 @@ visible = false
 [node name="ControlsPopup" parent="." instance=ExtResource( 4 )]
 
 [node name="CreditsPopup" parent="." instance=ExtResource( 5 )]
+visible = false
 
 [connection signal="pressed" from="Panel/VBoxContainer2/Buttons/VBoxContainer/BtnLevel" to="." method="_on_btn_level_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer2/Buttons/VBoxContainer/BtnSettings" to="." method="_on_btn_settings_pressed"]
