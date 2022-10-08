@@ -411,9 +411,10 @@ extents = Vector3( 18.3038, 25.0644, 53.4001 )
 
 [sub_resource type="QuadMesh" id=43]
 resource_local_to_scene = true
-size = Vector2( 4, 2 )
+size = Vector2( 4, 3 )
 
 [sub_resource type="ViewportTexture" id=47]
+flags = 4
 
 [sub_resource type="SpatialMaterial" id=45]
 resource_local_to_scene = true
@@ -424,7 +425,7 @@ albedo_texture = SubResource( 47 )
 
 [sub_resource type="BoxShape" id=46]
 resource_local_to_scene = true
-extents = Vector3( 2, 1, 0.01 )
+extents = Vector3( 2, 1.5, 0.01 )
 
 [node name="Level" type="Spatial"]
 script = ExtResource( 20 )
@@ -1156,13 +1157,13 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 37.5, 215 )
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 38.5297, 220.198 )
 visible = false
 script = ExtResource( 25 )
-screen_size = Vector2( 4, 2 )
-viewport_size = Vector2( 800, 450 )
+screen_size = Vector2( 4, 3 )
+viewport_size = Vector2( 800, 600 )
 scene = ExtResource( 28 )
 viewport_update_threshold = 90
 
 [node name="Viewport" type="Viewport" parent="LevelEndScreenViewport"]
-size = Vector2( 800, 450 )
+size = Vector2( 800, 600 )
 transparent_bg = true
 usage = 0
 render_target_v_flip = true
@@ -1176,8 +1177,8 @@ material/0 = SubResource( 45 )
 collision_layer = 15
 collision_mask = 0
 script = ExtResource( 26 )
-screen_size = Vector2( 4, 2 )
-viewport_size = Vector2( 800, 450 )
+screen_size = Vector2( 4, 3 )
+viewport_size = Vector2( 800, 600 )
 
 [node name="CollisionShape" type="CollisionShape" parent="LevelEndScreenViewport/StaticBody"]
 shape = SubResource( 46 )

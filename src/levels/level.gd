@@ -87,6 +87,9 @@ func _ready() -> void:
 		_player.get_node("FPController/LeftHandController/Function_Teleport").enabled = true
 		_player.get_node("FPController/RightHandController/Function_Teleport").enabled = true
 		
+	if UserData.use_seated_mode == true:
+		_player.get_node("FPController/PlayerBody").player_height_offset = 0.5
+		
 func _process(delta: float) -> void:
 	_time_elapsed += delta
 	_level_ui.set_label_time(_time_elapsed)
@@ -394,10 +397,16 @@ func _end_level() -> void:
 	_level_end_screen_vr.label_no_death_bonus.set_text(str(bonus_scores[2]))
 	_level_end_screen_vr.label_golden_time_bonus.set_text(str(bonus_scores[3]))
 	_level_end_screen_vr.label_bonus_score_total.set_text(str(bonus_total))
+	_level_end_screen_vr.label_time_deduct.set_text(str(-(int(_time_elapsed))))
+	_score-=int(_time_elapsed)
 	_level_end_screen_vr.label_total_score.set_text(str(_score))
 	
 	_save_score()
+	
+	#Save scores to silent wolf
 	SilentWolf.Scores.persist_score(UserData.user_name, _score, _level_name)
+	
+	#Save completion of level0 to local user data to unlock other levels
 	if filename.get_file() == "level_0.tscn":
 		UserData.is_level_0_complete = true
 		UserData.save_to_disk()

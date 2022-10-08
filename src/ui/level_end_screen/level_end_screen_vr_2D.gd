@@ -31,6 +31,7 @@ onready var label_no_death_bonus: Label = find_node("LabelNoDeathBonus", true)
 onready var label_golden_time_bonus: Label = find_node("LabelGoldenTimeBonus", true)
 onready var label_bonus_score_total: Label = find_node("LabelBonusScoreTotal", true)
 onready var label_total_score: Label = find_node("LabelTotalScore", true)
+onready var label_time_deduct: Label = find_node("LabelTimeDeduct", true)
 onready var btn_retry = find_node("BtnRetry", true)
 onready var btn_exit = find_node("BtnExit", true)
 

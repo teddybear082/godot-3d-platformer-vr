@@ -260,6 +260,25 @@ margin_right = 284.0
 margin_bottom = 100.0
 texture = ExtResource( 3 )
 
+[node name="Label3" type="Label" parent="TabContainer/Gameplay/GridContainer"]
+margin_top = 199.0
+margin_right = 98.0
+margin_bottom = 258.0
+custom_fonts/font = SubResource( 4 )
+text = "Seated
+Mode"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="TabContainer/Gameplay/GridContainer"]
+margin_left = 148.0
+margin_top = 199.0
+margin_right = 432.0
+margin_bottom = 258.0
+size_flags_horizontal = 3
+
+[node name="SeatedModeCheckButton" type="CheckButton" parent="TabContainer/Gameplay/GridContainer/HBoxContainer3"]
+margin_right = 76.0
+margin_bottom = 59.0
+
 [node name="BtnBack" type="Button" parent="."]
 anchor_left = 0.759766
 anchor_top = 0.131667
@@ -276,4 +295,5 @@ __meta__ = {
 [connection signal="value_changed" from="TabContainer/Audio/GridContainer/HBoxContainer3/SliderAudioMusic" to="." method="_on_sider_audio_music_value_changed"]
 [connection signal="pressed" from="TabContainer/Gameplay/GridContainer/HBoxContainer/SnapTurnCheckButton" to="." method="_on_SnapTurnCheckButton_pressed"]
 [connection signal="pressed" from="TabContainer/Gameplay/GridContainer/HBoxContainer2/TeleportCheckButton" to="." method="_on_TeleportCheckButton_pressed"]
+[connection signal="pressed" from="TabContainer/Gameplay/GridContainer/HBoxContainer3/SeatedModeCheckButton" to="." method="_on_SeatedModeCheckButton_pressed"]
 [connection signal="pressed" from="BtnBack" to="." method="_on_btn_back_pressed"]

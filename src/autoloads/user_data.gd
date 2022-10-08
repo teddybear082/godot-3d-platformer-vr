@@ -14,7 +14,10 @@ var use_snap_turn: bool = false setget set_use_snap_turn
 var use_teleport: bool = false setget set_use_teleport
 
 var user_name: String = "Player" setget set_user_name
+
+#variables not stored in persistent User data
 var apiKey = null
+var use_seated_mode : bool = false
 
 func _ready() -> void:
 	var f = File.new()
