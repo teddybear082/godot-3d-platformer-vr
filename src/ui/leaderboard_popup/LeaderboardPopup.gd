@@ -5,13 +5,15 @@ extends Popup
 # var a = 2
 # var b = "text"
 signal play_menu_click
-var current_leaderboard = 1
-var panel_children : Array = []
+var current_leaderboard = null
+var current_leaderboard_num = 0
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	panel_children = $Panel.get_children() # Replace with function body.
-
-
+	current_leaderboard = load("res://src/ui/leaderboard_popup/level_0.tscn").instance()
+	$Panel.add_child(current_leaderboard)
+	current_leaderboard_num = 0
+	current_leaderboard.connect("leaderboard_closed", self, "_on_Leaderboard_leaderboard_closed")
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
@@ -23,13 +25,11 @@ func _on_Leaderboard_leaderboard_closed():
 
 
 func _on_BtnNext_pressed():
-	
-	if current_leaderboard > 1 and current_leaderboard <= 8:
-		panel_children[current_leaderboard-1].visible = false
-		panel_children[current_leaderboard].visible = true
-		current_leaderboard += 1
-	else:
-		current_leaderboard = 1
-		panel_children[8].visible = false
-		panel_children[current_leaderboard].visible = true
-		current_leaderboard += 1
+	$Panel.remove_child(current_leaderboard)
+	current_leaderboard.queue_free()
+	current_leaderboard_num+=1
+	if current_leaderboard_num > 7:
+		current_leaderboard_num = 0
+	current_leaderboard = load("res://src/ui/leaderboard_popup/level_" + str(current_leaderboard_num) + ".tscn").instance()
+	$Panel.add_child(current_leaderboard)
+	current_leaderboard.connect("leaderboard_closed", self, "_on_Leaderboard_leaderboard_closed")

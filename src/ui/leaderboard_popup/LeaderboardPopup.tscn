@@ -1,6 +1,5 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://addons/silent_wolf/Scores/Leaderboard.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/ui/leaderboard_popup/LeaderboardPopup.gd" type="Script" id=2]
 [ext_resource path="res://raw_assets/fonts/SafetyThirdRegular-vmm77.ttf" type="DynamicFontData" id=3]
 
@@ -14,12 +13,12 @@ font_data = ExtResource( 3 )
 
 [node name="LeaderboardPopup" type="Popup"]
 margin_right = 1024.0
-margin_bottom = 600.0
+margin_bottom = 1000.0
 script = ExtResource( 2 )
 
 [node name="Panel" type="Panel" parent="."]
 margin_right = 1024.0
-margin_bottom = 600.0
+margin_bottom = 1000.0
 
 [node name="BtnNext" type="Button" parent="Panel"]
 anchor_left = 0.917188
@@ -32,9 +31,4 @@ __meta__ = {
 "_edit_use_anchors_": true
 }
 
-[node name="level_0" parent="Panel" instance=ExtResource( 1 )]
-modulate = Color( 0.0156863, 0.196078, 0.458824, 1 )
-position = Vector2( -450, 0 )
-
 [connection signal="pressed" from="Panel/BtnNext" to="." method="_on_BtnNext_pressed"]
-[connection signal="leaderboard_closed" from="Panel/level_0" to="." method="_on_Leaderboard_leaderboard_closed"]
