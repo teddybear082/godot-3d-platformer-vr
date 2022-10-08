@@ -6,10 +6,11 @@ const SWLogger = preload("../utils/SWLogger.gd")
 
 var list_index = 0
 # Replace the leaderboard name if you're not using the default leaderboard
-var ld_name = self.name #"main"
+var ld_name = null #"main"
 signal leaderboard_closed()
 
 func _ready():
+	var ld_name = self.name
 	self.get_node("Board/TitleContainer/Label").text = self.name + " Leaderboard"
 	print("SilentWolf.Scores.leaderboards: " + str(SilentWolf.Scores.leaderboards))
 	print("SilentWolf.Scores.ldboard_config: " + str(SilentWolf.Scores.ldboard_config))
@@ -24,7 +25,8 @@ func _ready():
 	else:
 		# use a signal to notify when the high scores have been returned, and show a "loading" animation until it's the case...
 		add_loading_scores_message()
-		yield(SilentWolf.Scores.get_high_scores(0, ld_name), "sw_scores_received")
+		yield(get_tree().create_timer(0.1), "timeout")
+		yield(SilentWolf.Scores.get_high_scores(10, ld_name, 0), "sw_scores_received")
 		print(str(SilentWolf.Scores.leaderboards[ld_name]))
 		hide_message()
 		render_board(SilentWolf.Scores.scores, local_scores)
@@ -39,7 +41,8 @@ func render_board(scores, local_scores):
 			add_no_scores_message()
 	else:
 		if !scores:
-			add_no_scores_message()
+			#add_no_scores_message()
+			pass
 	if !all_scores:
 		for score in scores:
 			add_item(score.player_name, str(int(score.score)))

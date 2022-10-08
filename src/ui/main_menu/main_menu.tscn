@@ -135,7 +135,6 @@ visible = false
 visible = false
 
 [node name="LeaderboardPopup" parent="." instance=ExtResource( 6 )]
-visible = false
 
 [connection signal="focus_entered" from="Panel/VBoxContainer2/Buttons/VBoxContainer/EnterNameLineEdit" to="." method="_on_EnterNameLineEdit_focus_entered"]
 [connection signal="text_entered" from="Panel/VBoxContainer2/Buttons/VBoxContainer/EnterNameLineEdit" to="." method="_on_EnterNameLineEdit_text_entered"]

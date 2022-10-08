@@ -21,7 +21,7 @@ func _ready() -> void:
 	f.open("res://swAPIKey.env", File.READ)
 	self.apiKey = f.get_line()
 	f.close()
-	SilentWolf.configure({"api_key": self.apiKey, "game_id": "thriveplatformervr", "game_version": "0.0.0","log_level": 2})
+	SilentWolf.configure({"api_key": self.apiKey, "game_id": "thriveplatformervr", "game_version": "0.0.0","log_level": 1})
 	
 	
 	var data: Dictionary = SaveLoad.load_user_data()

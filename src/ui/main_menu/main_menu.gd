@@ -99,6 +99,14 @@ func _on_LeaderboardPopup_play_menu_click():
 
 func _on_BtnLeaderboard_pressed():
 	emit_signal("play_menu_click")
+	for leaderboard in $LeaderboardPopup.panel_children:
+		if leaderboard.name.matchn("*level*"):
+			#leaderboard.add_loading_scores_message()
+			#leaderboard.clear_leaderboard()
+			yield(SilentWolf.Scores.get_high_scores(10, leaderboard.ld_name, 0), "sw_scores_received")
+			leaderboard.hide_message()
+			leaderboard.list_index = 0
+			leaderboard.render_board(SilentWolf.Scores.scores, SilentWolf.Scores.local_scores)
 	$LeaderboardPopup.popup()
 
 
