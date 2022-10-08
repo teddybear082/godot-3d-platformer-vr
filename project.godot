@@ -387,8 +387,8 @@ config/windows_native_icon="res://custom_icon.ico"
 
 [autoload]
 
-UserData="*res://src/autoloads/user_data.gd"
 SilentWolf="*res://addons/silent_wolf/SilentWolf.gd"
+UserData="*res://src/autoloads/user_data.gd"
 
 [display]
 

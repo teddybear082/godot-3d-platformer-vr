@@ -100,6 +100,7 @@ static func load_user_data() -> Dictionary:
 			"audio_vol_music": 0.5,
 			"audio_vol_sfx": 0.5,
 			"use_snap_turn": false,
-			"use_teleport": false
+			"use_teleport": false,
+			"user_name": "Player"
 		}
 	return data

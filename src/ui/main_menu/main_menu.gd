@@ -6,6 +6,8 @@ extends Control
 ### Signals ###
 signal change_scene_request(target_scene_res_path)
 signal play_menu_click
+signal show_keyboard
+signal name_entered(new_name)
 ### Enums ###
 
 ### Constants ###
@@ -31,7 +33,7 @@ func _init() -> void:
 
 
 func _ready() -> void:
-	pass
+	find_node("EnterNameLineEdit").text = UserData.user_name
 
 
 func _input(_event: InputEvent) -> void:
@@ -76,7 +78,7 @@ func _on_btn_exit_pressed() -> void:
 func _on_BtnCredits_pressed() -> void:
 	emit_signal("play_menu_click")
 	$CreditsPopup.popup()
-	pass
+	
 
 func _on_SettingsPopup_play_menu_click():
 	emit_signal("play_menu_click")
@@ -91,6 +93,24 @@ func _on_CreditsPopup_play_menu_click():
 
 
 
+func _on_LeaderboardPopup_play_menu_click():
+	emit_signal("play_menu_click")
+
+
+func _on_BtnLeaderboard_pressed():
+	emit_signal("play_menu_click")
+	$LeaderboardPopup.popup()
+
+
+
 ############################
 #      Private Methods     #
 ############################
+
+
+func _on_EnterNameLineEdit_focus_entered():
+	emit_signal("show_keyboard")
+
+
+func _on_EnterNameLineEdit_text_entered(new_text):
+	emit_signal("name_entered", new_text) 

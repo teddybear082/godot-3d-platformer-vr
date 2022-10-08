@@ -6,9 +6,11 @@ const SWLogger = preload("../utils/SWLogger.gd")
 
 var list_index = 0
 # Replace the leaderboard name if you're not using the default leaderboard
-var ld_name = "main"
+var ld_name = self.name #"main"
+signal leaderboard_closed()
 
 func _ready():
+	self.get_node("Board/TitleContainer/Label").text = self.name + " Leaderboard"
 	print("SilentWolf.Scores.leaderboards: " + str(SilentWolf.Scores.leaderboards))
 	print("SilentWolf.Scores.ldboard_config: " + str(SilentWolf.Scores.ldboard_config))
 	#var scores = SilentWolf.Scores.scores
@@ -22,7 +24,8 @@ func _ready():
 	else:
 		# use a signal to notify when the high scores have been returned, and show a "loading" animation until it's the case...
 		add_loading_scores_message()
-		yield(SilentWolf.Scores.get_high_scores(), "sw_scores_received")
+		yield(SilentWolf.Scores.get_high_scores(0, ld_name), "sw_scores_received")
+		print(str(SilentWolf.Scores.leaderboards[ld_name]))
 		hide_message()
 		render_board(SilentWolf.Scores.scores, local_scores)
 
@@ -122,7 +125,8 @@ func clear_leaderboard():
 
 
 func _on_CloseButton_pressed():
-	var scene_name = SilentWolf.scores_config.open_scene_on_close
-	SWLogger.info("Closing SilentWolf leaderboard, switching to scene: " + str(scene_name))
+	#var scene_name = SilentWolf.scores_config.open_scene_on_close
+	#SWLogger.info("Closing SilentWolf leaderboard, switching to scene: " + str(scene_name))
 	#global.reset()
-	get_tree().change_scene(scene_name)
+	#get_tree().change_scene(scene_name)
+	emit_signal("leaderboard_closed")

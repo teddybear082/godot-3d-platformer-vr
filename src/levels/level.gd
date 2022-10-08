@@ -79,7 +79,7 @@ func _ready() -> void:
 	_level_ui_vr.set_label_extra_counter(_extras_collected, _extras_total)
 	_level_ui_vr.set_label_golden_time(_golden_time_s)
 	_open_exits()
-
+	
 	#Set VR options from settings menu
 	if UserData.use_snap_turn == true:
 		_player.get_node("FPController/RightHandController/Function_Turn_movement").smooth_rotation = false
@@ -92,7 +92,7 @@ func _process(delta: float) -> void:
 	_level_ui.set_label_time(_time_elapsed)
 	_level_ui_vr.set_label_time(_time_elapsed)
 	_time_since_last_coin_collected += delta
-
+	
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
@@ -397,7 +397,7 @@ func _end_level() -> void:
 	_level_end_screen_vr.label_total_score.set_text(str(_score))
 	
 	_save_score()
-	
+	SilentWolf.Scores.persist_score(UserData.user_name, _score, _level_name)
 	if filename.get_file() == "level_0.tscn":
 		UserData.is_level_0_complete = true
 		UserData.save_to_disk()

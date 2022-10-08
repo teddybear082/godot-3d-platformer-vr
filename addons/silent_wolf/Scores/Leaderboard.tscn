@@ -1,17 +1,16 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://addons/silent_wolf/Scores/Leaderboard.gd" type="Script" id=1]
-[ext_resource path="res://addons/silent_wolf/Scores/assets/fonts/Comfortaa-Bold.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://addons/silent_wolf/assets/fonts/Comfortaa-Bold.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://raw_assets/fonts/SafetyThirdRegular-vmm77.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://addons/silent_wolf/common/SWButton.tscn" type="PackedScene" id=4]
 
-[sub_resource type="DynamicFont" id=1]
-size = 76
-font_data = ExtResource( 2 )
-
 [sub_resource type="DynamicFont" id=2]
-size = 32
-font_data = ExtResource( 3 )
+size = 60
+outline_size = 3
+outline_color = Color( 0, 0, 0, 1 )
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 2 )
 
 [sub_resource type="Theme" id=3]
 
@@ -39,13 +38,13 @@ __meta__ = {
 
 [node name="TitleContainer" type="CenterContainer" parent="Board"]
 margin_right = 1864.0
-margin_bottom = 85.0
+margin_bottom = 81.0
 
 [node name="Label" type="Label" parent="Board/TitleContainer"]
-margin_left = 667.0
-margin_right = 1196.0
-margin_bottom = 85.0
-custom_fonts/font = SubResource( 1 )
+margin_left = 704.0
+margin_right = 1159.0
+margin_bottom = 81.0
+custom_fonts/font = SubResource( 2 )
 text = "Leaderboard"
 
 [node name="MessageContainer" type="CenterContainer" parent="Board"]
@@ -55,17 +54,17 @@ margin_right = 1864.0
 margin_bottom = 126.0
 
 [node name="TextMessage" type="Label" parent="Board/MessageContainer"]
-margin_left = 789.0
-margin_right = 1075.0
-margin_bottom = 37.0
+margin_left = 633.0
+margin_right = 1231.0
+margin_bottom = 81.0
 custom_fonts/font = SubResource( 2 )
 text = "Loading scores..."
 valign = 1
 
 [node name="HighScores" type="CenterContainer" parent="Board"]
-margin_top = 85.0
+margin_top = 81.0
 margin_right = 1864.0
-margin_bottom = 185.0
+margin_bottom = 181.0
 rect_min_size = Vector2( 0, 100 )
 theme = SubResource( 3 )
 
@@ -76,13 +75,15 @@ margin_right = 932.0
 margin_bottom = 50.0
 
 [node name="CloseButtonContainer" type="CenterContainer" parent="Board"]
-margin_top = 185.0
+margin_top = 181.0
 margin_right = 1864.0
-margin_bottom = 303.0
+margin_bottom = 308.0
 
 [node name="CloseButton" parent="Board/CloseButtonContainer" instance=ExtResource( 4 )]
-margin_left = 582.0
-margin_right = 1281.0
-margin_bottom = 118.0
+margin_left = 578.0
+margin_right = 1285.0
+margin_bottom = 127.0
+custom_fonts/font = SubResource( 2 )
 text = "Close Leaderboard"
+
 [connection signal="pressed" from="Board/CloseButtonContainer/CloseButton" to="." method="_on_CloseButton_pressed"]

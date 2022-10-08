@@ -13,7 +13,17 @@ var audio_vol_sfx: float = 0.5 setget set_audio_vol_sfx
 var use_snap_turn: bool = false setget set_use_snap_turn
 var use_teleport: bool = false setget set_use_teleport
 
+var user_name: String = "Player" setget set_user_name
+var apiKey = null
+
 func _ready() -> void:
+	var f = File.new()
+	f.open("res://swAPIKey.env", File.READ)
+	self.apiKey = f.get_line()
+	f.close()
+	SilentWolf.configure({"api_key": self.apiKey, "game_id": "thriveplatformervr", "game_version": "0.0.0","log_level": 2})
+	
+	
 	var data: Dictionary = SaveLoad.load_user_data()
 	
 	is_level_0_complete = data["is_level_0_complete"]
@@ -27,6 +37,8 @@ func _ready() -> void:
 
 	use_snap_turn = data["use_snap_turn"]
 	use_teleport = data["use_teleport"]
+	
+	user_name = data["user_name"]
 
 func set_mouse_sensitivity(val: float) -> void:
 	mouse_sensitivity = clamp(val, 0.05, 1.0)
@@ -53,6 +65,9 @@ func set_use_snap_turn(val: bool) -> void:
 func set_use_teleport(val: bool) -> void:
 	use_teleport = val
 
+func set_user_name(val: String) -> void:
+	user_name = val
+
 func save_to_disk() -> void:
 	var data: Dictionary = {
 		"is_level_0_complete": is_level_0_complete,
@@ -62,6 +77,7 @@ func save_to_disk() -> void:
 		"audio_vol_music": audio_vol_music,
 		"audio_vol_sfx": audio_vol_sfx,
 		"use_snap_turn" : use_snap_turn,
-		"use_teleport" : use_teleport
+		"use_teleport" : use_teleport,
+		"user_name" : user_name
 	}
 	SaveLoad.save_user_data(data)

@@ -14,6 +14,7 @@ var _pre_load_wait_frame_count: int
 ### Onready variables ###
 onready var _anim_player: AnimationPlayer = get_node("AnimationPlayer")
 onready var _fade_rect: ColorRect = get_node("CanvasLayer/ColorRect")
+onready var _level0 = preload("res://src/levels/level_0.tscn")
 onready var _level1 = preload("res://src/levels/level_1.tscn")
 onready var _level2 = preload("res://src/levels/level_2.tscn")
 onready var _level3 = preload("res://src/levels/level_3.tscn")
