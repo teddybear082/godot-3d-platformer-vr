@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=2]
+[gd_scene load_steps=63 format=2]
 
 [ext_resource path="res://src/environments/custom_env_3.tres" type="Environment" id=1]
 [ext_resource path="res://src/level_elements/checkpoint/checkpoint.tscn" type="PackedScene" id=2]
@@ -36,6 +36,11 @@
 [ext_resource path="res://src/player/VRplayer.tscn" type="PackedScene" id=34]
 [ext_resource path="res://src/ui/level_end_screen/level_end_screen_vr_2D.tscn" type="PackedScene" id=35]
 [ext_resource path="res://raw_assets/audio/sparklinlabs/ninjaadventure/power-up.ogg" type="AudioStream" id=36]
+[ext_resource path="res://src/level_elements/voiceovers/voiceover_area.tscn" type="PackedScene" id=37]
+[ext_resource path="res://src/level_elements/voiceovers/VoiceoverController.tscn" type="PackedScene" id=38]
+[ext_resource path="res://raw_assets/audio/readloud.net/You_are_here_at_the__684.mp3" type="AudioStream" id=39]
+[ext_resource path="res://src/level_elements/voiceovers/voiceover_area.gd" type="Script" id=40]
+[ext_resource path="res://raw_assets/audio/readloud.net/Amazing__To_be_hone_146.mp3" type="AudioStream" id=41]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 56.1958, 15.9258, 51.6157 )
@@ -204,7 +209,7 @@ data = PoolVector3Array( 63, 5, -9, 63, 4, 9, 63, 4, -9, 63, 5, -9, 63, 5, 9, 63
 resource_local_to_scene = true
 size = Vector2( 4, 3 )
 
-[sub_resource type="ViewportTexture" id=21]
+[sub_resource type="ViewportTexture" id=23]
 flags = 4
 
 [sub_resource type="SpatialMaterial" id=19]
@@ -212,16 +217,19 @@ resource_local_to_scene = true
 flags_transparent = true
 flags_unshaded = true
 params_cull_mode = 2
-albedo_texture = SubResource( 21 )
+albedo_texture = SubResource( 23 )
 
 [sub_resource type="BoxShape" id=20]
 resource_local_to_scene = true
 extents = Vector3( 2, 1.5, 0.01 )
 
+[sub_resource type="BoxShape" id=22]
+extents = Vector3( 4, 4, 4 )
+
 [node name="Level" type="Spatial"]
 script = ExtResource( 10 )
 _initial_checkpoint_node_path = NodePath("Checkpoints/Checkpoint")
-_golden_time_s = 130
+_golden_time_s = 270
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource( 1 )
@@ -1057,9 +1065,33 @@ viewport_size = Vector2( 800, 600 )
 [node name="CollisionShape" type="CollisionShape" parent="LevelEndScreenViewport/StaticBody"]
 shape = SubResource( 20 )
 
+[node name="VoiceoverController" parent="." instance=ExtResource( 38 )]
+
+[node name="voiceover_area" parent="VoiceoverController" instance=ExtResource( 37 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.28004, 0 )
+
+[node name="VoiceoverSound" parent="VoiceoverController/voiceover_area" index="0"]
+stream = ExtResource( 39 )
+
+[node name="voiceover_area2" type="Area" parent="VoiceoverController"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.98579, 96.2611, -79.0544 )
+collision_layer = 2
+script = ExtResource( 40 )
+
+[node name="VoiceoverSound" type="AudioStreamPlayer" parent="VoiceoverController/voiceover_area2"]
+stream = ExtResource( 41 )
+volume_db = -10.0
+bus = "SoundEffects"
+
+[node name="CollisionShape" type="CollisionShape" parent="VoiceoverController/voiceover_area2"]
+shape = SubResource( 22 )
+
 [connection signal="body_exited" from="LevelArea" to="." method="_on_body_exited_level_area"]
 [connection signal="pointer_entered" from="LevelEndScreenViewport/StaticBody" to="LevelEndScreenViewport" method="_on_pointer_entered"]
 [connection signal="pointer_exited" from="LevelEndScreenViewport/StaticBody" to="LevelEndScreenViewport" method="_on_pointer_exited"]
 [connection signal="pointer_moved" from="LevelEndScreenViewport/StaticBody" to="LevelEndScreenViewport/StaticBody" method="_on_pointer_moved"]
 [connection signal="pointer_pressed" from="LevelEndScreenViewport/StaticBody" to="LevelEndScreenViewport/StaticBody" method="_on_pointer_pressed"]
 [connection signal="pointer_released" from="LevelEndScreenViewport/StaticBody" to="LevelEndScreenViewport/StaticBody" method="_on_pointer_released"]
+[connection signal="body_entered" from="VoiceoverController/voiceover_area2" to="VoiceoverController/voiceover_area2" method="_on_voiceover_area_body_entered"]
+
+[editable path="VoiceoverController/voiceover_area"]

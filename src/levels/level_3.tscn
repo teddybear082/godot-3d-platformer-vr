@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=2]
+[gd_scene load_steps=50 format=2]
 
 [ext_resource path="res://src/environments/custom_env_3.tres" type="Environment" id=1]
 [ext_resource path="res://src/level_elements/checkpoint/checkpoint.tscn" type="PackedScene" id=2]
@@ -27,6 +27,9 @@
 [ext_resource path="res://addons/godot-xr-tools/objects/Viewport_2D_in_3D_body.gd" type="Script" id=25]
 [ext_resource path="res://src/ui/level_end_screen/level_end_screen_vr_2D.tscn" type="PackedScene" id=26]
 [ext_resource path="res://raw_assets/audio/sparklinlabs/ninjaadventure/power-up.ogg" type="AudioStream" id=27]
+[ext_resource path="res://raw_assets/audio/readloud.net/This_is_getting_int_778.mp3" type="AudioStream" id=28]
+[ext_resource path="res://src/level_elements/voiceovers/voiceover_area.tscn" type="PackedScene" id=29]
+[ext_resource path="res://src/level_elements/voiceovers/VoiceoverController.tscn" type="PackedScene" id=30]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 64.2378, 16.9393, 101.853 )
@@ -233,7 +236,7 @@ extents = Vector3( 2, 1.5, 0.01 )
 [node name="Level" type="Spatial"]
 script = ExtResource( 10 )
 _initial_checkpoint_node_path = NodePath("Checkpoints/Checkpoint")
-_golden_time_s = 100
+_golden_time_s = 220
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource( 1 )
@@ -745,9 +748,19 @@ viewport_size = Vector2( 800, 600 )
 [node name="CollisionShape" type="CollisionShape" parent="LevelEndScreenViewport/StaticBody"]
 shape = SubResource( 19 )
 
+[node name="VoiceoverController" parent="." instance=ExtResource( 30 )]
+
+[node name="voiceover_area" parent="VoiceoverController" instance=ExtResource( 29 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.863885, 11.6994 )
+
+[node name="VoiceoverSound" parent="VoiceoverController/voiceover_area" index="0"]
+stream = ExtResource( 28 )
+
 [connection signal="body_exited" from="LevelArea" to="." method="_on_body_exited_level_area"]
 [connection signal="pointer_entered" from="LevelEndScreenViewport/StaticBody" to="LevelEndScreenViewport" method="_on_pointer_entered"]
 [connection signal="pointer_exited" from="LevelEndScreenViewport/StaticBody" to="LevelEndScreenViewport" method="_on_pointer_exited"]
 [connection signal="pointer_moved" from="LevelEndScreenViewport/StaticBody" to="LevelEndScreenViewport/StaticBody" method="_on_pointer_moved"]
 [connection signal="pointer_pressed" from="LevelEndScreenViewport/StaticBody" to="LevelEndScreenViewport/StaticBody" method="_on_pointer_pressed"]
 [connection signal="pointer_released" from="LevelEndScreenViewport/StaticBody" to="LevelEndScreenViewport/StaticBody" method="_on_pointer_released"]
+
+[editable path="VoiceoverController/voiceover_area"]

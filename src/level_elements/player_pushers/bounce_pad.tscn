@@ -85,6 +85,7 @@ material/2 = SubResource( 8 )
 shape = SubResource( 5 )
 
 [node name="PlayerPushArea" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0819266, 0 )
 collision_layer = 128
 script = ExtResource( 1 )
 _push_impulse_speed = 30.0
@@ -114,3 +115,5 @@ transform = Transform( 1, 0, 0, 0, 0.865615, 0.50071, 0, -0.50071, 0.865615, 0, 
 pixel_size = 0.001
 text = "Jump!"
 font = SubResource( 11 )
+
+[connection signal="body_entered" from="PlayerPushArea" to="PlayerPushArea" method="_on_PlayerPushArea_body_entered"]

@@ -90,6 +90,13 @@ func _ready() -> void:
 	if UserData.use_seated_mode == true:
 		_player.get_node("FPController/PlayerBody").player_height_offset = 0.5
 		
+	##If user has disabled voiceovers, disable them
+	if UserData.use_voiceovers == false:
+		var voiceovers = get_node("VoiceoverController")
+		remove_child(voiceovers)
+		voiceovers.queue_free()
+	
+		
 func _process(delta: float) -> void:
 	_time_elapsed += delta
 	_level_ui.set_label_time(_time_elapsed)

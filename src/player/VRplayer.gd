@@ -12,7 +12,7 @@ var _health_max := 100
 var _is_dead := false
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass 
+	$FPController/Configuration.set_render_target_size_multiplier(1.3)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

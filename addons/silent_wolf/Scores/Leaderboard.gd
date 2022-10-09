@@ -26,7 +26,7 @@ func _ready():
 		# use a signal to notify when the high scores have been returned, and show a "loading" animation until it's the case...
 		add_loading_scores_message()
 		yield(get_tree().create_timer(0.1), "timeout")
-		yield(SilentWolf.Scores.get_high_scores(10, ld_name, 0), "sw_scores_received")
+		yield(SilentWolf.Scores.get_high_scores(7, ld_name, 0), "sw_scores_received")
 		print(str(SilentWolf.Scores.leaderboards[ld_name]))
 		hide_message()
 		render_board(SilentWolf.Scores.scores, local_scores)

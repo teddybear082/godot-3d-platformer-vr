@@ -32,7 +32,7 @@ anchor_top = 0.158333
 anchor_right = 0.8125
 anchor_bottom = 0.841667
 margin_right = 975.0
-margin_bottom = 572.667
+margin_bottom = 722.667
 rect_min_size = Vector2( 640, 410 )
 __meta__ = {
 "_edit_use_anchors_": true
@@ -211,7 +211,8 @@ custom_fonts/font = SubResource( 1 )
 text = "Kenney, MaxKoMusic, OwlishMedia,
  ScottBuckley.com.au, SparklinLabs
 Freesound.org (sound #s 379234, 
-582705, 456374, 473583, 231438)"
+582705, 456374, 473583, 231438)
+readloud.net (AI Voiceovers)"
 
 [node name="Control6" type="Control" parent="Panel/VBoxContainer/GridContainer"]
 margin_left = 520.0
@@ -277,6 +278,7 @@ custom_fonts/font = SubResource( 1 )
 text = "Bastiaan Olij and MalcolmNixon 
 for Open XR and XRTools Assets, 
 Lejar for Radial Menu Code, 
-DigitalN8m4r3 for Avatar"
+DigitalN8m4r3 for Avatar
+JulianTodd for lots of help"
 
 [connection signal="pressed" from="Panel/BtnBack" to="." method="_on_BtnBack_pressed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=2]
+[gd_scene load_steps=56 format=2]
 
 [ext_resource path="res://src/environments/custom_env_3.tres" type="Environment" id=1]
 [ext_resource path="res://src/level_elements/checkpoint/checkpoint.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://src/ui/level_ui/level_ui.tscn" type="PackedScene" id=6]
 [ext_resource path="res://addons/godot-xr-tools/objects/Object_climbable.gd" type="Script" id=7]
 [ext_resource path="res://raw_assets/audio/sparklinlabs/ninjaadventure/power-up.ogg" type="AudioStream" id=8]
+[ext_resource path="res://src/level_elements/voiceovers/voiceover_area.tscn" type="PackedScene" id=9]
 [ext_resource path="res://src/levels/level.gd" type="Script" id=10]
 [ext_resource path="res://raw_assets/audio/sparklinlabs/ninjaadventure/succes-3.ogg" type="AudioStream" id=11]
 [ext_resource path="res://raw_assets/audio/kenney/jingles_SAX07.ogg" type="AudioStream" id=12]
@@ -29,6 +30,8 @@
 [ext_resource path="res://addons/godot-xr-tools/objects/Viewport_2D_in_3D_body.gd" type="Script" id=28]
 [ext_resource path="res://src/player/VRplayer.tscn" type="PackedScene" id=29]
 [ext_resource path="res://src/ui/level_end_screen/level_end_screen_vr_2D.tscn" type="PackedScene" id=30]
+[ext_resource path="res://src/level_elements/voiceovers/VoiceoverController.tscn" type="PackedScene" id=31]
+[ext_resource path="res://raw_assets/audio/readloud.net/You_are_one_of_the_f_368.mp3" type="AudioStream" id=32]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 116.973, 22.9664, 115.513 )
@@ -227,7 +230,7 @@ extents = Vector3( 2, 1.5, 0.01 )
 [node name="Level" type="Spatial"]
 script = ExtResource( 10 )
 _initial_checkpoint_node_path = NodePath("Checkpoints/Checkpoint")
-_golden_time_s = 100
+_golden_time_s = 180
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource( 1 )
@@ -740,9 +743,19 @@ viewport_size = Vector2( 800, 600 )
 [node name="CollisionShape" type="CollisionShape" parent="LevelEndScreenViewport/StaticBody"]
 shape = SubResource( 23 )
 
+[node name="VoiceoverController" parent="." instance=ExtResource( 31 )]
+
+[node name="voiceover_area" parent="VoiceoverController" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.04704, 1.24966, 12.7706 )
+
+[node name="VoiceoverSound" parent="VoiceoverController/voiceover_area" index="0"]
+stream = ExtResource( 32 )
+
 [connection signal="body_exited" from="LevelArea" to="." method="_on_body_exited_level_area"]
 [connection signal="pointer_entered" from="LevelEndScreenViewport/StaticBody" to="LevelEndScreenViewport" method="_on_pointer_entered"]
 [connection signal="pointer_exited" from="LevelEndScreenViewport/StaticBody" to="LevelEndScreenViewport" method="_on_pointer_exited"]
 [connection signal="pointer_moved" from="LevelEndScreenViewport/StaticBody" to="LevelEndScreenViewport/StaticBody" method="_on_pointer_moved"]
 [connection signal="pointer_pressed" from="LevelEndScreenViewport/StaticBody" to="LevelEndScreenViewport/StaticBody" method="_on_pointer_pressed"]
 [connection signal="pointer_released" from="LevelEndScreenViewport/StaticBody" to="LevelEndScreenViewport/StaticBody" method="_on_pointer_released"]
+
+[editable path="VoiceoverController/voiceover_area"]

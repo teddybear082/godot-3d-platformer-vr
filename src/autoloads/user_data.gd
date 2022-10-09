@@ -18,6 +18,7 @@ var user_name: String = "Player" setget set_user_name
 #variables not stored in persistent User data
 var apiKey = null
 var use_seated_mode : bool = false
+var use_voiceovers : bool = true
 
 func _ready() -> void:
 	var f = File.new()

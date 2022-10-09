@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=2]
+[gd_scene load_steps=56 format=2]
 
 [ext_resource path="res://src/environments/custom_env_3.tres" type="Environment" id=1]
 [ext_resource path="res://src/level_elements/checkpoint/checkpoint.tscn" type="PackedScene" id=2]
@@ -28,9 +28,19 @@
 [ext_resource path="res://raw_assets/audio/kenney/jingles_SAX07.ogg" type="AudioStream" id=26]
 [ext_resource path="res://raw_assets/audio/sparklinlabs/ninjaadventure/power-up.ogg" type="AudioStream" id=27]
 [ext_resource path="res://raw_assets/fonts/SafetyThirdRegular-vmm77.ttf" type="DynamicFontData" id=28]
+[ext_resource path="res://src/level_elements/voiceovers/VoiceoverController.tscn" type="PackedScene" id=29]
+[ext_resource path="res://raw_assets/audio/readloud.net/You_can_bring_up_a_f_294.mp3" type="AudioStream" id=30]
+[ext_resource path="res://raw_assets/audio/readloud.net/Jump_by_clicking_yo_959.mp3" type="AudioStream" id=31]
+[ext_resource path="res://raw_assets/audio/readloud.net/Grapple_using_the_A_147.mp3" type="AudioStream" id=32]
 [ext_resource path="res://src/level_elements/collectables/coins/coin_silver.tscn" type="PackedScene" id=33]
 [ext_resource path="res://src/level_elements/collectables/coins/coin_blue.tscn" type="PackedScene" id=34]
 [ext_resource path="res://src/level_elements/collectables/coins/coin_gold.tscn" type="PackedScene" id=35]
+[ext_resource path="res://raw_assets/audio/readloud.net/Touch_the_checkpoint_246.mp3" type="AudioStream" id=36]
+[ext_resource path="res://raw_assets/audio/readloud.net/Crouch_by_clicking_y_743.mp3" type="AudioStream" id=37]
+[ext_resource path="res://raw_assets/audio/readloud.net/Step_on_the_exit_pla_553.mp3" type="AudioStream" id=38]
+[ext_resource path="res://raw_assets/audio/readloud.net/Welcome_This_is_st_219.mp3" type="AudioStream" id=39]
+[ext_resource path="res://src/level_elements/voiceovers/voiceover_area.tscn" type="PackedScene" id=40]
+[ext_resource path="res://raw_assets/audio/readloud.net/The_orange_platforms_129.mp3" type="AudioStream" id=41]
 
 [sub_resource type="BoxShape" id=5]
 extents = Vector3( 73.6719, 35, 71.4786 )
@@ -210,7 +220,7 @@ font_data = ExtResource( 28 )
 [node name="Level" type="Spatial"]
 script = ExtResource( 10 )
 _initial_checkpoint_node_path = NodePath("Checkpoints/Checkpoint")
-_golden_time_s = 70
+_golden_time_s = 100
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource( 1 )
@@ -572,6 +582,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00772071, 0 )
 
 [node name="LevelEndScreenViewport" type="Spatial" parent="."]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.9131, 48.4634, -10.5944 )
+visible = false
 script = ExtResource( 9 )
 screen_size = Vector2( 4, 3 )
 viewport_size = Vector2( 800, 600 )
@@ -616,7 +627,7 @@ text = "Climb!"
 font = SubResource( 15 )
 
 [node name="GrappleLabel3D" type="Label3D" parent="TutorialLabel3Ds"]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.28093, 2.03, 70.8672 )
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 72.423, 26.3659, 16.8177 )
 pixel_size = 0.001
 modulate = Color( 0.0156863, 0.196078, 0.458824, 1 )
 text = "Grapple!"
@@ -657,9 +668,68 @@ modulate = Color( 0.0156863, 0.196078, 0.458824, 1 )
 text = "Glide! Arms out!"
 font = SubResource( 15 )
 
+[node name="VoiceoverController" parent="." instance=ExtResource( 29 )]
+
+[node name="voiceover_area" parent="VoiceoverController" instance=ExtResource( 40 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.16733, 4.60216 )
+
+[node name="VoiceoverSound" parent="VoiceoverController/voiceover_area" index="0"]
+stream = ExtResource( 39 )
+
+[node name="voiceover_area2" parent="VoiceoverController" instance=ExtResource( 40 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 97.7079, 6.23496, 88.4297 )
+
+[node name="VoiceoverSound" parent="VoiceoverController/voiceover_area2" index="0"]
+stream = ExtResource( 30 )
+
+[node name="voiceover_area3" parent="VoiceoverController" instance=ExtResource( 40 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 87.6046, 25.9483, 28.6549 )
+
+[node name="VoiceoverSound" parent="VoiceoverController/voiceover_area3" index="0"]
+stream = ExtResource( 32 )
+
+[node name="voiceover_area4" parent="VoiceoverController" instance=ExtResource( 40 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.852866, 7.58733, 77.48 )
+
+[node name="VoiceoverSound" parent="VoiceoverController/voiceover_area4" index="0"]
+stream = ExtResource( 36 )
+
+[node name="voiceover_area5" parent="VoiceoverController" instance=ExtResource( 40 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.5803, 1.61624, 88.85 )
+
+[node name="VoiceoverSound" parent="VoiceoverController/voiceover_area5" index="0"]
+stream = ExtResource( 31 )
+
+[node name="voiceover_area7" parent="VoiceoverController" instance=ExtResource( 40 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.19024, 48.5538, -8.98566 )
+
+[node name="VoiceoverSound" parent="VoiceoverController/voiceover_area7" index="0"]
+stream = ExtResource( 38 )
+
+[node name="voiceover_area6" parent="VoiceoverController" instance=ExtResource( 40 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 38.5758, 0.905449, 84.8047 )
+
+[node name="VoiceoverSound" parent="VoiceoverController/voiceover_area6" index="0"]
+stream = ExtResource( 37 )
+
+[node name="voiceover_area8" parent="VoiceoverController" instance=ExtResource( 40 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.53031, 0.948578, 95.4533 )
+
+[node name="VoiceoverSound" parent="VoiceoverController/voiceover_area8" index="0"]
+stream = ExtResource( 41 )
+
 [connection signal="body_exited" from="LevelArea" to="." method="_on_body_exited_level_area"]
 [connection signal="pointer_entered" from="LevelEndScreenViewport/StaticBody" to="LevelEndScreenViewport" method="_on_pointer_entered"]
 [connection signal="pointer_exited" from="LevelEndScreenViewport/StaticBody" to="LevelEndScreenViewport" method="_on_pointer_exited"]
 [connection signal="pointer_moved" from="LevelEndScreenViewport/StaticBody" to="LevelEndScreenViewport/StaticBody" method="_on_pointer_moved"]
 [connection signal="pointer_pressed" from="LevelEndScreenViewport/StaticBody" to="LevelEndScreenViewport/StaticBody" method="_on_pointer_pressed"]
 [connection signal="pointer_released" from="LevelEndScreenViewport/StaticBody" to="LevelEndScreenViewport/StaticBody" method="_on_pointer_released"]
+
+[editable path="VoiceoverController/voiceover_area"]
+[editable path="VoiceoverController/voiceover_area2"]
+[editable path="VoiceoverController/voiceover_area3"]
+[editable path="VoiceoverController/voiceover_area4"]
+[editable path="VoiceoverController/voiceover_area5"]
+[editable path="VoiceoverController/voiceover_area7"]
+[editable path="VoiceoverController/voiceover_area6"]
+[editable path="VoiceoverController/voiceover_area8"]

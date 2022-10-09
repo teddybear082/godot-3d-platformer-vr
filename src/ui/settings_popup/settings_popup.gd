@@ -22,6 +22,7 @@ onready var _slider_audio_music: HSlider = find_node("SliderAudioMusic", true)
 onready var _snap_turn_button : CheckButton = find_node("SnapTurnCheckButton", true)
 onready var _teleport_check_button : CheckButton = find_node("TeleportCheckButton", true)
 onready var _seated_mode_button : CheckButton = find_node("SeatedModeCheckButton", true)
+onready var _use_voiceovers_button : CheckButton = find_node("VoiceoversCheckButton", true)
 #onready var _slider_mouse_sensitivity: HSlider = find_node("SliderMouseSense", true)
 #onready var _slider_gamepad_sensitivity: HSlider = find_node("SliderPadSense", true)
 
@@ -36,6 +37,7 @@ func _ready() -> void:
 	_snap_turn_button.pressed = UserData.use_snap_turn
 	_teleport_check_button.pressed = UserData.use_teleport
 	_seated_mode_button.pressed = UserData.use_seated_mode
+	_use_voiceovers_button.pressed = UserData.use_voiceovers
 	#_slider_mouse_sensitivity.set_value(UserData.mouse_sensitivity)
 	#_slider_gamepad_sensitivity.set_value(UserData.gamepad_sensitivity)
 
@@ -111,3 +113,9 @@ func _on_TeleportCheckButton_pressed():
 
 func _on_SeatedModeCheckButton_pressed():
 	UserData.use_seated_mode = _seated_mode_button.pressed
+
+
+
+
+func _on_VoiceoversCheckButton_pressed():
+	UserData.use_voiceovers = _use_voiceovers_button.pressed

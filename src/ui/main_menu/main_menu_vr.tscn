@@ -29,7 +29,7 @@ far = 1000.0
 [node name="main_menu_viewport" parent="." instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.77467, 0 )
 screen_size = Vector2( 4, 2 )
-viewport_size = Vector2( 1024, 700 )
+viewport_size = Vector2( 1024, 750 )
 scene = ExtResource( 5 )
 
 [node name="MenuSounds" type="AudioStreamPlayer" parent="."]
