@@ -43,6 +43,12 @@ func _ready() -> void:
 	use_teleport = data["use_teleport"]
 	
 	user_name = data["user_name"]
+	
+	if OS.get_name().to_lower() == "android":
+		get_viewport().msaa = Viewport.MSAA_DISABLED
+	
+	else:
+		get_viewport().msaa = Viewport.MSAA_8X
 
 func set_mouse_sensitivity(val: float) -> void:
 	mouse_sensitivity = clamp(val, 0.05, 1.0)

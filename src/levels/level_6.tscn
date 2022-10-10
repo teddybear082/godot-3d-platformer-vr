@@ -751,6 +751,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.04704, 1.24966, 12.7706 )
 [node name="VoiceoverSound" parent="VoiceoverController/voiceover_area" index="0"]
 stream = ExtResource( 32 )
 
+[node name="Occluders" type="Node" parent="."]
+
 [connection signal="body_exited" from="LevelArea" to="." method="_on_body_exited_level_area"]
 [connection signal="pointer_entered" from="LevelEndScreenViewport/StaticBody" to="LevelEndScreenViewport" method="_on_pointer_entered"]
 [connection signal="pointer_exited" from="LevelEndScreenViewport/StaticBody" to="LevelEndScreenViewport" method="_on_pointer_exited"]

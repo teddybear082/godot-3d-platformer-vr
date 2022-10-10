@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=2]
+[gd_scene load_steps=67 format=2]
 
 [ext_resource path="res://src/environments/custom_env_3.tres" type="Environment" id=1]
 [ext_resource path="res://src/level_elements/checkpoint/checkpoint.tscn" type="PackedScene" id=2]
@@ -225,6 +225,18 @@ extents = Vector3( 2, 1.5, 0.01 )
 
 [sub_resource type="BoxShape" id=22]
 extents = Vector3( 4, 4, 4 )
+
+[sub_resource type="OccluderShapePolygon" id=24]
+polygon_points = PoolVector2Array( 36.6519, -43.3151, 42.5034, 41.5091, -27.0957, 41.3235, -27.4815, -43.3379 )
+
+[sub_resource type="OccluderShapePolygon" id=25]
+polygon_points = PoolVector2Array( 41.3131, -43.2203, 42.5034, 41.5091, -37.0888, 41.9882, -36.7614, -43.0684 )
+
+[sub_resource type="OccluderShapePolygon" id=26]
+polygon_points = PoolVector2Array( 21.1439, -12.9868, 20.8625, 3.67477, -32.1337, 3.4893, -32.2924, -12.4336 )
+
+[sub_resource type="OccluderShapePolygon" id=27]
+polygon_points = PoolVector2Array( 22.4325, -6.16599, 22.6624, 8.97308, -30.696, 8.75489, -31.2304, -6.30951 )
 
 [node name="Level" type="Spatial"]
 script = ExtResource( 10 )
@@ -1085,6 +1097,24 @@ bus = "SoundEffects"
 
 [node name="CollisionShape" type="CollisionShape" parent="VoiceoverController/voiceover_area2"]
 shape = SubResource( 22 )
+
+[node name="Occluders" type="Node" parent="."]
+
+[node name="Occluder" type="Occluder" parent="Occluders"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 14.9149, 0 )
+shape = SubResource( 24 )
+
+[node name="Occluder2" type="Occluder" parent="Occluders"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 39.7978, 0 )
+shape = SubResource( 25 )
+
+[node name="Occluder3" type="Occluder" parent="Occluders"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.9039, 93.0606, -20.5069 )
+shape = SubResource( 26 )
+
+[node name="Occluder4" type="Occluder" parent="Occluders"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 86.8161, 0 )
+shape = SubResource( 27 )
 
 [connection signal="body_exited" from="LevelArea" to="." method="_on_body_exited_level_area"]
 [connection signal="pointer_entered" from="LevelEndScreenViewport/StaticBody" to="LevelEndScreenViewport" method="_on_pointer_entered"]

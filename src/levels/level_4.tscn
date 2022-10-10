@@ -1,4 +1,4 @@
-[gd_scene load_steps=81 format=2]
+[gd_scene load_steps=86 format=2]
 
 [ext_resource path="res://src/environments/custom_env_3.tres" type="Environment" id=1]
 [ext_resource path="res://src/level_elements/hazards/spikes/moving/spike_arm_system.tscn" type="PackedScene" id=2]
@@ -34,6 +34,7 @@
 [ext_resource path="res://src/level_elements/voiceovers/voiceover_area.tscn" type="PackedScene" id=32]
 [ext_resource path="res://src/level_elements/voiceovers/VoiceoverController.tscn" type="PackedScene" id=33]
 [ext_resource path="res://raw_assets/audio/readloud.net/You_dont_know_who_I_697.mp3" type="AudioStream" id=34]
+[ext_resource path="res://src/level_elements/occluders/OccluderHolder.gd" type="Script" id=35]
 
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "level_islands_3_Mesh_2002"
@@ -429,6 +430,18 @@ albedo_texture = SubResource( 47 )
 [sub_resource type="BoxShape" id=46]
 resource_local_to_scene = true
 extents = Vector3( 2, 1.5, 0.01 )
+
+[sub_resource type="OccluderShapePolygon" id=48]
+polygon_points = PoolVector2Array( 26.0918, -0.631819, 26.1406, 12.7955, -50.8911, 13.5096, -50.8943, -4.2407 )
+
+[sub_resource type="OccluderShapePolygon" id=49]
+polygon_points = PoolVector2Array( 26.5175, -7.8164, 26.3828, 13.1396, -50.9656, 13.0275, -51.3887, -3.68236 )
+
+[sub_resource type="OccluderShapePolygon" id=50]
+polygon_points = PoolVector2Array( 52.64, -3.39696, 52.3706, 11.222, -53.7795, 12.1104, -53.9292, -3.91076 )
+
+[sub_resource type="OccluderShapePolygon" id=51]
+polygon_points = PoolVector2Array( 56.8168, -2.88523, 56.7815, 13.7782, -51.9861, 13.8349, -51.6844, -3.70721 )
 
 [node name="Level" type="Spatial"]
 script = ExtResource( 20 )
@@ -1193,6 +1206,27 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.3042, 1.24734, 28.5503 )
 
 [node name="VoiceoverSound" parent="VoiceoverController/voiceover_area" index="0"]
 stream = ExtResource( 34 )
+
+[node name="Occluders" type="Node" parent="."]
+
+[node name="OccluderHolder" type="Spatial" parent="Occluders"]
+script = ExtResource( 35 )
+
+[node name="Occluder" type="Occluder" parent="Occluders/OccluderHolder"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 50 )
+shape = SubResource( 48 )
+
+[node name="Occluder2" type="Occluder" parent="Occluders/OccluderHolder"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -50 )
+shape = SubResource( 49 )
+
+[node name="Occluder3" type="Occluder" parent="Occluders/OccluderHolder"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 25, 0, 0 )
+shape = SubResource( 50 )
+
+[node name="Occluder4" type="Occluder" parent="Occluders/OccluderHolder"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -50, 0, 0 )
+shape = SubResource( 51 )
 
 [connection signal="body_exited" from="LevelArea" to="." method="_on_body_exited_level_area"]
 [connection signal="pointer_entered" from="LevelEndScreenViewport/StaticBody" to="LevelEndScreenViewport" method="_on_pointer_entered"]

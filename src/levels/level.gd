@@ -96,6 +96,13 @@ func _ready() -> void:
 		remove_child(voiceovers)
 		voiceovers.queue_free()
 	
+	if OS.get_name().to_lower() == "android":
+		$WorldEnvironment/DirectionalLight.shadow_enabled = false
+		_player.get_node("FPController/Configuration").set_render_target_size_multiplier(1.5)
+		get_viewport().msaa = Viewport.MSAA_DISABLED
+		
+	else:
+		$Occluders.queue_free()
 		
 func _process(delta: float) -> void:
 	_time_elapsed += delta

@@ -12,7 +12,12 @@ var _health_max := 100
 var _is_dead := false
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	if OS.get_name().to_lower() == "android":
+		get_viewport().msaa = Viewport.MSAA_DISABLED
+		$FPController/Configuration.set_render_target_size_multiplier(1.5)
+	
+	else:
+		get_viewport().msaa = Viewport.MSAA_8X
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
