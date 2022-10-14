@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=2]
+[gd_scene load_steps=55 format=2]
 
 [ext_resource path="res://addons/godot-xr-tools/functions/Function_Turn_movement.tscn" type="PackedScene" id=1]
 [ext_resource path="res://addons/godot-openxr/config/OpenXRConfig.gdns" type="Script" id=2]
@@ -34,6 +34,7 @@
 [ext_resource path="res://src/player/HapticManager.gd" type="Script" id=32]
 [ext_resource path="res://raw_assets/audio/owlishmedia/breath-male.wav" type="AudioStream" id=33]
 [ext_resource path="res://raw_assets/audio/sparklinlabs/ninjaadventure/menu-5.ogg" type="AudioStream" id=34]
+[ext_resource path="res://addons/godot-xr-tools/functions/Function_JumpDetect_movement.tscn" type="PackedScene" id=35]
 
 [sub_resource type="CubeMesh" id=20]
 resource_local_to_scene = true
@@ -427,15 +428,12 @@ strafe = true
 enabled = false
 camera = NodePath("../../ARVRCamera")
 
-[node name="Function_Jump_movement" parent="FPController/LeftHandController" instance=ExtResource( 12 )]
-jump_button_id = 14
-
 [node name="Function_Grapple_movement" parent="FPController/LeftHandController" instance=ExtResource( 13 )]
 grapple_length = 25.0
 grapple_collision_mask = 35
 impulse_speed = 20.0
 winch_speed = 5.0
-grapple_button_id = 7
+grapple_button_id = 1
 
 [node name="Grapple_RayCast" parent="FPController/LeftHandController/Function_Grapple_movement" index="0"]
 collision_mask = 35
@@ -473,7 +471,7 @@ grapple_length = 25.0
 grapple_collision_mask = 35
 impulse_speed = 20.0
 winch_speed = 5.0
-grapple_button_id = 7
+grapple_button_id = 1
 
 [node name="Grapple_RayCast" parent="FPController/RightHandController/Function_Grapple_movement" index="0"]
 collision_mask = 35
@@ -522,6 +520,9 @@ shape = SubResource( 14 )
 
 [node name="Function_pointer" parent="FPController/RightHandController" instance=ExtResource( 27 )]
 enabled = false
+
+[node name="Function_Jump_movement" parent="FPController/RightHandController" instance=ExtResource( 12 )]
+jump_button_id = 7
 
 [node name="PlayerBody" parent="FPController" instance=ExtResource( 5 )]
 
@@ -912,6 +913,7 @@ material/0 = ExtResource( 14 )
 [node name="LeftHandRadialMenu" type="Spatial" parent="FPController"]
 script = ExtResource( 25 )
 radial_controller_path = NodePath("../LeftHandController")
+open_radial_menu_button = 7
 menu_entries = [ "home", "level0", "level1", "level2", "level3", "level4", "level5", "level6", "level7" ]
 
 [node name="Camera" type="Camera" parent="FPController/LeftHandRadialMenu"]
@@ -923,6 +925,8 @@ material_override = SubResource( 17 )
 mesh = SubResource( 18 )
 
 [node name="Anchor" type="Spatial" parent="FPController/LeftHandRadialMenu"]
+
+[node name="Function_JumpDetect_Movement" parent="FPController" instance=ExtResource( 35 )]
 
 [node name="PlayerSounds" type="Node" parent="."]
 script = ExtResource( 31 )

@@ -67,9 +67,9 @@ align = 1
 valign = 1
 
 [node name="BtnBack" type="Button" parent="Panel/VBoxContainer/Header"]
-margin_left = 943.0
-margin_right = 1024.0
-margin_bottom = 47.0
+margin_left = 925.0
+margin_right = 1025.0
+margin_bottom = 100.0
 custom_fonts/font = SubResource( 4 )
 text = "Back"
 __meta__ = {

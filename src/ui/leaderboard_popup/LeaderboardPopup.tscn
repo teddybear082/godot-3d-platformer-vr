@@ -12,6 +12,7 @@ use_filter = true
 font_data = ExtResource( 3 )
 
 [node name="LeaderboardPopup" type="Popup"]
+visible = true
 margin_right = 1024.0
 margin_bottom = 1000.0
 script = ExtResource( 2 )
@@ -20,15 +21,17 @@ script = ExtResource( 2 )
 margin_right = 1024.0
 margin_bottom = 1000.0
 
-[node name="BtnNext" type="Button" parent="Panel"]
+[node name="BtnNext" type="Button" parent="."]
 anchor_left = 0.917188
 anchor_right = 1.0
 anchor_bottom = 0.0780488
-margin_right = -0.000305176
+margin_left = -39.2005
+margin_right = 1.0
+margin_bottom = 21.9512
 custom_fonts/font = SubResource( 1 )
 text = "Next"
 __meta__ = {
 "_edit_use_anchors_": true
 }
 
-[connection signal="pressed" from="Panel/BtnNext" to="." method="_on_BtnNext_pressed"]
+[connection signal="pressed" from="BtnNext" to="." method="_on_BtnNext_pressed"]

@@ -35,7 +35,9 @@ func take_damage(value: int) -> void:
 func respawn(spawn_transfrom: Vector3) -> void:
 	#set_global_transform(spawn_transfrom)
 	#velocity = Vector3.ZERO
+	$FPController/PlayerBody.velocity = Vector3(0,0,0)
 	global_transform.origin = spawn_transfrom
 	$FPController.global_transform.origin = spawn_transfrom
+	$FPController/PlayerBody.velocity = Vector3(0,0,0)
 	_is_dead = false
 	_health = _health_max

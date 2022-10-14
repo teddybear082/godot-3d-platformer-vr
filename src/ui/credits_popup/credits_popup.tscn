@@ -42,7 +42,8 @@ __meta__ = {
 anchor_left = 0.917188
 anchor_right = 1.0
 anchor_bottom = 0.0780488
-margin_right = -0.000305176
+margin_left = -17.188
+margin_bottom = 41.4634
 custom_fonts/font = SubResource( 1 )
 text = "Back"
 __meta__ = {
@@ -54,12 +55,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 20.0
 margin_top = 30.0
-margin_right = -20.0
-margin_bottom = -20.0
+margin_right = -100.0
+margin_bottom = -20.0004
 custom_constants/separation = 30
 
 [node name="Title" type="Label" parent="Panel/VBoxContainer"]
-margin_right = 960.0
+margin_right = 880.0
 margin_bottom = 28.0
 custom_colors/font_color = Color( 0.0156863, 0.196078, 0.458824, 1 )
 custom_fonts/font = SubResource( 1 )
@@ -68,9 +69,9 @@ align = 1
 valign = 1
 
 [node name="GridContainer" type="GridContainer" parent="Panel/VBoxContainer"]
-margin_left = 220.0
+margin_left = 180.0
 margin_top = 58.0
-margin_right = 740.0
+margin_right = 700.0
 margin_bottom = 444.0
 grow_horizontal = 2
 grow_vertical = 2
