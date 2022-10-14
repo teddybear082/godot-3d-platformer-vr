@@ -914,7 +914,7 @@ material/0 = ExtResource( 14 )
 script = ExtResource( 25 )
 radial_controller_path = NodePath("../LeftHandController")
 open_radial_menu_button = 7
-menu_entries = [ "home", "level0", "level1", "level2", "level3", "level4", "level5", "level6", "level7" ]
+menu_entries = [ "home", "level0", "level1", "level2", "level3", "level4", "level5", "level6", "level7", "return" ]
 
 [node name="Camera" type="Camera" parent="FPController/LeftHandRadialMenu"]
 transform = Transform( 1, 0, 0, 0, 0.841181, 0.540754, 0, -0.540754, 0.841181, 0, 1.14827, 1.96036 )

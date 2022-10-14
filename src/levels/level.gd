@@ -296,12 +296,12 @@ func _on_radial_level_entry_selected(entry):
 	if entry == "level5":
 		emit_signal("change_scene_request", "res://src/levels/level_5.tscn")
 		#get_tree().change_scene("res://src/levels/level_5.tscn")
-		
 	if entry == "level6":
 		emit_signal("change_scene_request", "res://src/levels/level_6.tscn")
-		
 	if entry == "level7":
 		emit_signal("change_scene_request", "res://src/levels/level_7.tscn")
+	if entry == "return":
+		return
 
 func _count_coin_total() -> void:
 	for coin in $Coins.get_children():
